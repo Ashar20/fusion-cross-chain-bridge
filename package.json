@@ -1,0 +1,31 @@
+{
+  "name": "fusion-cross-chain-bridge",
+  "version": "0.1.0",
+  "description": "Revolutionary cross-chain atomic swaps between Ethereum and EOS using 1inch Fusion+ technology",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "node scripts/deploy.js",
+    "swap": "node scripts/execute-swap.js"
+  },
+  "keywords": [
+    "1inch",
+    "fusion",
+    "cross-chain",
+    "atomic-swaps",
+    "ethereum",
+    "eos",
+    "defi",
+    "blockchain"
+  ],
+  "author": "Fusion+ Cross-Chain Team",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.15.0",
+    "dotenv": "^16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/fusion-cross-chain-bridge.git"
+  }
+}
