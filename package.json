@@ -22,8 +22,8 @@
   "author": "Fusion+ Cross-Chain Team",
   "license": "MIT",
   "dependencies": {
-    "ethers": "^6.15.0",
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.6.1",
+    "ethers": "^6.15.0"
   },
   "repository": {
     "type": "git",
