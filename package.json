@@ -6,12 +6,10 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "node scripts/deploy.js",
-    "swap": "node scripts/execute-swap.js",
-    "deployEOSContract": "node scripts/deployEOSContract.js",
-    "realAtomicSwap": "node scripts/realAtomicSwap.js",
-    "realAtomicSwapSimplified": "node scripts/realAtomicSwapSimplified.js",
-    "realAtomicSwapOfficial1inch": "node scripts/realAtomicSwapOfficial1inch.js"
+    "hackathon-demo": "node scripts/hackathonQualificationDemo.js",
+    "deploy-system": "node scripts/deployComplete1inchSystem.js",
+    "deploy-eos": "node scripts/deployEOSContract.js",
+    "atomic-swap": "node scripts/realAtomicSwapOfficial1inch.js"
   },
   "keywords": [
     "1inch",

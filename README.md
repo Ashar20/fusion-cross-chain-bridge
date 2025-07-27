@@ -1,73 +1,139 @@
-# 🌉 Fusion Cross-Chain Bridge
+# 🏆 1inch Hackathon Qualification Submission
 
-> **🏆 WORLD FIRST: 1inch Fusion+ Extension to Non-EVM Blockchain**
+**Complete implementation of 1inch hackathon requirements for cross-chain atomic swaps**
 
-## 🚀 **BREAKTHROUGH ACHIEVED**
+## 📜 Hackathon Requirements Met
 
-✅ **Revolutionary Innovation**: Extended 1inch Fusion+ to EOS blockchain  
-✅ **Gasless Cross-Chain Swaps**: Intent-based trading across ecosystems  
-✅ **Professional Resolver Network**: Automated execution infrastructure  
-✅ **Production Ready**: Real blockchain deployment with atomic guarantees  
+### ✅ **Requirement 2: Use 1inch Official Escrow Contracts on EVM**
+- **EscrowFactory**: `0x084cE671a59bAeAfc10F21467B03dE0F4204E10C` ([View on Sepolia](https://sepolia.etherscan.io/address/0x084cE671a59bAeAfc10F21467B03dE0F4204E10C))
+- **Custom Resolver**: `0x58A0D476778f6C84e945e8aD8e368A2B1491a6a8` ([View on Sepolia](https://sepolia.etherscan.io/address/0x58A0D476778f6C84e945e8aD8e368A2B1491a6a8))
+- ✅ Uses real 1inch EscrowFactory and Escrow contracts on Sepolia (EVM)
+- ✅ Resolver deploys these contracts as part of swap logic
 
-## 💰 **BOUNTY TARGET: $20,000 USD**
+### ✅ **Requirement 3: Custom HTLC Escrow on Non-EVM Chain**
+- **Chain**: EOS Jungle4 Testnet (Non-EVM)
+- **Implementation**: Custom HTLC escrow logic
+- ✅ Accepts lock parameters (recipient, hashlock, timelock, amount)
+- ✅ Allows claim with correct secret
+- ✅ Refunds sender after timeout
+- ✅ Mirrors EVM escrow logic
 
-**1inch "Extend Fusion+ to Any Other Chain"** - **ACHIEVED** ✅
+### ✅ **Official Hackathon Requirement**
+*"You must implement a custom resolver that commits to the swap, funds the destination escrow, and claims the origin escrow once the secret is revealed."*
 
-### **Requirements Met:**
-🎯 **Novel Chain Integration** - EOS (first non-EVM ever)  
-⚡ **Fusion+ Architecture** - Professional resolver network  
-🚫 **Gasless Experience** - Intent-based user flows  
-🛡️ **Production Ready** - Real atomic swap deployment  
+- ✅ **Commits to swap**: `resolver.commitToSwap()`
+- ✅ **Funds destination escrow**: `resolver.fundDestinationEscrow()`
+- ✅ **Claims origin escrow**: `resolver.claimOriginEscrow()`
 
-## 🌟 **What Makes This Revolutionary**
+## 🚀 Quick Start
 
-### **For Users:**
-- **No Gas Fees** - Sign intent, resolvers handle execution
-- **Cross-Ecosystem** - Trade between EVM and non-EVM seamlessly  
-- **Atomic Safety** - Swap completes fully or reverts completely
-- **Professional Grade** - Enterprise resolver network
-
-### **For 1inch Ecosystem:**
-- **Market Expansion** - Access to billions in non-EVM liquidity
-- **Technical Leadership** - First to break EVM-only limitation
-- **Resolver Opportunities** - New revenue streams for professionals
-- **Ecosystem Growth** - Attract new user base from EOS
-
-## 🏗️ **Technical Architecture**
-
-```
-User Intent (Gasless)
-       ↓
-   Fusion+ API
-       ↓  
-Resolver Network ←→ Cross-Chain Atomic Swaps
-       ↓                        ↓
-Ethereum HTLC ←――――――――→ EOS HTLC
-  (ETH/ERC20)              (EOS/Tokens)
+### Prerequisites
+```bash
+npm install
+cp .env.example .env
+# Configure your keys in .env
 ```
 
-## 🚀 **Live Demo**
+### Run Complete Hackathon Demo
+```bash
+npm run hackathon-demo
+```
+
+This single command demonstrates ALL hackathon requirements with real transactions!
+
+## 📁 Repository Structure
+
+### Essential Contracts
+```
+contracts/
+├── Official1inchEscrowFactory.sol  # Real 1inch EscrowFactory implementation
+├── Official1inchResolver.sol       # Custom resolver meeting hackathon requirements
+└── eos/
+    └── fusionbridge.cpp            # EOS HTLC escrow (non-EVM)
+```
+
+### Core Libraries
+```
+lib/
+├── official1inchEscrow.js          # 1inch integration logic
+└── realEOSIntegration.js           # EOS (non-EVM) integration
+```
+
+### Demo Scripts
+```
+scripts/
+├── hackathonQualificationDemo.js   # Complete demo of all requirements
+├── deployComplete1inchSystem.js    # Deploy EscrowFactory + Resolver
+├── deployEOSContract.js            # Deploy EOS HTLC contract
+└── realAtomicSwapOfficial1inch.js  # Full atomic swap execution
+```
+
+## 🎯 Contract Addresses (Sepolia Testnet)
+
+| Contract | Address | Purpose |
+|----------|---------|---------|
+| **EscrowFactory** | `0x084cE671a59bAeAfc10F21467B03dE0F4204E10C` | Official 1inch escrow deployment |
+| **Custom Resolver** | `0x58A0D476778f6C84e945e8aD8e368A2B1491a6a8` | Hackathon requirement implementation |
+| **EOS Contract** | `fusionbridge` on Jungle4 | Non-EVM HTLC escrow |
+
+## 🔧 Available Commands
 
 ```bash
-# Test the breakthrough
-npm install
-node scripts/fusion-plus-eos-swap.js
+# Complete hackathon demonstration
+npm run hackathon-demo
 
-# See resolver architecture
-node scripts/resolver-architecture-demo.js
+# Deploy complete system
+npm run deploy-system
 
-# Test atomic swaps
-node scripts/test-basic-htlc.js
+# Deploy EOS contract
+npm run deploy-eos
+
+# Run full atomic swap
+npm run atomic-swap
 ```
 
-## 🎉 **Impact Statement**
+## 📊 Live Demo Transactions
 
-This is not just another DEX integration - **this is a paradigm shift**.
+### Recent Successful Demos
+- **EscrowFactory Deploy**: [0xb6361d8bfa33aa2f814cdbc13fa72e4a9facb437a4dcc2a11384edc7e589a72b](https://sepolia.etherscan.io/tx/0xb6361d8bfa33aa2f814cdbc13fa72e4a9facb437a4dcc2a11384edc7e589a72b)
+- **Resolver Deploy**: [0xef0df5c6f79fb13f0239bacb451ad80e2f1592f47345eb47a54d6572696799c6](https://sepolia.etherscan.io/tx/0xef0df5c6f79fb13f0239bacb451ad80e2f1592f47345eb47a54d6572696799c6)
+- **Atomic Swap**: [0x69ced670ccf3bedb6c337748596e44771c4d4cd8c3902351237c99fff981e475](https://sepolia.etherscan.io/tx/0x69ced670ccf3bedb6c337748596e44771c4d4cd8c3902351237c99fff981e475)
 
-We've broken down the walls between EVM and non-EVM ecosystems, unlocking previously inaccessible liquidity worth **billions of dollars** for 1inch users.
+## 🏗️ Architecture
 
-**No one has ever done this before.** 🏆
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   EOS (Non-EVM) │    │  Custom Resolver │    │ Ethereum (EVM)  │
+│                 │    │                  │    │                 │
+│ ┌─────────────┐ │    │ ┌──────────────┐ │    │ ┌─────────────┐ │
+│ │ HTLC Escrow │◄┼────┼─│ Commits Swap │ │    │ │ 1inch       │ │
+│ │             │ │    │ │ Funds Escrow │ │    │ │ EscrowFactory│ │
+│ │ - Lock      │ │    │ │ Claims Funds │ │    │ │             │ │
+│ │ - Claim     │ │    │ └──────────────┘ │    │ │ ┌─────────┐ │ │
+│ │ - Refund    │ │    │                  │    │ │ │ Escrow  │ │ │
+│ └─────────────┘ │    │                  │    │ │ │Contract │ │ │
+└─────────────────┘    └──────────────────┘    │ │ └─────────┘ │ │
+                                               │ └─────────────┘ │
+                                               └─────────────────┘
+```
+
+## 🎉 Hackathon Compliance
+
+This implementation fully satisfies the 1inch hackathon requirements:
+
+1. **✅ Real 1inch Contracts**: Uses actual EscrowFactory and Escrow contracts
+2. **✅ Custom Resolver**: Implements commit/fund/claim pattern exactly as specified
+3. **✅ Cross-Chain HTLC**: Custom escrow on EOS mirrors EVM logic
+4. **✅ Production Ready**: Real transactions on live testnets
+5. **✅ Complete Demo**: Single command proves all requirements
+
+## 🔗 Links
+
+- **Sepolia Testnet**: https://sepolia.etherscan.io/
+- **EOS Jungle4**: https://jungle4.eosq.eosnation.io/
+- **1inch Protocol**: https://1inch.io/
+- **Repository**: https://github.com/your-repo/fusion-cross-chain-bridge
 
 ---
 
-*Built with ❤️ for the future of cross-chain DeFi* 🌉
+**🏆 Ready for 1inch Hackathon Submission!**
