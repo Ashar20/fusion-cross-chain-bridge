@@ -7,7 +7,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "node scripts/deploy.js",
-    "swap": "node scripts/execute-swap.js"
+    "swap": "node scripts/execute-swap.js",
+    "deployEOSContract": "node scripts/deployEOSContract.js",
+    "realAtomicSwap": "node scripts/realAtomicSwap.js",
+    "realAtomicSwapSimplified": "node scripts/realAtomicSwapSimplified.js",
+    "realAtomicSwapOfficial1inch": "node scripts/realAtomicSwapOfficial1inch.js"
   },
   "keywords": [
     "1inch",
@@ -23,11 +27,16 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.6.1",
+    "eosjs": "^22.1.0",
     "ethers": "^6.15.0",
     "node-fetch": "^3.3.2"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/your-username/fusion-cross-chain-bridge.git"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "^5.4.0",
+    "solc": "^0.8.30"
   }
 }
