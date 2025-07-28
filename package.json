@@ -9,7 +9,21 @@
     "hackathon-demo": "node scripts/hackathonQualificationDemo.js",
     "deploy-system": "node scripts/deployComplete1inchSystem.js",
     "deploy-eos": "node scripts/deployEOSContract.js",
-    "atomic-swap": "node scripts/realAtomicSwapOfficial1inch.js"
+    "deploy-eos-compiled": "node scripts/deployEOSContractWithCompilation.js",
+    "atomic-swap": "node scripts/realAtomicSwapOfficial1inch.js",
+    "eos-to-eth-swap": "node scripts/eosToEthSwapWithValueTracking.js",
+    "real-eos-to-eth": "node scripts/realEOSToETHSwapSimple.js",
+    "arbitrage-system": "node scripts/completeArbitrageSystem.js",
+    "arbitrage-demo": "node scripts/arbitrageDemo.js",
+    "eos-to-eth-0005": "node scripts/eosToEthSpecificSwap.js",
+    "real-eos-to-eth-no-sim": "node scripts/realEOSToETHSwapNoSimulation.js",
+    "proper-htlc": "node scripts/properHTLCSwap.js",
+    "price-feeds": "node -e \"import('./lib/priceFeedIntegration.js').then(m => new m.PriceFeedIntegration().getMarketSummary())\"",
+    "bidirectional-swap": "node scripts/bidirectionalSwap.js",
+    "test-bidirectional": "node scripts/testBidirectionalSwap.js",
+    "bidirectional-resolver": "node scripts/bidirectionalSwapWithResolver.js",
+    "deploy-gasless": "node scripts/deployGaslessResolver.js",
+    "gasless-swap": "node scripts/gaslessSwap.js"
   },
   "keywords": [
     "1inch",
@@ -34,7 +48,9 @@
     "url": "https://github.com/your-username/fusion-cross-chain-bridge.git"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
     "@openzeppelin/contracts": "^5.4.0",
+    "hardhat": "^2.26.1",
     "solc": "^0.8.30"
   }
 }

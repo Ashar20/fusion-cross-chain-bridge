@@ -1,0 +1,8 @@
+{
+  "gaslessResolver": {
+    "address": "0x9F5c2f66a27028Ece9b2C34a9774025D3364b20f",
+    "escrowFactory": "0x084cE671a59bAeAfc10F21467B03dE0F4204E10C",
+    "network": "sepolia",
+    "timestamp": "2025-07-27T20:26:25.761Z"
+  }
+}
