@@ -1,0 +1,51 @@
+# 🏭 BIDIRECTIONAL MAINNET SWAP CONFIGURATION (GASLESS)
+# Copy these variables to your .env file for bidirectional gasless mainnet swaps
+
+# Ethereum Mainnet Configuration
+MAINNET_RPC_URL=https://eth-mainnet.g.alchemy.com/v2/YOUR_ALCHEMY_KEY
+MAINNET_PRIVATE_KEY=your_ethereum_mainnet_private_key_here
+
+# EOS Mainnet Configuration
+EOS_MAINNET_RPC_URL=https://eos.greymass.com
+EOS_MAINNET_ACCOUNT=your_eos_mainnet_account_name
+EOS_MAINNET_PRIVATE_KEY=your_eos_mainnet_private_key_here
+EOS_MAINNET_RECIPIENT=recipient_eos_account_name
+
+# Official 1inch Fusion+ Contracts (Ethereum Mainnet)
+# These are the real official 1inch contracts on mainnet
+LOP_V4=0x111111125421ca6dc452d289314280a0f8842a65
+SETTLEMENT_EXTENSION=0x119c71D3BbAC22029622cbaEc24854d3D32D2828
+ROUTER_V6=0x111111125434b319222cdbf8c261674adb56f3ae
+
+# 1inch Fusion+ Gasless Resolver (Mainnet)
+# This resolver pays for gas - user pays ZERO gas fees
+ONEINCH_RESOLVER_ADDRESS=0x111111125421ca6dc452d289314280a0f8842a65
+
+# Common Token Addresses (Ethereum Mainnet)
+WETH=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+USDC=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
+DAI=0x6B175474E89094C44Da98b954EedeAC495271d0F
+
+# ⚠️  IMPORTANT SECURITY NOTES:
+# - Never commit your .env file to version control
+# - Keep your private keys secure and never share them
+# - Use hardware wallets for production deployments
+# - Test thoroughly on testnet before using mainnet
+# - This will use REAL ETH and EOS tokens
+
+# 💸 GASLESS ARCHITECTURE:
+# - User pays ZERO gas fees
+# - 1inch Fusion+ resolver pays for all gas
+# - EIP-712 signatures for meta-transactions
+# - True gasless cross-chain swaps
+
+# 🔄 BIDIRECTIONAL SWAPS:
+# - ETH → EOS: ETH escrow → EOS transfer → ETH claim
+# - EOS → ETH: EOS transfer → ETH escrow → EOS claim
+
+# 🎯 USAGE:
+# 1. Add these variables to your .env file
+# 2. Fill in your actual values
+# 3. Run ETH→EOS: npm run eth-to-eos-mainnet
+# 4. Run EOS→ETH: npm run eos-to-eth-mainnet
+# 5. Both will execute real gasless mainnet swaps 

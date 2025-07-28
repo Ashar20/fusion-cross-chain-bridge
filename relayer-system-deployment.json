@@ -1,0 +1,16 @@
+{
+  "relayerSystem": {
+    "address": "0x07dCDBBB9e96a0Dd59597cc2a6c18f0558d84653",
+    "deploymentTxHash": "0xbb925b3ebf61b00fe7972c62204b036596c9954e7920cfad22acad48d81eade7",
+    "resolver": "0xc75e75Fb1378079DBd6f38F0Ae688689Bd791B1a",
+    "owner": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+    "config": {
+      "batchSize": 10,
+      "executionDelay": 0
+    }
+  },
+  "deploymentTime": "2025-07-28T15:44:05.218Z",
+  "network": "sepolia",
+  "deployer": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "note": "Gas costs handled by resolver, not relayer"
+}

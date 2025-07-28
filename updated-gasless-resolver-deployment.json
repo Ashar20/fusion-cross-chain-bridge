@@ -1,0 +1,12 @@
+{
+  "network": "sepolia",
+  "timestamp": "2025-07-28T04:42:37.341Z",
+  "escrowFactory": {
+    "address": "0x098b4c1c8b75dC7535d4Af21223E28247667D141",
+    "transactionHash": "0xb665ae3b16158784321eb768cb195b6c8d5241ee866c06736ebc44d636706fb0"
+  },
+  "gaslessResolver": {
+    "address": "0x5574FE78CF4B787BF5FBD6f333C444f69baFAAA8",
+    "transactionHash": "0x683c33ad5e1a5525b8a95418e0ebe45e0770e560f686ce7deab82a5083a3a3ec"
+  }
+}

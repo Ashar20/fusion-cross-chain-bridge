@@ -25,6 +25,10 @@ contract Gasless1inchResolver is EIP712 {
         "Intent(bytes32 swapId,address user,address beneficiary,uint256 amount,bytes32 orderHash,bytes32 hashlock,uint256 deadline,uint256 nonce)"
     );
     
+    bytes32 public constant CLAIM_TYPEHASH = keccak256(
+        "Claim(bytes32 swapId,bytes32 secret)"
+    );
+    
     // Intent tracking
     struct Intent {
         address user;
@@ -49,6 +53,24 @@ contract Gasless1inchResolver is EIP712 {
     
     constructor(address _escrowFactory) EIP712("Gasless1inchResolver", "1.0.0") {
         escrowFactory = Official1inchEscrowFactory(_escrowFactory);
+    }
+    
+    /**
+     * 💰 Receive ETH for gas fees
+     * Allows the contract to receive ETH to pay for gasless transactions
+     */
+    receive() external payable {
+        // Contract can receive ETH for gas fees
+        // No additional logic needed - just accept the ETH
+    }
+    
+    /**
+     * 💰 Fallback function for ETH transfers
+     * Handles any ETH sent to the contract
+     */
+    fallback() external payable {
+        // Contract can receive ETH for gas fees
+        // No additional logic needed - just accept the ETH
     }
     
     /**
@@ -195,7 +217,15 @@ contract Gasless1inchResolver is EIP712 {
         bytes32 secret,
         bytes calldata signature
     ) internal view returns (address) {
-        bytes32 hash = keccak256(abi.encodePacked(swapId, secret));
+        bytes32 structHash = keccak256(
+            abi.encode(
+                CLAIM_TYPEHASH,
+                swapId,
+                secret
+            )
+        );
+        
+        bytes32 hash = _hashTypedDataV4(structHash);
         return hash.recover(signature);
     }
     

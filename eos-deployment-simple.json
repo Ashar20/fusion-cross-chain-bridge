@@ -1,0 +1,12 @@
+{
+  "account": "quicksnake34",
+  "contract": "fusionbridge",
+  "network": "jungle4",
+  "deployedAt": "2025-07-28T22:23:55.635Z",
+  "rpcUrl": "https://jungle4.cryptolions.io",
+  "wasmPath": "/Users/siiii/ome1nch/fusion-cross-chain-bridge/contracts/eos/fusionbridge.wasm",
+  "abiPath": "/Users/siiii/ome1nch/fusion-cross-chain-bridge/contracts/eos/fusionbridge.abi",
+  "sourcePath": "/Users/siiii/ome1nch/fusion-cross-chain-bridge/contracts/eos/fusionbridge.cpp",
+  "deploymentMethod": "manual",
+  "status": "compiled_ready_for_deployment"
+}
