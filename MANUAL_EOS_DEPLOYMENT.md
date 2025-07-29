@@ -1,132 +1,111 @@
-# 🌴 Manual EOS Contract Deployment Guide
+# 🚀 Manual EOS Contract Deployment Guide
 
-## **Current Status**
-- ✅ Docker Desktop installed
-- ✅ Docker starting up
-- ✅ EOS account verified: `quicksnake34`
-- ✅ Account balance: `23.6264 EOS`
-- ⏳ Waiting for Docker to fully start
+## 📋 Current Status
+- ✅ Environment variables configured
+- ✅ Account verified (quicksnake34 with 23.6264 EOS)
+- ✅ Contract files compiled (WASM: 59,085 bytes, ABI: 5,022 bytes)
+- ✅ Network connection established (Jungle4 testnet)
+- ❌ Contract deployment pending
 
-## **🚀 Next Steps**
+## 🔧 Deployment Options
 
-### **Option 1: Wait for Docker (Recommended)**
+### Option 1: Install EOSIO Software (Recommended)
 
-1. **Wait for Docker to fully start** (usually takes 1-2 minutes)
-2. **Run the deployment script:**
-   ```bash
-   npm run deploy-eos-docker
-   ```
+#### Step 1: Download EOSIO Software
+1. Go to: https://github.com/EOSIO/eos/releases
+2. Download the latest release for Windows
+3. Extract to a folder (e.g., `C:\eosio`)
 
-### **Option 2: Manual Docker Commands**
+#### Step 2: Add to PATH
+1. Open System Properties → Environment Variables
+2. Add `C:\eosio\bin` to your PATH
+3. Restart PowerShell
 
-Once Docker is fully started, run these commands manually:
-
+#### Step 3: Deploy Contract
 ```bash
-# 1. Navigate to contract directory
-cd contracts/eos/
+# Navigate to project directory
+cd C:\Users\silas\fusion-cross-chain-bridge
 
-# 2. Compile contract using Docker
-docker run --rm -v $(pwd):/work eosio/eosio.cdt:v1.8.1 eosio-cpp -o fusionbridge.wasm fusionbridge.cpp
-
-# 3. Generate ABI using Docker
-docker run --rm -v $(pwd):/work eosio/eosio.cdt:v1.8.1 eosio-abigen fusionbridge.cpp --contract=fusionbridge --output=fusionbridge.abi
-
-# 4. Deploy contract code
-docker run --rm -v $(pwd):/work eosio/eosio.cdt:v1.8.1 cleos -u https://jungle4.cryptolions.io set code quicksnake34 /work/fusionbridge.wasm
-
-# 5. Deploy contract ABI
-docker run --rm -v $(pwd):/work eosio/eosio.cdt:v1.8.1 cleos -u https://jungle4.cryptolions.io set abi quicksnake34 /work/fusionbridge.abi
-
-# 6. Test deployment
-docker run --rm -v $(pwd):/work eosio/eosio.cdt:v1.8.1 cleos -u https://jungle4.cryptolions.io get code quicksnake34
+# Deploy contract
+cleos -u https://jungle4.cryptolions.io set contract quicksnake34 contracts\eos fusionbridge.wasm fusionbridge.abi
 ```
 
-### **Option 3: Online Compilation**
+### Option 2: Use EOSIO.CDT Docker with cleos
 
-If Docker continues to have issues:
-
-1. **Visit**: https://jungle4.cryptolions.io/
-2. **Upload**: `contracts/eos/fusionbridge.cpp`
-3. **Compile online** and download WASM/ABI files
-4. **Deploy manually** using the commands above
-
-## **🧪 Testing After Deployment**
-
-### **1. Check Contract Code**
-```bash
-curl -X POST https://jungle4.cryptolions.io/v1/chain/get_code \
-  -H "Content-Type: application/json" \
-  -d '{"account_name":"quicksnake34"}'
+#### Step 1: Create custom Docker image
+```dockerfile
+FROM eosio/eosio.cdt:v1.8.1
+RUN apt-get update && apt-get install -y wget
+RUN wget https://github.com/EOSIO/eos/releases/download/v2.1.0/eos_2.1.0-1-ubuntu-18.04_amd64.deb
+RUN dpkg -i eos_2.1.0-1-ubuntu-18.04_amd64.deb
 ```
 
-### **2. Check Contract ABI**
+#### Step 2: Build and use custom image
 ```bash
-curl -X POST https://jungle4.cryptolions.io/v1/chain/get_abi \
-  -H "Content-Type: application/json" \
-  -d '{"account_name":"quicksnake34"}'
+docker build -t eosio-with-cleos .
+docker run --rm -v "C:/temp/eos-deploy:/work" eosio-with-cleos bash -c "cd /work && cleos -u https://jungle4.cryptolions.io set contract quicksnake34 . fusionbridge.wasm fusionbridge.abi"
 ```
 
-### **3. Create Test HTLC**
-```bash
-docker run --rm -v $(pwd):/work eosio/eosio.cdt:v1.8.1 cleos -u https://jungle4.cryptolions.io push action quicksnake34 createhtlc \
-  '["quicksnake34", "quicksnake34", "0.1000 EOS", "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef", 1234567890, "Test HTLC", "0x0000000000000000000000000000000000000000000000000000000000000000"]' \
-  -p quicksnake34@active
+### Option 3: Online Deployment Tools
+
+#### EOS Studio (Alternative)
+1. Go to: https://eosstudio.io/
+2. Create account and connect wallet
+3. Upload WASM/ABI files
+4. Deploy to quicksnake34 account
+
+#### Bloks.io (Alternative)
+1. Go to: https://jungle.bloks.io/
+2. Connect wallet
+3. Go to Smart Contracts → Deploy Contract
+4. Upload files and deploy
+
+## 📁 Contract Files Location
+```
+C:\Users\silas\fusion-cross-chain-bridge\contracts\eos\
+├── fusionbridge.cpp (source)
+├── fusionbridge.hpp (header)
+├── fusionbridge.wasm (59,085 bytes) ✅
+└── fusionbridge.abi (5,022 bytes) ✅
 ```
 
-## **🔗 Integration Steps**
+## 🔍 Verification Commands
 
-### **1. Update Environment Variables**
-Add to your `.env` file:
+After deployment, verify with:
 ```bash
-EOS_PRIVATE_KEY=5Hw21rCXdLBRPzKwpQ19ZeVEoWZewDTttuP5PBAvdacBwGnG5HN
-EOS_ACCOUNT_NAME=quicksnake34
-EOS_NETWORK=jungle4
-EOS_RPC_URL=https://jungle4.cryptolions.io
+# Check contract code
+cleos -u https://jungle4.cryptolions.io get code quicksnake34
+
+# Test contract
+cleos -u https://jungle4.cryptolions.io push action quicksnake34 getstats '[]' -p quicksnake34
 ```
 
-### **2. Test Real EOS Integration**
-```bash
-npm run real-eos
-```
+## 💰 Cost Estimation
+- **RAM**: ~50 EOS (for contract storage)
+- **CPU**: ~10 EOS (for deployment transaction)
+- **NET**: ~5 EOS (for transaction data)
+- **Total**: ~65 EOS (you have 23.6264 EOS available)
 
-### **3. Start Relayer with Real EOS**
-```bash
-npm run start-relayer
-```
+## ⚠️ Important Notes
+1. **RAM Purchase Required**: You need to buy RAM before deployment
+2. **Account Resources**: Ensure sufficient CPU/NET for deployment
+3. **Testnet**: This is Jungle4 testnet, not mainnet
+4. **Backup**: Keep your private keys secure
 
-### **4. Test Bidirectional Swaps**
-```bash
-npm run bidirectional
-```
+## 🆘 Troubleshooting
 
-## **🎯 Expected Results**
+### "transaction net usage is too high"
+- Solution: Use cleos instead of eosjs
+- Alternative: Split deployment into smaller transactions
 
-After successful deployment:
-- ✅ Contract code deployed
-- ✅ Contract ABI deployed
-- ✅ Test HTLC created
-- ✅ Real EOS integration working
-- ✅ 100% real cross-chain swaps
+### "cleos: command not found"
+- Solution: Install EOSIO software
+- Alternative: Use Docker with custom image
 
-## **🚨 Troubleshooting**
+### "insufficient RAM"
+- Solution: Buy RAM using: `cleos system buyram quicksnake34 quicksnake34 1000000`
 
-### **Docker Issues:**
-- **Wait longer**: Docker can take 2-3 minutes to fully start
-- **Restart Docker**: Quit and restart Docker Desktop
-- **Use online compiler**: Alternative if Docker continues to fail
-
-### **Deployment Issues:**
-- **Check account balance**: Ensure sufficient EOS for deployment
-- **Check network**: Verify Jungle4 testnet connectivity
-- **Check permissions**: Ensure account has proper permissions
-
-## **🎉 Success Indicators**
-
-When deployment is complete:
-1. **Contract Code**: Non-zero code hash
-2. **Contract ABI**: Actions and tables present
-3. **Test HTLC**: Successfully created
-4. **Real Integration**: Working without simulation
-5. **Cross-chain Swaps**: 100% real on both chains
-
-**Your cross-chain bridge will be completely real on both ETH and EOS!** 🚀 
+## 📞 Support
+- EOS Documentation: https://developers.eos.io/
+- Jungle Testnet: https://jungletestnet.io/
+- EOS Community: https://forums.eoscommunity.org/ 
