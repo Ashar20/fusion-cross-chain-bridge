@@ -1,0 +1,124 @@
+FROM ubuntu:20.04
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV EOSIO_VERSION=2.1.0
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    git \
+    build-essential \
+    cmake \
+    libssl-dev \
+    libcurl4-openssl-dev \
+    liblog4cxx-dev \
+    libgflags-dev \
+    libsnappy-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    liblz4-dev \
+    libzstd-dev \
+    libboost-all-dev \
+    libgmp-dev \
+    libsecp256k1-dev \
+    libsecp256k1-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install cleos from EOSIO releases
+RUN wget https://github.com/EOSIO/eos/releases/download/v${EOSIO_VERSION}/eos_${EOSIO_VERSION}-1-ubuntu-20.04_amd64.deb \
+    && dpkg -i eos_${EOSIO_VERSION}-1-ubuntu-20.04_amd64.deb \
+    && rm eos_${EOSIO_VERSION}-1-ubuntu-20.04_amd64.deb
+
+# Set working directory
+WORKDIR /work
+
+# Copy contract files
+COPY output/fusionbridge.wasm /work/
+COPY output/fusionbridge.abi /work/
+
+# Set entrypoint to cleos
+ENTRYPOINT ["cleos"] 
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV EOSIO_VERSION=2.1.0
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    git \
+    build-essential \
+    cmake \
+    libssl-dev \
+    libcurl4-openssl-dev \
+    liblog4cxx-dev \
+    libgflags-dev \
+    libsnappy-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    liblz4-dev \
+    libzstd-dev \
+    libboost-all-dev \
+    libgmp-dev \
+    libsecp256k1-dev \
+    libsecp256k1-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install cleos from EOSIO releases
+RUN wget https://github.com/EOSIO/eos/releases/download/v${EOSIO_VERSION}/eos_${EOSIO_VERSION}-1-ubuntu-20.04_amd64.deb \
+    && dpkg -i eos_${EOSIO_VERSION}-1-ubuntu-20.04_amd64.deb \
+    && rm eos_${EOSIO_VERSION}-1-ubuntu-20.04_amd64.deb
+
+# Set working directory
+WORKDIR /work
+
+# Copy contract files
+COPY output/fusionbridge.wasm /work/
+COPY output/fusionbridge.abi /work/
+
+# Set entrypoint to cleos
+ENTRYPOINT ["cleos"] 
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV EOSIO_VERSION=2.1.0
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    git \
+    build-essential \
+    cmake \
+    libssl-dev \
+    libcurl4-openssl-dev \
+    liblog4cxx-dev \
+    libgflags-dev \
+    libsnappy-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    liblz4-dev \
+    libzstd-dev \
+    libboost-all-dev \
+    libgmp-dev \
+    libsecp256k1-dev \
+    libsecp256k1-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install cleos from EOSIO releases
+RUN wget https://github.com/EOSIO/eos/releases/download/v${EOSIO_VERSION}/eos_${EOSIO_VERSION}-1-ubuntu-20.04_amd64.deb \
+    && dpkg -i eos_${EOSIO_VERSION}-1-ubuntu-20.04_amd64.deb \
+    && rm eos_${EOSIO_VERSION}-1-ubuntu-20.04_amd64.deb
+
+# Set working directory
+WORKDIR /work
+
+# Copy contract files
+COPY output/fusionbridge.wasm /work/
+COPY output/fusionbridge.abi /work/
+
+# Set entrypoint to cleos
+ENTRYPOINT ["cleos"] 

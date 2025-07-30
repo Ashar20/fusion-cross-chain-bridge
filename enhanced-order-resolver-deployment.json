@@ -1,0 +1,37 @@
+{
+  "network": "sepolia",
+  "chainId": 11155111,
+  "deployer": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "deploymentTime": "2025-07-29T20:42:51.000Z",
+  "contracts": {
+    "enhancedOrderResolver": {
+      "address": "0x3AAb1ff230A41D2905E40032C6d34BD4D54Ff2B6",
+      "name": "EnhancedOrderResolver",
+      "features": [
+        "Limit Orders - Execute at specific price points",
+        "Dutch Auctions - Price decays over time",
+        "Stop Loss/Take Profit - Automatic execution",
+        "Gasless Architecture - EIP-712 signatures",
+        "Cross-Chain Integration - Works with EOS HTLCs",
+        "Advanced Security - ReentrancyGuard, Pausable, Ownable",
+        "Partial Fills - Support for partial order execution",
+        "Order Management - Cancellation, expiration handling"
+      ]
+    },
+    "escrowFactory": {
+      "address": "0x7E0B942f77E7511F6fA62dF6a6aAeFac8ACAd7D6",
+      "name": "Official1inchEscrowFactory"
+    }
+  },
+  "verification": {
+    "enhancedResolverCode": true,
+    "escrowFactoryCode": true,
+    "owner": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+    "escrowFactory": "0x7E0B942f77E7511F6fA62dF6a6aAeFac8ACAd7D6",
+    "paused": false
+  },
+  "contractLinks": {
+    "enhancedResolver": "https://sepolia.etherscan.io/address/0x3AAb1ff230A41D2905E40032C6d34BD4D54Ff2B6",
+    "escrowFactory": "https://sepolia.etherscan.io/address/0x7E0B942f77E7511F6fA62dF6a6aAeFac8ACAd7D6"
+  }
+} 

@@ -15,7 +15,6 @@
 import { ethers } from 'ethers'
 import dotenv from 'dotenv'
 import fs from 'fs'
-import { RealEosIntegration } from './realEosIntegration.js'
 
 dotenv.config()
 
@@ -45,15 +44,15 @@ class RelayerService {
     this.resolver = new ethers.Contract(this.resolverAddress, this.resolverABI, this.relayerWallet)
     this.relayer = new ethers.Contract(this.relayerAddress, this.relayerABI, this.relayerWallet)
     
-    // Initialize REAL EOS integration
-    this.eosIntegration = new RealEosIntegration()
+    // Initialize REAL EOS integration (will be loaded asynchronously)
+    this.eosIntegration = null
     
     console.log('🚀 Simplified Relayer Service Initialized')
     console.log(`📍 Resolver: ${this.resolverAddress}`)
     console.log(`📍 Relayer: ${this.relayerAddress}`)
     console.log(`🔑 Relayer Wallet: ${this.relayerWallet.address}`)
     console.log(`💡 Gas costs handled by resolver, not relayer`)
-    console.log(`🌴 Real EOS integration: ${this.eosIntegration ? 'ENABLED' : 'DISABLED'}`)
+    console.log(`🌴 Real EOS integration: Will be loaded on startup`)
   }
   
   /**
@@ -62,6 +61,22 @@ class RelayerService {
   async start() {
     console.log('\n🚀 Starting Simplified Relayer Service...')
     console.log('=' .repeat(60))
+    
+    // Load EOS integration asynchronously
+    try {
+      // Try to import the EOS integration module
+      const module = await import('./realEosIntegration.cjs')
+      if (module && module.RealEosIntegration) {
+        this.eosIntegration = new module.RealEosIntegration()
+        console.log(`🌴 Real EOS integration: ENABLED`)
+      } else {
+        throw new Error('RealEosIntegration class not found in module')
+      }
+    } catch (error) {
+      console.log(`🌴 Real EOS integration: DISABLED (${error.message})`)
+      console.log(`   Will use simulation mode for EOS operations`)
+      // Continue without EOS integration - will use simulation
+    }
     
     // Start monitoring loop
     this.monitoringInterval = setInterval(async () => {

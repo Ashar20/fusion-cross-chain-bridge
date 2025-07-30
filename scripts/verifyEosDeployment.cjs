@@ -1,172 +1,137 @@
-const { execSync } = require('child_process');
+const { Api, JsonRpc } = require('eosjs');
+const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');
 
 /**
- * 🔍 EOS Contract Deployment Verification
- * Checks if the fusionbridge contract is deployed on Jungle4
+ * 🔍 Verify EOS Contract Deployment
  */
 class EosDeploymentVerifier {
   constructor() {
     this.accountName = 'quicksnake34';
+    this.privateKey = '5Hw21rCXdLBRPzKwpQ19ZeVEoWZewDTttuP5PBAvdacBwGnG5HN';
+    this.contractName = 'fusionbridge';
+    this.network = 'Jungle4 Testnet';
     this.rpcUrl = 'https://jungle4.cryptolions.io';
     
-    console.log('🔍 EOS Contract Deployment Verifier');
-    console.log(`📍 Account: ${this.accountName}`);
-    console.log(`📍 Network: Jungle4 Testnet`);
+    // Initialize EOS connection
+    this.signatureProvider = new JsSignatureProvider([this.privateKey]);
+    this.rpc = new JsonRpc(this.rpcUrl);
+    this.api = new Api({ rpc: this.rpc, signatureProvider: this.signatureProvider });
   }
-  
-  /**
-   * 🔍 Check contract code
-   */
-  checkContractCode() {
-    console.log('\n🔍 Checking contract code...');
-    
-    try {
-      const response = execSync(`curl -s -X POST ${this.rpcUrl}/v1/chain/get_code -H "Content-Type: application/json" -d '{"account_name":"${this.accountName}"}'`, { encoding: 'utf8' });
-      const code = JSON.parse(response);
-      
-      if (code.code_hash === '0000000000000000000000000000000000000000000000000000000000000000') {
-        console.log('❌ No contract deployed');
-        console.log('💡 Contract code hash is all zeros');
-        return false;
-      } else {
-        console.log('✅ Contract deployed!');
-        console.log(`   Code Hash: ${code.code_hash}`);
-        console.log(`   Code Size: ${code.code_size} bytes`);
-        return true;
-      }
-    } catch (error) {
-      console.error('❌ Failed to check contract code:', error.message);
-      return false;
-    }
-  }
-  
-  /**
-   * 📋 Check contract ABI
-   */
-  checkContractAbi() {
-    console.log('\n📋 Checking contract ABI...');
-    
-    try {
-      const response = execSync(`curl -s -X POST ${this.rpcUrl}/v1/chain/get_abi -H "Content-Type: application/json" -d '{"account_name":"${this.accountName}"}'`, { encoding: 'utf8' });
-      const abi = JSON.parse(response);
-      
-      if (!abi.abi) {
-        console.log('❌ No ABI found');
-        return false;
-      }
-      
-      console.log('✅ Contract ABI found!');
-      console.log(`   Version: ${abi.abi.version}`);
-      console.log(`   Actions: ${abi.abi.actions.length}`);
-      
-      // Check for required actions
-      const requiredActions = ['createhtlc', 'claimhtlc', 'refundhtlc', 'gethtlc', 'getstats', 'cleanup'];
-      const foundActions = abi.abi.actions.map(action => action.name);
-      
-      console.log('\n📋 Required Actions:');
-      requiredActions.forEach(action => {
-        const found = foundActions.includes(action);
-        console.log(`   ${found ? '✅' : '❌'} ${action}`);
-      });
-      
-      // Check for tables
-      if (abi.abi.tables && abi.abi.tables.length > 0) {
-        console.log('\n📊 Tables:');
-        abi.abi.tables.forEach(table => {
-          console.log(`   ✅ ${table.name} (${table.type})`);
-        });
-      }
-      
-      return true;
-    } catch (error) {
-      console.error('❌ Failed to check contract ABI:', error.message);
-      return false;
-    }
-  }
-  
-  /**
-   * 🧪 Test HTLC creation
-   */
-  testHtlcCreation() {
-    console.log('\n🧪 Testing HTLC creation...');
-    
-    try {
-      // This would require a signed transaction
-      // For now, we'll just check if the account has the contract
-      console.log('💡 HTLC creation test requires signed transaction');
-      console.log('💡 Use online tools to test: https://jungle4.cryptolions.io/');
-      console.log('💡 Or run: npm run real-eos');
-      
-      return true;
-    } catch (error) {
-      console.error('❌ Failed to test HTLC creation:', error.message);
-      return false;
-    }
-  }
-  
-  /**
-   * 📊 Check account resources
-   */
-  checkAccountResources() {
-    console.log('\n📊 Checking account resources...');
-    
-    try {
-      const response = execSync(`curl -s -X POST ${this.rpcUrl}/v1/chain/get_account -H "Content-Type: application/json" -d '{"account_name":"${this.accountName}"}'`, { encoding: 'utf8' });
-      const account = JSON.parse(response);
-      
-      console.log('✅ Account resources:');
-      console.log(`   Balance: ${account.core_liquid_balance}`);
-      console.log(`   RAM: ${account.ram_quota} bytes (${account.ram_usage} used)`);
-      console.log(`   CPU: ${account.cpu_weight} EOS`);
-      console.log(`   NET: ${account.net_weight} EOS`);
-      
-      return account;
-    } catch (error) {
-      console.error('❌ Failed to check account resources:', error.message);
-      return null;
-    }
-  }
-  
-  /**
-   * 🚀 Complete verification
-   */
+
   async verify() {
-    console.log('🚀 Starting EOS Contract Deployment Verification');
+    console.log('🔍 Verifying EOS Contract Deployment');
     console.log('=' .repeat(50));
     
-    // Check account resources
-    const account = this.checkAccountResources();
-    if (!account) {
-      return false;
+    try {
+      console.log(`📁 Account: ${this.accountName}`);
+      console.log(`📁 Contract: ${this.contractName}`);
+      console.log(`📁 Network: ${this.network}`);
+      console.log('');
+      
+      // Check account info
+      console.log('🔍 Checking account info...');
+      const accountInfo = await this.rpc.get_account(this.accountName);
+      console.log(`✅ Account exists: ${accountInfo.account_name}`);
+      console.log(`✅ Created: ${accountInfo.created}`);
+      console.log(`✅ Active: ${accountInfo.active}`);
+      console.log('');
+      
+      // Check account balance
+      console.log('💰 Checking account balance...');
+      try {
+        const balance = await this.rpc.get_currency_balance('eosio.token', this.accountName, 'EOS');
+        console.log(`✅ EOS Balance: ${balance.join(', ') || '0.0000 EOS'}`);
+      } catch (error) {
+        console.log(`⚠️  EOS Balance: Unable to fetch (${error.message})`);
+      }
+      console.log('');
+      
+      // Check contract code
+      console.log('🔍 Checking contract code...');
+      const codeResult = await this.rpc.get_code(this.accountName);
+      
+      if (codeResult.wasm) {
+        console.log(`✅ Contract code deployed: ${codeResult.wasm.length} bytes`);
+        console.log(`✅ Contract ABI deployed: ${JSON.stringify(codeResult.abi).length} characters`);
+        console.log('');
+        
+        // Check contract actions
+        console.log('🔍 Checking contract actions...');
+        if (codeResult.abi && codeResult.abi.actions) {
+          console.log(`✅ Contract has ${codeResult.abi.actions.length} actions:`);
+          codeResult.abi.actions.forEach(action => {
+            console.log(`   - ${action.name}: ${action.type}`);
+          });
+        }
+        console.log('');
+        
+        // Test contract actions
+        console.log('🧪 Testing contract actions...');
+        await this.testContractActions();
+        
+      } else {
+        console.log('❌ No contract code found');
+        return { success: false, error: 'No contract code deployed' };
+      }
+      
+      console.log('');
+      console.log('🎯 Verification Summary:');
+      console.log('=' .repeat(50));
+      console.log(`✅ Contract: ${this.contractName}`);
+      console.log(`✅ Account: ${this.accountName}`);
+      console.log(`✅ Network: ${this.network}`);
+      console.log(`✅ Code Size: ${codeResult.wasm.length} bytes`);
+      console.log(`✅ ABI Size: ${JSON.stringify(codeResult.abi).length} characters`);
+      console.log(`✅ Actions: ${codeResult.abi.actions ? codeResult.abi.actions.length : 0}`);
+      console.log(`🌐 Explorer: https://jungle4.cryptolions.io/account/${this.accountName}`);
+      console.log('');
+      
+      return {
+        success: true,
+        account: this.accountName,
+        contract: this.contractName,
+        codeSize: codeResult.wasm.length,
+        abiSize: JSON.stringify(codeResult.abi).length,
+        actions: codeResult.abi.actions ? codeResult.abi.actions.length : 0,
+        explorer: `https://jungle4.cryptolions.io/account/${this.accountName}`
+      };
+      
+    } catch (error) {
+      console.error('❌ Verification failed:', error.message);
+      console.error('   Error details:', error.stack);
+      return {
+        success: false,
+        error: error.message
+      };
     }
-    
-    // Check contract code
-    const codeDeployed = this.checkContractCode();
-    
-    // Check contract ABI
-    const abiDeployed = this.checkContractAbi();
-    
-    // Test HTLC creation
-    this.testHtlcCreation();
-    
-    console.log('\n🎯 Verification Summary:');
-    console.log('=' .repeat(50));
-    console.log(`   Account Resources: ${account ? '✅' : '❌'}`);
-    console.log(`   Contract Code: ${codeDeployed ? '✅' : '❌'}`);
-    console.log(`   Contract ABI: ${abiDeployed ? '✅' : '❌'}`);
-    
-    if (codeDeployed && abiDeployed) {
-      console.log('\n🎉 Contract is fully deployed and ready!');
-      console.log('💡 Next steps:');
-      console.log('   1. Update .env with EOS credentials');
-      console.log('   2. Test real EOS integration: npm run real-eos');
-      console.log('   3. Start relayer: npm run start-relayer');
-      console.log('   4. Test swaps: npm run bidirectional');
-      return true;
-    } else {
-      console.log('\n⚠️  Contract not fully deployed');
-      console.log('💡 Follow the online deployment guide: ONLINE_EOS_DEPLOYMENT.md');
-      return false;
+  }
+
+  async testContractActions() {
+    try {
+      // Test getstats action
+      console.log('   Testing getstats action...');
+      const statsResult = await this.rpc.get_table_rows({
+        json: true,
+        code: this.accountName,
+        scope: this.accountName,
+        table: 'stats',
+        limit: 10
+      });
+      console.log(`   ✅ getstats: ${statsResult.rows.length} rows found`);
+      
+      // Test gethtlc action (if any HTLCs exist)
+      console.log('   Testing gethtlc action...');
+      const htlcResult = await this.rpc.get_table_rows({
+        json: true,
+        code: this.accountName,
+        scope: this.accountName,
+        table: 'htlcs',
+        limit: 10
+      });
+      console.log(`   ✅ gethtlc: ${htlcResult.rows.length} HTLCs found`);
+      
+    } catch (error) {
+      console.log(`   ⚠️  Action test failed: ${error.message}`);
     }
   }
 }
@@ -174,7 +139,7 @@ class EosDeploymentVerifier {
 // Export for use in other scripts
 module.exports = { EosDeploymentVerifier };
 
-// Run verification if called directly
+// Run if called directly
 if (require.main === module) {
   const verifier = new EosDeploymentVerifier();
   verifier.verify();

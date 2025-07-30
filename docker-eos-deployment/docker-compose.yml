@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  eos-compiler:
+    build: .
+    container_name: eos-contract-compiler
+    volumes:
+      - ./contracts:/eos-contracts/contracts
+      - ./output:/eos-contracts/output
+    environment:
+      - EOSIO_CDT_VERSION=1.8.1
+    command: /compile.sh
+    
+  eos-deployer:
+    image: eosio/eos:latest
+    container_name: eos-deployer
+    volumes:
+      - ./output:/eos-contracts/output
+      - ./scripts:/scripts
+    environment:
+      - EOSIO_NODE_URL=https://jungle4.cryptolions.io
+    command: /bin/bash -c "echo 'Deployment tools ready' && tail -f /dev/null"

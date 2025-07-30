@@ -320,3 +320,15 @@ if (require.main === module) {
   const deployer = new DockerEosDeployer();
   deployer.deploy().catch(console.error);
 } 
+
+// Run deployment if called directly
+if (require.main === module) {
+  const deployer = new DockerEosDeployer();
+  deployer.deploy().catch(console.error);
+} 
+
+// Run deployment if called directly
+if (require.main === module) {
+  const deployer = new DockerEosDeployer();
+  deployer.deploy().catch(console.error);
+} 

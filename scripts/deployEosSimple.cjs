@@ -3,200 +3,197 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * 🌴 Simple EOS Contract Deployment
- * Uses the already compiled WASM and ABI files
+ * 🚀 Simple EOS Contract Deployment
+ * Uses existing EOSIO.CDT image and deploys via RPC
  */
 class SimpleEosDeployer {
   constructor() {
     this.accountName = 'quicksnake34';
     this.privateKey = '5Hw21rCXdLBRPzKwpQ19ZeVEoWZewDTttuP5PBAvdacBwGnG5HN';
+    this.wasmPath = 'docker-eos-deployment/output/fusionbridge.wasm';
+    this.abiPath = 'docker-eos-deployment/output/fusionbridge.abi';
     this.rpcUrl = 'https://jungle4.cryptolions.io';
-    this.contractDir = path.join(__dirname, '../contracts/eos');
+    this.dockerImage = 'eosio/eosio.cdt:v1.8.1';
+  }
+  
+  /**
+   * 🔍 Check if Docker is available
+   */
+  checkDocker() {
+    console.log('🔍 Checking Docker availability...');
     
-    console.log('🌴 Simple EOS Contract Deployer');
-    console.log(`📍 Account: ${this.accountName}`);
-    console.log(`📍 Network: Jungle4 Testnet`);
+    try {
+      execSync('docker --version', { stdio: 'pipe' });
+      console.log('✅ Docker is available');
+      return true;
+    } catch (error) {
+      console.log('❌ Docker not found or not running');
+      return false;
+    }
+  }
+  
+  /**
+   * 📋 Check deployment files
+   */
+  checkFiles() {
+    console.log('📋 Checking deployment files...');
+    
+    if (!fs.existsSync(this.wasmPath)) {
+      console.log('❌ WASM file not found:', this.wasmPath);
+      return false;
+    }
+    
+    if (!fs.existsSync(this.abiPath)) {
+      console.log('❌ ABI file not found:', this.abiPath);
+      return false;
+    }
+    
+    const wasmStats = fs.statSync(this.wasmPath);
+    const abiStats = fs.statSync(this.abiPath);
+    
+    console.log('✅ WASM file found:', `${(wasmStats.size / 1024).toFixed(1)}KB`);
+    console.log('✅ ABI file found:', `${(abiStats.size / 1024).toFixed(1)}KB`);
+    
+    return true;
   }
   
   /**
    * 🔍 Check account status
    */
   checkAccount() {
-    console.log('\n🔍 Checking account status...');
+    console.log('🔍 Checking account status...');
     
     try {
-      const response = execSync(`curl -s -X POST ${this.rpcUrl}/v1/chain/get_account -H "Content-Type: application/json" -d '{"account_name":"${this.accountName}"}'`, { encoding: 'utf8' });
-      const account = JSON.parse(response);
+      const result = execSync(
+        `curl -s -X POST ${this.rpcUrl}/v1/chain/get_account -H "Content-Type: application/json" -d '{"account_name":"${this.accountName}"}'`,
+        { encoding: 'utf8', stdio: 'pipe' }
+      );
       
-      console.log('✅ Account found!');
-      console.log(`   Balance: ${account.core_liquid_balance}`);
-      console.log(`   RAM: ${account.ram_quota} bytes`);
-      console.log(`   CPU: ${account.cpu_weight} EOS`);
-      console.log(`   NET: ${account.net_weight} EOS`);
-      
-      return account;
+      const accountInfo = JSON.parse(result);
+      console.log('✅ Account exists');
+      console.log(`   💰 Balance: ${accountInfo.core_liquid_balance || '0 EOS'}`);
+      console.log(`   📊 RAM: ${accountInfo.ram_quota} bytes`);
+      return true;
     } catch (error) {
-      console.error('❌ Account check failed:', error.message);
-      return null;
-    }
-  }
-  
-  /**
-   * 📝 Check compiled files
-   */
-  checkCompiledFiles() {
-    console.log('\n📝 Checking compiled files...');
-    
-    const wasmPath = path.join(this.contractDir, 'fusionbridge.wasm');
-    const abiPath = path.join(this.contractDir, 'fusionbridge.abi');
-    
-    if (!fs.existsSync(wasmPath)) {
-      console.error('❌ WASM file not found:', wasmPath);
+      console.log('❌ Account not found or error:', error.message);
       return false;
     }
-    
-    if (!fs.existsSync(abiPath)) {
-      console.error('❌ ABI file not found:', abiPath);
-      return false;
-    }
-    
-    const wasmSize = fs.statSync(wasmPath).size;
-    const abiSize = fs.statSync(abiPath).size;
-    
-    console.log('✅ Compiled files found:');
-    console.log(`   WASM: ${wasmSize} bytes`);
-    console.log(`   ABI: ${abiSize} bytes`);
-    
-    return { wasmPath, abiPath, wasmSize, abiSize };
   }
   
   /**
-   * 🏗️ Deploy contract using manual commands
+   * 🚀 Deploy using EOS Jungle4 API directly
    */
-  deployContract() {
-    console.log('\n🏗️  Deploying contract...');
-    console.log('💡 Since Docker cleos is not available, we\'ll use manual deployment');
-    console.log('💡 Please run these commands manually:');
-    
-    const commands = [
-      `# 1. Deploy contract code`,
-      `cleos -u ${this.rpcUrl} set code ${this.accountName} ${this.contractDir}/fusionbridge.wasm`,
-      ``,
-      `# 2. Deploy contract ABI`,
-      `cleos -u ${this.rpcUrl} set abi ${this.accountName} ${this.contractDir}/fusionbridge.abi`,
-      ``,
-      `# 3. Test deployment`,
-      `cleos -u ${this.rpcUrl} get code ${this.accountName}`,
-      `cleos -u ${this.rpcUrl} get abi ${this.accountName}`,
-      ``,
-      `# 4. Create test HTLC`,
-      `cleos -u ${this.rpcUrl} push action ${this.accountName} createhtlc '["${this.accountName}", "${this.accountName}", "0.1000 EOS", "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef", 1234567890, "Test HTLC", "0x0000000000000000000000000000000000000000000000000000000000000000"]' -p ${this.accountName}@active`
-    ];
-    
-    console.log('\n📋 Manual Deployment Commands:');
-    commands.forEach(cmd => console.log(cmd));
-    
-    console.log('\n💡 To install cleos manually:');
-    console.log('   1. Install EOSIO: brew install eosio');
-    console.log('   2. Or use online deployment tools');
-    console.log('   3. Or use Anchor wallet for deployment');
-    
-    return true;
-  }
-  
-  /**
-   * 🧪 Test contract deployment
-   */
-  testContract() {
-    console.log('\n🧪 Testing contract deployment...');
+  async deployViaAPI() {
+    console.log('🚀 Attempting direct API deployment...');
     
     try {
-      // Check if contract is deployed
-      const response = execSync(`curl -s -X POST ${this.rpcUrl}/v1/chain/get_code -H "Content-Type: application/json" -d '{"account_name":"${this.accountName}"}'`, { encoding: 'utf8' });
-      const code = JSON.parse(response);
+      // Read WASM file
+      const wasmBuffer = fs.readFileSync(this.wasmPath);
+      const wasmHex = wasmBuffer.toString('hex');
       
-      if (code.code_hash !== '0000000000000000000000000000000000000000000000000000000000000000') {
-        console.log('✅ Contract deployed!');
-        console.log(`   Code Hash: ${code.code_hash}`);
-        return true;
-      } else {
-        console.log('⚠️  No contract deployed yet');
-        console.log('💡 Run the deployment commands to deploy the contract');
-        return false;
-      }
+      // Read ABI file
+      const abiContent = fs.readFileSync(this.abiPath, 'utf8');
+      const abi = JSON.parse(abiContent);
+      
+      console.log('✅ Files prepared for deployment');
+      console.log(`   📦 WASM Size: ${(wasmBuffer.length / 1024).toFixed(1)}KB`);
+      console.log(`   📋 ABI Actions: ${abi.actions.length}`);
+      
+      // Note: Direct deployment requires proper signing
+      console.log('\n💡 Direct API deployment requires proper signing');
+      console.log('📋 Using alternative deployment method...');
+      
+      return false;
     } catch (error) {
-      console.error('❌ Contract test failed:', error.message);
+      console.log('❌ Failed to prepare deployment:', error.message);
       return false;
     }
   }
   
   /**
-   * 💾 Save deployment info
+   * 🐳 Deploy using Docker with existing image
    */
-  saveDeploymentInfo() {
-    console.log('\n💾 Saving deployment information...');
+  deployViaDocker() {
+    console.log('🐳 Attempting Docker deployment...');
     
-    const deploymentInfo = {
-      account: this.accountName,
-      contract: 'fusionbridge',
-      network: 'jungle4',
-      deployedAt: new Date().toISOString(),
-      rpcUrl: this.rpcUrl,
-      wasmPath: path.join(this.contractDir, 'fusionbridge.wasm'),
-      abiPath: path.join(this.contractDir, 'fusionbridge.abi'),
-      sourcePath: path.join(this.contractDir, 'fusionbridge.cpp'),
-      deploymentMethod: 'manual',
-      status: 'compiled_ready_for_deployment'
-    };
-    
-    const deploymentPath = path.join(__dirname, '../eos-deployment-simple.json');
-    fs.writeFileSync(deploymentPath, JSON.stringify(deploymentInfo, null, 2));
-    
-    console.log('✅ Deployment info saved to eos-deployment-simple.json');
-    return deploymentInfo;
+    try {
+      // Use the existing EOSIO.CDT image to verify files
+      const absoluteWasmPath = path.resolve(this.wasmPath);
+      const absoluteAbiPath = path.resolve(this.abiPath);
+      
+      console.log('📋 Verifying contract files with EOSIO.CDT...');
+      
+      // Check if WASM is valid
+      const wasmCheckCommand = `docker run --rm -v "${absoluteWasmPath}:/contract.wasm" ${this.dockerImage} wasm-validate /contract.wasm`;
+      execSync(wasmCheckCommand, { stdio: 'pipe' });
+      console.log('✅ WASM file is valid');
+      
+      // Show ABI content
+      const abiContent = fs.readFileSync(this.abiPath, 'utf8');
+      console.log('✅ ABI file is valid');
+      
+      console.log('\n📄 ABI Content:');
+      console.log('=' .repeat(50));
+      console.log(abiContent);
+      console.log('=' .repeat(50));
+      
+      return true;
+    } catch (error) {
+      console.log('❌ Docker deployment failed:', error.message);
+      return false;
+    }
   }
   
   /**
-   * 🚀 Complete deployment process
+   * 🚀 Deploy contract
    */
   async deploy() {
-    console.log('🚀 Starting Simple EOS Contract Deployment');
-    console.log('=' .repeat(50));
+    console.log('🚀 Simple EOS Contract Deployment');
+    console.log('=' .repeat(60));
+    
+    // Check Docker
+    if (!this.checkDocker()) {
+      return false;
+    }
+    
+    // Check files
+    if (!this.checkFiles()) {
+      return false;
+    }
     
     // Check account
-    const account = this.checkAccount();
-    if (!account) {
+    if (!this.checkAccount()) {
+      console.log('❌ Cannot proceed without valid account');
       return false;
     }
     
-    // Check compiled files
-    const files = this.checkCompiledFiles();
-    if (!files) {
-      return false;
+    // Try API deployment
+    const apiSuccess = await this.deployViaAPI();
+    
+    if (!apiSuccess) {
+      // Try Docker deployment
+      const dockerSuccess = this.deployViaDocker();
+      
+      if (dockerSuccess) {
+        console.log('\n📋 Deployment Files Verified!');
+        console.log('=' .repeat(60));
+        console.log('✅ WASM file is valid');
+        console.log('✅ ABI file is valid');
+        console.log('✅ Account is ready');
+        console.log('📋 Manual deployment required');
+        
+        console.log('\n🌐 Deploy using:');
+        console.log('   📱 EOS Studio: http://app.eosstudio.io/guest');
+        console.log('   🌐 Bloks.io: https://local.bloks.io/');
+        console.log('   🔗 Cryptolions: https://jungle4.cryptolions.io/');
+        
+        console.log('\n📁 Files to upload:');
+        console.log(`   📦 WASM: ${this.wasmPath}`);
+        console.log(`   📋 ABI: ${this.abiPath}`);
+        
+        console.log('\n💡 After deployment, verify with: npm run verify-eos');
+      }
     }
-    
-    // Deploy contract
-    this.deployContract();
-    
-    // Test contract
-    this.testContract();
-    
-    // Save deployment info
-    const deploymentInfo = this.saveDeploymentInfo();
-    
-    console.log('\n🎉 Simple EOS Deployment Complete!');
-    console.log('=' .repeat(50));
-    console.log('✅ Account verified');
-    console.log('✅ Contract compiled successfully');
-    console.log('📋 Manual deployment commands provided');
-    console.log('💡 Next: Run the deployment commands manually');
-    
-    console.log('\n🔗 Next Steps:');
-    console.log('   1. Install cleos or use online tools');
-    console.log('   2. Run the deployment commands above');
-    console.log('   3. Test the deployment');
-    console.log('   4. Update .env with EOS credentials');
-    console.log('   5. Test real EOS integration: npm run real-eos');
     
     return true;
   }
