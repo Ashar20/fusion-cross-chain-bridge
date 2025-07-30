@@ -87,7 +87,7 @@
     "quick-deploy-eos": "node scripts/quickDeployEos.cjs",
     "create-windows-package": "node scripts/createWindowsPackage.cjs",
     "create-eos-mainnet-account": "node scripts/createEosMainnetAccount.cjs",
-    "create-eos-mainnet-account": "node scripts/createEosMainnetAccount.cjs"
+    "deploy-eos-docker-fixed": "node scripts/deployEosDockerFixed.cjs"
   },
   "keywords": [
     "1inch",

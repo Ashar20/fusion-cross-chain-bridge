@@ -1,0 +1,39 @@
+# Dockerfile for Jungle4-compatible EOS contract compilation
+# Uses eosio.cdt 1.7.0 for maximum compatibility
+
+FROM eosio/eosio.cdt:1.7.0
+
+# Set working directory
+WORKDIR /contracts
+
+# Copy contract source
+COPY contracts/eos/fusionbridge_fixed.cpp /contracts/fusionbridge.cpp
+
+# Compile contract with Jungle4-compatible settings
+RUN eosio-cpp -o fusionbridge.wasm fusionbridge.cpp \
+    -I. \
+    -I/usr/local/include \
+    -L/usr/local/lib \
+    -leosio \
+    -leosio.system \
+    -leosio.token \
+    -leosio.crypto \
+    --abigen \
+    --contract fusionbridge \
+    --output fusionbridge.abi
+
+# Verify ABI version is 1.0
+RUN grep '"version": "eosio::abi/1.0"' fusionbridge.abi || (echo "ABI version check failed" && exit 1)
+
+# Create output directory
+RUN mkdir -p /output
+
+# Copy compiled files to output
+RUN cp fusionbridge.wasm /output/ && \
+    cp fusionbridge.abi /output/
+
+# Set permissions
+RUN chmod 644 /output/*
+
+# Default command
+CMD ["ls", "-la", "/output"] 
