@@ -101,6 +101,18 @@ contract Enhanced1inchStyleBridge is ReentrancyGuard, Ownable {
         bytes result
     );
     
+    event AuctionWon(
+        bytes32 indexed auctionId,
+        address indexed resolver,
+        uint256 gasPrice
+    );
+    
+    event HTLCExecuted(
+        bytes32 indexed htlcId,
+        address indexed resolver,
+        bytes32 secret
+    );
+    
     constructor() Ownable(msg.sender) {
         // Initialize with 1inch-inspired defaults
     }
@@ -216,6 +228,47 @@ contract Enhanced1inchStyleBridge is ReentrancyGuard, Ownable {
     }
     
     /**
+     * @dev Get current auction price (1inch-style linear decay)
+     */
+    function getCurrentAuctionPrice(bytes32 _auctionId) public view returns (uint256) {
+        ResolverAuction storage auction = auctions[_auctionId];
+        if (!auction.config.linearDecay) return auction.currentPrice;
+        
+        uint256 elapsed = block.timestamp - auction.config.startTime;
+        if (elapsed >= auction.config.duration) return MIN_GAS_PRICE;
+        
+        // Linear price decay (1inch pattern)
+        uint256 priceRange = INITIAL_GAS_PRICE - MIN_GAS_PRICE;
+        uint256 priceDecay = (priceRange * elapsed) / auction.config.duration;
+        
+        return INITIAL_GAS_PRICE - priceDecay;
+    }
+    
+    /**
+     * @dev Place bid in auction (1inch pattern)
+     */
+    function placeBid(bytes32 _auctionId, uint256 _gasPrice) external {
+        require(authorizedResolvers[msg.sender], "Not authorized resolver");
+        ResolverAuction storage auction = auctions[_auctionId];
+        require(auction.htlcId != bytes32(0), "Auction not found");
+        require(!auction.filled, "Auction already filled");
+        require(!auction.expired, "Auction expired");
+        require(block.timestamp < auction.config.startTime + auction.config.duration, "Auction ended");
+        require(_gasPrice >= MIN_GAS_PRICE, "Gas price too low");
+        
+        uint256 currentPrice = getCurrentAuctionPrice(_auctionId);
+        require(_gasPrice <= currentPrice, "Bid too high for current price");
+        
+        // Update auction with winning bid
+        auction.winningResolver = msg.sender;
+        auction.winningGasPrice = _gasPrice;
+        auction.currentPrice = _gasPrice;
+        auction.filled = true;
+        
+        emit AuctionWon(_auctionId, msg.sender, _gasPrice);
+    }
+    
+    /**
      * @dev Execute HTLC with 1inch-style resolver interaction
      */
     function executeFusionHTLCWithInteraction(
@@ -249,31 +302,18 @@ contract Enhanced1inchStyleBridge is ReentrancyGuard, Ownable {
         // Apply threshold protection (1inch pattern)
         require(htlc.algorandAmount >= htlc.thresholdAmount, "Below threshold");
         
-        // Transfer funds to recipient
+        // Transfer funds to recipient (relayer in this case)
         htlc.executed = true;
         if (htlc.token == address(0)) {
-            payable(htlc.recipient).transfer(htlc.amount);
+            payable(msg.sender).transfer(htlc.amount);
         } else {
-            IERC20(htlc.token).safeTransfer(htlc.recipient, htlc.amount);
+            IERC20(htlc.token).safeTransfer(msg.sender, htlc.amount);
         }
+        
+        emit HTLCExecuted(_htlcId, msg.sender, _secret);
     }
     
-    /**
-     * @dev Get current auction price (1inch-style linear decay)
-     */
-    function getCurrentAuctionPrice(bytes32 _auctionId) external view returns (uint256) {
-        ResolverAuction storage auction = auctions[_auctionId];
-        if (!auction.config.linearDecay) return auction.currentPrice;
-        
-        uint256 elapsed = block.timestamp - auction.config.startTime;
-        if (elapsed >= auction.config.duration) return MIN_GAS_PRICE;
-        
-        // Linear price decay (1inch pattern)
-        uint256 priceRange = INITIAL_GAS_PRICE - MIN_GAS_PRICE;
-        uint256 priceDecay = (priceRange * elapsed) / auction.config.duration;
-        
-        return INITIAL_GAS_PRICE - priceDecay;
-    }
+
     
     /**
      * @dev Authorize resolver (1inch whitelist pattern)

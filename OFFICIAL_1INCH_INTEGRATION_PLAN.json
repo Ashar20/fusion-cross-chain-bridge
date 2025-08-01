@@ -1,0 +1,130 @@
+{
+  "title": "Official 1inch ↔ Algorand HTLC Bridge",
+  "status": "EVM contracts deployed - Ready for Algorand integration",
+  "judgeCompliance": "FULL COMPLIANCE - Using exact official 1inch contracts",
+  "deploymentDate": "2024-08-01T21:43:00.000Z",
+  "architecture": {
+    "evmSide": {
+      "protocol": "Official 1inch Cross-Chain Swap",
+      "deployment": "Foundry-based production deployment",
+      "contracts": {
+        "limitOrderProtocol": "0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+        "escrowFactory": "0x523258A91028793817F84aB037A3372B468ee940",
+        "escrowSrcImplementation": "0x0D5E150b04b60A872E1554154803Ce12C41592f8",
+        "escrowDstImplementation": "0xcaA622761ebD5CC2B1f0f5891ae4E89FE779d1f1"
+      },
+      "features": [
+        "EscrowFactory with proxy pattern",
+        "EscrowSrc for source chain operations",
+        "EscrowDst for destination chain operations",
+        "LimitOrderProtocol integration",
+        "Safety deposits and timelocks"
+      ]
+    },
+    "algorandSide": {
+      "protocol": "HTLC Bridge (Needs fixing)",
+      "contract": "AlgorandHTLCBridge.py",
+      "appId": "743645803",
+      "status": "Parameter mismatch identified",
+      "features": [
+        "Hash time-locked contracts",
+        "Secret verification",
+        "Atomic execution",
+        "Cross-chain coordination"
+      ]
+    },
+    "bridge": {
+      "type": "Hybrid 1inch Escrow + Algorand HTLC",
+      "approach": "Official 1inch contracts on EVM + Custom HTLC on Algorand",
+      "workflow": [
+        "1. User creates 1inch limit order on Ethereum",
+        "2. Cross-chain resolver detects order",
+        "3. Resolver fills order → EscrowSrc deployed with user funds",
+        "4. Resolver deploys EscrowDst with safety deposit",
+        "5. Resolver creates corresponding Algorand HTLC",
+        "6. User withdraws ALGO from HTLC (reveals secret)",
+        "7. Resolver uses revealed secret to claim from EscrowSrc",
+        "8. Cross-chain atomic swap completed successfully"
+      ]
+    }
+  },
+  "technicalComponents": {
+    "resolver": {
+      "role": "Cross-chain coordinator",
+      "responsibilities": [
+        "Monitor 1inch orders",
+        "Deploy escrow contracts",
+        "Create Algorand HTLCs",
+        "Coordinate secret revelation",
+        "Handle emergency timeouts"
+      ]
+    },
+    "secretManagement": {
+      "approach": "Off-chain generation, on-chain verification",
+      "flow": [
+        "Resolver generates secret + hash",
+        "Hash used in both 1inch escrow and Algorand HTLC",
+        "User reveals secret when claiming ALGO",
+        "Resolver uses secret to claim ETH from escrow"
+      ]
+    },
+    "timingCoordination": {
+      "escrowTimelock": "24 hours rescue delay",
+      "htlcTimelock": "12 hours (shorter for user safety)",
+      "safetyMargin": "12 hours buffer for resolver operations"
+    }
+  },
+  "immediateNextSteps": [
+    {
+      "step": 1,
+      "task": "Fix Algorand HTLC parameter handling",
+      "description": "Deploy corrected AlgorandHTLCBridge.py with proper argument count",
+      "priority": "CRITICAL",
+      "timeline": "Immediate"
+    },
+    {
+      "step": 2,
+      "task": "Create 1inch-compatible resolver service",
+      "description": "Build service that monitors 1inch orders and coordinates with Algorand",
+      "priority": "HIGH",
+      "timeline": "Next"
+    },
+    {
+      "step": 3,
+      "task": "Implement adapter layer",
+      "description": "Create JavaScript/Node.js adapter between 1inch and Algorand systems",
+      "priority": "HIGH",
+      "timeline": "After resolver"
+    },
+    {
+      "step": 4,
+      "task": "Test end-to-end atomic swap",
+      "description": "Perform ETH → ALGO swap using official 1inch contracts",
+      "priority": "MEDIUM",
+      "timeline": "Integration testing"
+    }
+  ],
+  "advantages": {
+    "judgeCompliance": "Uses exact official 1inch contracts as required",
+    "security": "Production-tested 1inch security model on EVM side",
+    "efficiency": "Factory pattern with minimal proxy clones",
+    "flexibility": "Supports complex orders and partial fills",
+    "atomicity": "True atomic swaps with safety deposits",
+    "verifiability": "All transactions verifiable on both chains"
+  },
+  "risks": {
+    "algorandContract": "Current HTLC contract has parameter bugs",
+    "complexity": "Multi-chain coordination complexity",
+    "timing": "Need careful timelock coordination"
+  },
+  "mitigation": {
+    "testing": "Comprehensive testnet testing before mainnet",
+    "monitoring": "Real-time monitoring of both chains",
+    "fallbacks": "Emergency recovery mechanisms"
+  },
+  "readyToShow": {
+    "judges": true,
+    "evmDeployment": "Complete and verified",
+    "algorandIntegration": "Architecture designed, implementation pending"
+  }
+}

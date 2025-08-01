@@ -1,0 +1,37 @@
+{
+  "swapType": "ETH → ALGO Atomic Swap",
+  "requestedAmount": "0.00002 ETH",
+  "timestamp": "2025-08-01T10:30:00.000Z",
+  "transactionIds": {
+    "ethereum": {
+      "authorization": "0x4a3fc08f29ec7560d26c9f02e61720f13ba84a4e40ac8164542a89eb68cb6ab2",
+      "ethLock": "0x2db4b578e6de1b9626e71f534f8fa4a415ec9104500e4f72aad39f60c50d5100"
+    },
+    "algorand": {
+      "algoLock": "HLUMAVRN2OV66T236J4YSC3YNYFZHYS3OD643XUJTHRX24CVKRGA"
+    }
+  },
+  "verificationLinks": {
+    "ethereum": [
+      "https://sepolia.etherscan.io/tx/0x4a3fc08f29ec7560d26c9f02e61720f13ba84a4e40ac8164542a89eb68cb6ab2",
+      "https://sepolia.etherscan.io/tx/0x2db4b578e6de1b9626e71f534f8fa4a415ec9104500e4f72aad39f60c50d5100"
+    ],
+    "algorand": [
+      "https://testnet.algoexplorer.io/tx/HLUMAVRN2OV66T236J4YSC3YNYFZHYS3OD643XUJTHRX24CVKRGA"
+    ]
+  },
+  "cryptography": {
+    "secret": "0x8fe5a7787c38d9486d8f286ae048050b3b7c42b9691964fac583f2de876ad724",
+    "hashlock": "0xdebee1a75f6a6903ccb0f0911a5f0d21c8c85670bbcf397f2eabb5b69269535d"
+  },
+  "networks": {
+    "ethereum": "sepolia",
+    "algorand": "testnet"
+  },
+  "status": "HTLCs_CREATED",
+  "totalTransactions": 3,
+  "realValue": {
+    "ethLocked": "0.00002 ETH",
+    "algoLocked": "0.02 ALGO"
+  }
+}

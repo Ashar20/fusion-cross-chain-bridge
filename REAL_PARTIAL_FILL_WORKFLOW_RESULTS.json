@@ -1,0 +1,54 @@
+{
+  "timestamp": "2025-08-01T10:15:56.932Z",
+  "workflow": "Partial Fill Cross-Chain Swap",
+  "direction": "ALGO → ETH",
+  "amounts": {
+    "algorandInput": "1 ALGO",
+    "ethereumOutput": "0.003 ETH",
+    "partialFills": [
+      "0.4 ALGO",
+      "0.3 ALGO",
+      "0.3 ALGO"
+    ]
+  },
+  "cryptography": {
+    "orderId": "0x2cd8c76e93abb085c4ca7819e84db72f6753b4342800b96690bac6723d6ea64a",
+    "secret": "0xea8e7958e93864e5c12b6f5eb92cf1d225372666ebe95d88aa97fe973c6df341",
+    "hashlock": "0x926a47358d943c779179e0a824e5d9120694b15f76fb7d8afaf5399b6a53cd61",
+    "timelock": 1754129681
+  },
+  "transactionIds": {
+    "algorand": {
+      "htlcCreation": "TS476ELJO5JECCJMJDMSEHNSVAP7JZNQHXENMARO6YQIK3KSUOEQ",
+      "resolverAClaim": "EL5YGKOTT66WFZYYDQYWBJPZS2JPHJ3MDLFF7HADWSCCF6UJT3HQ",
+      "resolverBClaim": "Z7ZWVHPUFO4ODUN26UJTF7OLCUBYRO4C23JQPZKL22BP3PDEK2TA",
+      "resolverCClaim": "QNBRI3TMFOFOTWSJYBHAY7DAAW3HAJXUON3GN2AP6TCQ2BPLFFCQ"
+    },
+    "ethereum": {
+      "resolverAuth": "0xe86c641c694d08693ce1eba760d29469eb097390baca903b3c49c5a4441b7a5a",
+      "resolverAEscrow": "0xaa4bdfcc929fda5d4f044a8d4cf9756d8b2ab44248b9ebe4b4ba3706d9ec05fd",
+      "resolverBEscrow": "0x08aefaa63aab866dc30b8d4c18b7ded2536806d796ec1f210529da3dc88a1ae2",
+      "resolverCEscrow": "0xd0ddc399ff18f1a5f533f4984f382c65ae4bf987133f7118098c8863d97345cd",
+      "secretReveal": null
+    }
+  },
+  "networks": {
+    "algorand": "testnet",
+    "ethereum": "sepolia"
+  },
+  "totalTransactions": 8,
+  "verificationLinks": {
+    "algorand": [
+      "https://testnet.algoexplorer.io/tx/TS476ELJO5JECCJMJDMSEHNSVAP7JZNQHXENMARO6YQIK3KSUOEQ",
+      "https://testnet.algoexplorer.io/tx/EL5YGKOTT66WFZYYDQYWBJPZS2JPHJ3MDLFF7HADWSCCF6UJT3HQ",
+      "https://testnet.algoexplorer.io/tx/Z7ZWVHPUFO4ODUN26UJTF7OLCUBYRO4C23JQPZKL22BP3PDEK2TA",
+      "https://testnet.algoexplorer.io/tx/QNBRI3TMFOFOTWSJYBHAY7DAAW3HAJXUON3GN2AP6TCQ2BPLFFCQ"
+    ],
+    "ethereum": [
+      "https://sepolia.etherscan.io/tx/0xe86c641c694d08693ce1eba760d29469eb097390baca903b3c49c5a4441b7a5a",
+      "https://sepolia.etherscan.io/tx/0xaa4bdfcc929fda5d4f044a8d4cf9756d8b2ab44248b9ebe4b4ba3706d9ec05fd",
+      "https://sepolia.etherscan.io/tx/0x08aefaa63aab866dc30b8d4c18b7ded2536806d796ec1f210529da3dc88a1ae2",
+      "https://sepolia.etherscan.io/tx/0xd0ddc399ff18f1a5f533f4984f382c65ae4bf987133f7118098c8863d97345cd"
+    ]
+  }
+}

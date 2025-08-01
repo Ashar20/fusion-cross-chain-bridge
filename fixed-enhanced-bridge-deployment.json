@@ -1,0 +1,26 @@
+{
+  "contractAddress": "0x2879422E4f1418aC2d3852065C913CaF11Db7c56",
+  "deploymentTxHash": "0x22b0a7ce469d0c6c128bb926a9857b090f22af1232ef42c792d6459fba2bd72d",
+  "network": "sepolia",
+  "deployer": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "deployedAt": "2025-08-01T15:02:25.758Z",
+  "blockNumber": 8890171,
+  "gasUsed": "1500071",
+  "gasCost": "0.002867123423085366",
+  "features": [
+    "Complete bidding mechanism",
+    "Auction-based resolver selection",
+    "1inch-style price decay",
+    "Cross-chain HTLC support",
+    "Gasless user experience",
+    "Atomic swap guarantees"
+  ],
+  "functions": [
+    "createFusionHTLC",
+    "startSimpleAuction",
+    "placeBid",
+    "executeFusionHTLCWithInteraction",
+    "getCurrentAuctionPrice",
+    "setResolverAuthorization"
+  ]
+}

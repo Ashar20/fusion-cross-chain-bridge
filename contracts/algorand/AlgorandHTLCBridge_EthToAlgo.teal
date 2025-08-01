@@ -1,0 +1,219 @@
+#pragma version 10
+txn ApplicationID
+int 0
+==
+bnz main_l16
+txn OnCompletion
+int OptIn
+==
+bnz main_l15
+txn OnCompletion
+int CloseOut
+==
+bnz main_l14
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l13
+txn OnCompletion
+int DeleteApplication
+==
+bnz main_l12
+txna ApplicationArgs 0
+byte "create_htlc"
+==
+bnz main_l11
+txna ApplicationArgs 0
+byte "claim_htlc"
+==
+bnz main_l10
+txna ApplicationArgs 0
+byte "refund_htlc"
+==
+bnz main_l9
+err
+main_l9:
+txn NumAppArgs
+int 2
+==
+assert
+txna ApplicationArgs 1
+store 7
+txn Sender
+byte "HtlcId"
+app_local_get
+load 7
+==
+assert
+txn Sender
+byte "Withdrawn"
+app_local_get
+int 0
+==
+assert
+txn Sender
+byte "Refunded"
+app_local_get
+int 0
+==
+assert
+global LatestTimestamp
+txn Sender
+byte "Timelock"
+app_local_get
+>=
+assert
+txn Sender
+byte "Refunded"
+int 1
+app_local_put
+itxn_begin
+int pay
+itxn_field TypeEnum
+txn Sender
+byte "Amount"
+app_local_get
+itxn_field Amount
+txn Sender
+itxn_field Receiver
+itxn_submit
+int 1
+return
+main_l10:
+txn NumAppArgs
+int 3
+==
+assert
+txna ApplicationArgs 1
+store 5
+txna ApplicationArgs 2
+store 6
+txn Sender
+byte "HtlcId"
+app_local_get
+load 5
+==
+assert
+txn Sender
+byte "Withdrawn"
+app_local_get
+int 0
+==
+assert
+txn Sender
+byte "Refunded"
+app_local_get
+int 0
+==
+assert
+global LatestTimestamp
+txn Sender
+byte "Timelock"
+app_local_get
+<
+assert
+load 6
+sha256
+txn Sender
+byte "Hashlock"
+app_local_get
+==
+assert
+txn Sender
+byte "Withdrawn"
+int 1
+app_local_put
+itxn_begin
+int pay
+itxn_field TypeEnum
+txn Sender
+byte "Amount"
+app_local_get
+itxn_field Amount
+txn Sender
+byte "Recipient"
+app_local_get
+itxn_field Receiver
+itxn_submit
+int 1
+return
+main_l11:
+txn NumAppArgs
+int 6
+==
+assert
+txna ApplicationArgs 1
+store 0
+txna ApplicationArgs 2
+store 1
+txna ApplicationArgs 3
+btoi
+store 2
+txna ApplicationArgs 4
+store 3
+txna ApplicationArgs 5
+btoi
+store 4
+load 2
+int 0
+>
+assert
+txn Sender
+byte "HtlcId"
+app_local_get
+int 0
+==
+assert
+txn Sender
+byte "HtlcId"
+load 0
+app_local_put
+txn Sender
+byte "Recipient"
+load 1
+app_local_put
+txn Sender
+byte "Amount"
+load 2
+app_local_put
+txn Sender
+byte "Hashlock"
+load 3
+app_local_put
+txn Sender
+byte "Timelock"
+load 4
+app_local_put
+txn Sender
+byte "Withdrawn"
+int 0
+app_local_put
+txn Sender
+byte "Refunded"
+int 0
+app_local_put
+itxn_begin
+int pay
+itxn_field TypeEnum
+load 2
+itxn_field Amount
+global CurrentApplicationAddress
+itxn_field Receiver
+itxn_submit
+int 1
+return
+main_l12:
+int 0
+return
+main_l13:
+int 0
+return
+main_l14:
+int 1
+return
+main_l15:
+int 1
+return
+main_l16:
+int 1
+return

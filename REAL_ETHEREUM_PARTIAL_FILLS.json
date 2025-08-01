@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-08-01T10:01:19.211Z",
+  "contractAddress": "0x6824FE89F6b2AEa7cdA478355Cb71ECD30A5Eb6B",
+  "orderId": "0x7488c36e9c0ac148f112b9efa48eb14fd2e4e982292caba324b1a24262771b4f",
+  "secret": "0x03d297053885bcb6a0a8cb3d911ef13796e397c1d0f0332226c2c3378e9998c3",
+  "hashlock": "0x2289af8676cc17d37fa3687b00ebdcae638192ede828a880ec187c542383aa47",
+  "transactionIds": {
+    "orderCreation": null,
+    "resolverAEscrow": null,
+    "resolverBEscrow": null,
+    "resolverCEscrow": null,
+    "secretReveal": null
+  },
+  "network": "ethereum-sepolia",
+  "totalFills": 3,
+  "totalAmount": "0.001 ETH",
+  "fillAmounts": [
+    "0.0004 ETH",
+    "0.0003 ETH",
+    "0.0003 ETH"
+  ],
+  "verificationLinks": {
+    "contract": "https://sepolia.etherscan.io/address/0x6824FE89F6b2AEa7cdA478355Cb71ECD30A5Eb6B",
+    "transactions": []
+  }
+}

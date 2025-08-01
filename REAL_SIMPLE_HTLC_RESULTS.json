@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-08-01T10:04:30.736Z",
+  "contractAddress": "0x583F57CA7b2AEdaF2A34480C70BD22764d72AaD2",
+  "secret": "0x5c31f9776f6bffa9660aad034b376f95a0b50db613362c753e5a9c2333a6626a",
+  "hashlock": "0xb7549fb4d406f82f59f55619ed09d9f6ee5261fc7322d7ee52e6ccc941d5cd8b",
+  "timelock": 1754129048,
+  "transactionIds": {
+    "resolverAuth": "0x07e879eac4773ebe0c1dff5d164b1230563e418e00e081ba5d67fc2f68931f76",
+    "escrow1": "0x62c33e2a8b9958b3ffc8e255d1c2c17635b4358037d5d0ee56bed9584e7e6db3",
+    "escrow2": null,
+    "escrow3": null,
+    "withdraw1": null,
+    "withdraw2": null,
+    "withdraw3": null
+  },
+  "escrowIds": [
+    "0x23c2be0169b9a54d2f0b97405d5a22bba1f27a076bb3b6a42c98119262bb3e99"
+  ],
+  "network": "ethereum-sepolia",
+  "totalEscrows": 3,
+  "totalAmount": "0.001 ETH",
+  "escrowAmounts": [
+    "0.0004 ETH",
+    "0.0003 ETH",
+    "0.0003 ETH"
+  ],
+  "verificationLinks": {
+    "contract": "https://sepolia.etherscan.io/address/0x583F57CA7b2AEdaF2A34480C70BD22764d72AaD2",
+    "transactions": [
+      "https://sepolia.etherscan.io/tx/0x07e879eac4773ebe0c1dff5d164b1230563e418e00e081ba5d67fc2f68931f76",
+      "https://sepolia.etherscan.io/tx/0x62c33e2a8b9958b3ffc8e255d1c2c17635b4358037d5d0ee56bed9584e7e6db3"
+    ]
+  }
+}

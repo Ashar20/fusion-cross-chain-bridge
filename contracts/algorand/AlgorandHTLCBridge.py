@@ -46,6 +46,14 @@ def htlc_bridge_contract():
     
     # Create HTLC
     def create_htlc():
+        htlc_id = ScratchVar(TealType.bytes)
+        initiator = ScratchVar(TealType.bytes)
+        recipient = ScratchVar(TealType.bytes)
+        amount = ScratchVar(TealType.uint64)
+        hashlock = ScratchVar(TealType.bytes)
+        timelock = ScratchVar(TealType.uint64)
+        eth_address = ScratchVar(TealType.bytes)
+        
         return Seq([
             # Verify sender is creator or authorized relayer
             Assert(Or(
@@ -55,43 +63,43 @@ def htlc_bridge_contract():
             )),
             
             # Verify application arguments
-            Assert(Txn.application_args.length() == Int(7)),
+            Assert(Txn.application_args.length() == Int(8)),
             
             # Extract parameters
-            htlc_id := Txn.application_args[0],
-            initiator := Txn.application_args[1],
-            recipient := Txn.application_args[2],
-            amount := Btoi(Txn.application_args[3]),
-            hashlock := Txn.application_args[4],
-            timelock := Btoi(Txn.application_args[5]),
-            eth_address := Txn.application_args[6],
+            htlc_id.store(Txn.application_args[1]),
+            initiator.store(Txn.application_args[2]),
+            recipient.store(Txn.application_args[3]),
+            amount.store(Btoi(Txn.application_args[4])),
+            hashlock.store(Txn.application_args[5]),
+            timelock.store(Btoi(Txn.application_args[6])),
+            eth_address.store(Txn.application_args[7]),
             
             # Verify timelock constraints
-            Assert(timelock >= Global.latest_timestamp() + App.globalGet(min_timelock_key)),
-            Assert(timelock <= Global.latest_timestamp() + App.globalGet(max_timelock_key)),
+            Assert(timelock.load() >= Global.latest_timestamp() + App.globalGet(min_timelock_key)),
+            Assert(timelock.load() <= Global.latest_timestamp() + App.globalGet(max_timelock_key)),
             
             # Verify amount is positive
-            Assert(amount > Int(0)),
+            Assert(amount.load() > Int(0)),
             
             # Check if HTLC already exists
             Assert(App.localGet(Txn.sender(), htlc_id_key) == Int(0)),
             
             # Store HTLC data
-            App.localPut(Txn.sender(), htlc_id_key, htlc_id),
-            App.localPut(Txn.sender(), initiator_key, initiator),
-            App.localPut(Txn.sender(), recipient_key, recipient),
-            App.localPut(Txn.sender(), amount_key, amount),
-            App.localPut(Txn.sender(), hashlock_key, hashlock),
-            App.localPut(Txn.sender(), timelock_key, timelock),
-            App.localPut(Txn.sender(), eth_address_key, eth_address),
+            App.localPut(Txn.sender(), htlc_id_key, htlc_id.load()),
+            App.localPut(Txn.sender(), initiator_key, initiator.load()),
+            App.localPut(Txn.sender(), recipient_key, recipient.load()),
+            App.localPut(Txn.sender(), amount_key, amount.load()),
+            App.localPut(Txn.sender(), hashlock_key, hashlock.load()),
+            App.localPut(Txn.sender(), timelock_key, timelock.load()),
+            App.localPut(Txn.sender(), eth_address_key, eth_address.load()),
             App.localPut(Txn.sender(), withdrawn_key, Int(0)),
             App.localPut(Txn.sender(), refunded_key, Int(0)),
             
             # Transfer ALGO to contract
             InnerTxnBuilder.Begin(),
             InnerTxnBuilder.SetFields({
-                TxnField.type_enum: TxnField.pay,
-                TxnField.amount: amount,
+                TxnField.type_enum: TxnType.Payment,
+                TxnField.amount: amount.load(),
                 TxnField.receiver: Global.current_application_address()
             }),
             InnerTxnBuilder.Submit(),
@@ -101,15 +109,18 @@ def htlc_bridge_contract():
     
     # Withdraw HTLC with secret
     def withdraw_htlc():
+        htlc_id = ScratchVar(TealType.bytes)
+        secret = ScratchVar(TealType.bytes)
+        
         return Seq([
             # Verify application arguments
-            Assert(Txn.application_args.length() == Int(2)),
+            Assert(Txn.application_args.length() == Int(3)),
             
-            htlc_id := Txn.application_args[0],
-            secret := Txn.application_args[1],
+            htlc_id.store(Txn.application_args[1]),
+            secret.store(Txn.application_args[2]),
             
             # Verify HTLC exists and not withdrawn/refunded
-            Assert(App.localGet(Txn.sender(), htlc_id_key) == htlc_id),
+            Assert(App.localGet(Txn.sender(), htlc_id_key) == htlc_id.load()),
             Assert(App.localGet(Txn.sender(), withdrawn_key) == Int(0)),
             Assert(App.localGet(Txn.sender(), refunded_key) == Int(0)),
             
@@ -117,7 +128,7 @@ def htlc_bridge_contract():
             Assert(Global.latest_timestamp() < App.localGet(Txn.sender(), timelock_key)),
             
             # Verify hashlock matches secret
-            Assert(Sha256(secret) == App.localGet(Txn.sender(), hashlock_key)),
+            Assert(Sha256(secret.load()) == App.localGet(Txn.sender(), hashlock_key)),
             
             # Mark as withdrawn
             App.localPut(Txn.sender(), withdrawn_key, Int(1)),
@@ -125,7 +136,7 @@ def htlc_bridge_contract():
             # Transfer ALGO to recipient
             InnerTxnBuilder.Begin(),
             InnerTxnBuilder.SetFields({
-                TxnField.type_enum: TxnField.pay,
+                TxnField.type_enum: TxnType.Payment,
                 TxnField.amount: App.localGet(Txn.sender(), amount_key),
                 TxnField.receiver: App.localGet(Txn.sender(), recipient_key)
             }),
@@ -136,14 +147,16 @@ def htlc_bridge_contract():
     
     # Refund HTLC after timelock
     def refund_htlc():
+        htlc_id = ScratchVar(TealType.bytes)
+        
         return Seq([
             # Verify application arguments
-            Assert(Txn.application_args.length() == Int(1)),
+            Assert(Txn.application_args.length() == Int(2)),
             
-            htlc_id := Txn.application_args[0],
+            htlc_id.store(Txn.application_args[1]),
             
             # Verify HTLC exists and not withdrawn/refunded
-            Assert(App.localGet(Txn.sender(), htlc_id_key) == htlc_id),
+            Assert(App.localGet(Txn.sender(), htlc_id_key) == htlc_id.load()),
             Assert(App.localGet(Txn.sender(), withdrawn_key) == Int(0)),
             Assert(App.localGet(Txn.sender(), refunded_key) == Int(0)),
             
@@ -156,7 +169,7 @@ def htlc_bridge_contract():
             # Transfer ALGO back to initiator
             InnerTxnBuilder.Begin(),
             InnerTxnBuilder.SetFields({
-                TxnField.type_enum: TxnField.pay,
+                TxnField.type_enum: TxnType.Payment,
                 TxnField.amount: App.localGet(Txn.sender(), amount_key),
                 TxnField.receiver: App.localGet(Txn.sender(), initiator_key)
             }),
@@ -167,11 +180,13 @@ def htlc_bridge_contract():
     
     # Get HTLC status
     def get_htlc_status():
+        htlc_id = ScratchVar(TealType.bytes)
+        
         return Seq([
             # Verify application arguments
-            Assert(Txn.application_args.length() == Int(1)),
+            Assert(Txn.application_args.length() == Int(2)),
             
-            htlc_id := Txn.application_args[0],
+            htlc_id.store(Txn.application_args[1]),
             
             # Return HTLC status
             Return(App.localGet(Txn.sender(), htlc_id_key))
@@ -179,18 +194,21 @@ def htlc_bridge_contract():
     
     # Update contract parameters (creator only)
     def update_contract():
+        param_key = ScratchVar(TealType.bytes)
+        param_value = ScratchVar(TealType.bytes)
+        
         return Seq([
             # Verify sender is creator
             Assert(Txn.sender() == App.globalGet(creator_key)),
             
             # Verify application arguments
-            Assert(Txn.application_args.length() == Int(2)),
+            Assert(Txn.application_args.length() == Int(3)),
             
-            param_key := Txn.application_args[0],
-            param_value := Txn.application_args[1],
+            param_key.store(Txn.application_args[1]),
+            param_value.store(Txn.application_args[2]),
             
             # Update parameter
-            App.globalPut(param_key, param_value),
+            App.globalPut(param_key.load(), param_value.load()),
             
             Return(Int(1))
         ])
@@ -202,16 +220,21 @@ def htlc_bridge_contract():
         [Txn.on_completion() == OnComplete.CloseOut, Return(Int(1))],
         [Txn.on_completion() == OnComplete.UpdateApplication, Return(Int(0))],
         [Txn.on_completion() == OnComplete.DeleteApplication, Return(Int(0))],
-        [Txn.application_args[0] == Bytes("create"), create_htlc()],
+        [Txn.application_args[0] == Bytes("create_htlc"), create_htlc()],
         [Txn.application_args[0] == Bytes("withdraw"), withdraw_htlc()],
         [Txn.application_args[0] == Bytes("refund"), refund_htlc()],
         [Txn.application_args[0] == Bytes("status"), get_htlc_status()],
-        [Txn.application_args[0] == Bytes("update"), update_contract()],
-        [Return(Int(0))]
+        [Txn.application_args[0] == Bytes("update"), update_contract()]
+    )
+    
+    return If(
+        Txn.application_args.length() > Int(0),
+        program,
+        Return(Int(0))
     )
     
     return program
 
 # Export the contract
 if __name__ == "__main__":
-    print(compileTeal(htlc_bridge_contract(), mode=Mode.Application, version=6)) 
+    print(compileTeal(htlc_bridge_contract(), mode=Mode.Application, version=10)) 

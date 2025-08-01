@@ -1,0 +1,14 @@
+{
+  "timestamp": "2025-08-01T09:59:01.647Z",
+  "ethereum": {
+    "network": "sepolia",
+    "contractAddress": "0x6824FE89F6b2AEa7cdA478355Cb71ECD30A5Eb6B",
+    "deployerAddress": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+    "explorerUrl": "https://sepolia.etherscan.io/address/0x6824FE89F6b2AEa7cdA478355Cb71ECD30A5Eb6B"
+  },
+  "algorand": {
+    "network": "testnet",
+    "appId": 161394,
+    "explorerUrl": "https://testnet.algoexplorer.io/application/161394"
+  }
+}
