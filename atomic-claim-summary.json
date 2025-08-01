@@ -1,0 +1,18 @@
+{
+  "magicSecret": "0x45a4cc2a10cf947442a91864dd85d444c24a3e8236196a82f2d7714f9f3bb7cb",
+  "hashlock": "0x8b80cd73e3d2966210bb3e9dab964d4793a12fe9166e7038f6a8ad686ca7f174",
+  "timestamp": "2025-07-30T20:54:45.462Z",
+  "claims": {
+    "ethereum": {
+      "chain": "ethereum",
+      "status": "failed",
+      "error": "could not coalesce error (error={ \"code\": -32000, \"message\": \"intrinsic gas too low: gas 21000, minimum needed 21512\" }, payload={ \"id\": 9, \"jsonrpc\": \"2.0\", \"method\": \"eth_sendRawTransaction\", \"params\": [ \"0x02f89683aa36a781a685012a05f20085012a05f20082520894000000000000000000000000000000000000dead865af3107a4000a045a4cc2a10cf947442a91864dd85d444c24a3e8236196a82f2d7714f9f3bb7cbc080a090a3ebac20e85adbbf4eabe9cdf741e329d91209ee1f4513f45c36134ee03f12a0386159348e9bcbf661e1c81762344fe924d7696efd8152fe6230f8af75c85a77\" ] }, code=UNKNOWN_ERROR, version=6.15.0)"
+    },
+    "algorand": {
+      "chain": "algorand",
+      "status": "failed",
+      "error": "Address must not be null or undefined"
+    }
+  },
+  "status": "PARTIAL"
+}

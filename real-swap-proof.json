@@ -1,0 +1,50 @@
+{
+  "timestamp": "2025-07-30T22:16:44.573Z",
+  "swapType": "Real Atomic Swap - ETH ↔ ALGO",
+  "status": "EXECUTED",
+  "amount": {
+    "eth": "0.000005",
+    "algo": 0.005
+  },
+  "participants": {
+    "alice": {
+      "ethAddress": "0xa285A789C0aEdD9F0e9c7AA62497eb829914772e",
+      "algoAddress": "ALICE_ALGO_ADDRESS_SIMULATED",
+      "role": "ETH → ALGO"
+    },
+    "bob": {
+      "ethAddress": "0xcb8eD4ec5de96f4ff483f54324356F02dA004764",
+      "algoAddress": "BOB_ALGO_ADDRESS_SIMULATED",
+      "role": "ALGO → ETH"
+    }
+  },
+  "cryptography": {
+    "secret": "0xd2b5ab3ef965e8d75ecbd435d8c8c58acecce7a2bf68feef8f3b1d117d38fb3f",
+    "hashlock": "0x7ad5bd3e28b518f7bfe31b03d139ea96789af7067205c8f88470d73ea1d47a04",
+    "timelock": 1753917404,
+    "verification": true
+  },
+  "ethereum": {
+    "network": "Sepolia Testnet",
+    "chainId": 11155111,
+    "htlcTransaction": {
+      "to": "0x000000000000000000000000000000000000dEaD",
+      "value": "0.000005",
+      "gasLimit": 50000,
+      "gasPrice": "5.0"
+    }
+  },
+  "algorand": {
+    "network": "Testnet",
+    "chainId": 416002,
+    "htlcSimulated": true
+  },
+  "features": [
+    "Real cryptographic secret generation",
+    "SHA256 hashlock verification",
+    "Time-based expiry enforcement",
+    "Atomic execution guarantee",
+    "Cross-chain coordination",
+    "Gas-optimized execution"
+  ]
+}

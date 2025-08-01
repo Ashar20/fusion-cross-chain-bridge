@@ -1,0 +1,27 @@
+{
+  "generated": "2025-07-31T02:50:40.108Z",
+  "purpose": "Dedicated addresses for relayer operations - separate from user accounts",
+  "ethereum": {
+    "network": "sepolia",
+    "address": "0x58924acDe600D5a0Fb3fb0AF49c8FE02060F79Ea",
+    "privateKey": "0x8635e2afccf73f691768d499e5e2fafec6b276289d67129dc8bf75f53b31d9e6",
+    "purpose": "Pays Ethereum gas fees, locks ETH in HTLCs",
+    "explorer": "https://sepolia.etherscan.io/address/0x58924acDe600D5a0Fb3fb0AF49c8FE02060F79Ea",
+    "needsFunding": true,
+    "recommendedBalance": "0.1 ETH for gas fees"
+  },
+  "algorand": {
+    "network": "testnet",
+    "address": "BJDBVZITI7VRHJLMPY4C6BX5UVBHZVNT6PRD3ZZWO2E2HSDYGSF4KO6RR4",
+    "mnemonic": "spice fever file height try alcohol visual duck pave alcohol journey laptop harvest mouse poverty remind pigeon engine amazing choice shoe world solution about notice",
+    "purpose": "Pays Algorand fees, locks ALGO in HTLCs",
+    "explorer": "https://testnet.algoexplorer.io/address/BJDBVZITI7VRHJLMPY4C6BX5UVBHZVNT6PRD3ZZWO2E2HSDYGSF4KO6RR4",
+    "needsFunding": true,
+    "recommendedBalance": "10 ALGO for transaction fees"
+  },
+  "separation": {
+    "userAccounts": "Your original testing accounts remain separate",
+    "relayerAccounts": "These new addresses are for relayer operations only",
+    "security": "Proper separation of concerns and fund isolation"
+  }
+}

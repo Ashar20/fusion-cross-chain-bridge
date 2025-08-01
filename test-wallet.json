@@ -1,0 +1,12 @@
+{
+  "address": "0x234eFf7948EeB44bAeE7c4B3945e1aCe83934546",
+  "privateKey": "0x666da6d14c633140e9fa8fa3474deaa81d692ac21531432d8ac69a3a522109dc",
+  "network": "sepolia",
+  "infuraEndpoint": "https://sepolia.infura.io/v3/116078ce3b154dd0b21e372e9626f104",
+  "needsETH": true,
+  "faucets": [
+    "https://sepoliafaucet.com/",
+    "https://faucets.chain.link/sepolia",
+    "https://sepolia-faucet.pk910.de/"
+  ]
+}

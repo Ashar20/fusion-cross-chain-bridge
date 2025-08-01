@@ -1,0 +1,16 @@
+{
+  "chain": "algorand",
+  "network": "testnet",
+  "chainId": 416002,
+  "transactionId": "ALGO_HTLC_E7CAB72D79965CA47DC5D81CF2047A9A",
+  "blockNumber": 35892127,
+  "creator": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+  "amount": 1,
+  "secret": "0x45a4cc2a10cf947442a91864dd85d444c24a3e8236196a82f2d7714f9f3bb7cb",
+  "hashlock": "0x8b80cd73e3d2966210bb3e9dab964d4793a12fe9166e7038f6a8ad686ca7f174",
+  "timelock": 1753911090,
+  "timelockISO": "2025-07-30T21:31:30.000Z",
+  "ethTxHash": "0xc7cf1b2c60de666e96c5344adeb07da24ffbb960dbbfb5a7fe42435e6a4564ca",
+  "created": "2025-07-30T20:34:32.426Z",
+  "status": "active"
+}

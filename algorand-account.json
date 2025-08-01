@@ -1,0 +1,42 @@
+{
+  "address": {
+    "publicKey": {
+      "0": 36,
+      "1": 140,
+      "2": 117,
+      "3": 33,
+      "4": 44,
+      "5": 152,
+      "6": 60,
+      "7": 202,
+      "8": 123,
+      "9": 80,
+      "10": 134,
+      "11": 12,
+      "12": 246,
+      "13": 217,
+      "14": 80,
+      "15": 232,
+      "16": 244,
+      "17": 13,
+      "18": 88,
+      "19": 0,
+      "20": 51,
+      "21": 250,
+      "22": 11,
+      "23": 203,
+      "24": 34,
+      "25": 33,
+      "26": 136,
+      "27": 227,
+      "28": 142,
+      "29": 252,
+      "30": 191,
+      "31": 162
+    }
+  },
+  "privateKey": "GkZaB/H/LK0g+jAXkMAwedC1saLh3tJULsb/Xl7IrA8kjHUhLJg8yntQhgz22VDo9A1YADP6C8siIYjjjvy/og==",
+  "mnemonic": "select harbor lonely yellow fly clip speed couch actual across observe always hill property artist ten olympic rich toast useful royal craft latin abandon luggage",
+  "network": "testnet",
+  "createdAt": "2025-07-30T17:54:50.769Z"
+}

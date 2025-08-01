@@ -4,7 +4,7 @@
 
 ## 🚀 **BREAKTHROUGH ACHIEVED**
 
-✅ **Revolutionary Innovation**: Extended 1inch Fusion+ to EOS blockchain  
+✅ **Revolutionary Innovation**: Extended 1inch Fusion+ to Algorand blockchain  
 ✅ **Gasless Cross-Chain Swaps**: Intent-based trading across ecosystems  
 ✅ **Professional Resolver Network**: Automated execution infrastructure  
 ✅ **Production Ready**: Real blockchain deployment with atomic guarantees  
@@ -31,7 +31,7 @@
 - **Market Expansion** - Access to billions in non-EVM liquidity
 - **Technical Leadership** - First to break EVM-only limitation
 - **Resolver Opportunities** - New revenue streams for professionals
-- **Ecosystem Growth** - Attract new user base from EOS
+- **Ecosystem Growth** - Attract new user base from Algorand
 
 ## 🏗️ **Technical Architecture**
 
@@ -42,8 +42,8 @@ User Intent (Gasless)
        ↓  
 Resolver Network ←→ Cross-Chain Atomic Swaps
        ↓                        ↓
-Ethereum HTLC ←――――――――→ EOS HTLC
-  (ETH/ERC20)              (EOS/Tokens)
+Ethereum HTLC ←――――――――→ Algorand HTLC
+  (ETH/ERC20)              (ALGO/Tokens)
 ```
 
 ## 🚀 **Live Demo**
@@ -51,13 +51,16 @@ Ethereum HTLC ←――――――――→ EOS HTLC
 ```bash
 # Test the breakthrough
 npm install
-node scripts/fusion-plus-eos-swap.js
 
-# See resolver architecture
-node scripts/resolver-architecture-demo.js
+# Deploy contracts
+npm run deploy-algorand-htlc-bridge
+npm run deploy-algorand-contract
 
-# Test atomic swaps
-node scripts/test-basic-htlc.js
+# Start relayer service
+npm run start-algorand-relayer
+
+# Test complete flow
+npm run test-bidirectional-htlc
 ```
 
 ## 🎉 **Impact Statement**

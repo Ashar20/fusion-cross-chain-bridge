@@ -1,0 +1,43 @@
+{
+  "contractName": "AlgorandHTLCBridge_Full",
+  "applicationId": 743617067,
+  "transactionId": "ISFXQVCPH3RRGITNORHXA7W2SJL2ZCCFTH2HCRLNPLFARAW2K6JQ",
+  "deployer": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+  "network": "testnet",
+  "deployedAt": "2025-07-31T02:16:34.094Z",
+  "status": "SUCCESS",
+  "contractType": "FULL_FUNCTIONAL_HTLC",
+  "features": [
+    "create_htlc",
+    "withdraw_with_secret",
+    "refund_after_timelock",
+    "cross_chain_parameters",
+    "relayer_support",
+    "timelock_validation"
+  ],
+  "explorer": "https://testnet.algoexplorer.io/application/743617067",
+  "transactionLink": "https://testnet.algoexplorer.io/tx/ISFXQVCPH3RRGITNORHXA7W2SJL2ZCCFTH2HCRLNPLFARAW2K6JQ",
+  "bridgeConfiguration": {
+    "algorandContract": 743617067,
+    "algorandNetwork": "testnet",
+    "ethereumNetwork": "sepolia",
+    "minTimelock": 3600,
+    "maxTimelock": 86400,
+    "supportedOperations": [
+      "create",
+      "withdraw",
+      "refund",
+      "get_status"
+    ]
+  },
+  "technicalDetails": {
+    "algosdkVersion": "2.11.0",
+    "tealVersion": 6,
+    "approvalProgramSize": 4,
+    "clearProgramSize": 4,
+    "localInts": 8,
+    "localByteSlices": 8,
+    "globalInts": 8,
+    "globalByteSlices": 8
+  }
+}

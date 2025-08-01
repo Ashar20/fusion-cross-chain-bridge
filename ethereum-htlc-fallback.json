@@ -1,0 +1,18 @@
+{
+  "escrowId": "0xc2150c4163dfd14c1f03dc222a5fd8f915446fd8b76e9ff3c5649f6c4f96a63f",
+  "chain": "ethereum",
+  "network": "sepolia",
+  "chainId": 11155111,
+  "contractAddress": "fallback",
+  "initiator": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "recipient": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+  "amount": "0.001",
+  "secret": "0x45a4cc2a10cf947442a91864dd85d444c24a3e8236196a82f2d7714f9f3bb7cb",
+  "hashlock": "0x8b80cd73e3d2966210bb3e9dab964d4793a12fe9166e7038f6a8ad686ca7f174",
+  "timelock": 1753911090,
+  "timelockISO": "2025-07-30T21:31:30.000Z",
+  "transactionHash": "0xc7cf1b2c60de666e96c5344adeb07da24ffbb960dbbfb5a7fe42435e6a4564ca",
+  "blockNumber": 8877658,
+  "created": "2025-07-30T20:31:30.573Z",
+  "status": "active_fallback"
+}

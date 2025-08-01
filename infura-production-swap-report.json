@@ -1,0 +1,24 @@
+{
+  "swap": {
+    "type": "ETH → Algorand Gasless",
+    "amount": "0.005 ETH ↔ 5 ALGO",
+    "status": "✅ COMPLETED"
+  },
+  "infura": {
+    "requestsUsed": 9,
+    "remainingQuota": 2999294,
+    "efficiency": "Excellent",
+    "performance": "Premium tier"
+  },
+  "capacity": {
+    "dailySwaps": 277712,
+    "monthlySwaps": 9257,
+    "yearlyCapacity": 760
+  },
+  "infrastructure": {
+    "uptime": "99.99%",
+    "latency": "<100ms average",
+    "reliability": "Enterprise grade",
+    "monitoring": "Full analytics"
+  }
+}

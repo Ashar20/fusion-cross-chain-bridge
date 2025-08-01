@@ -1,0 +1,62 @@
+{
+  "network": "Algorand Testnet",
+  "chainId": 416002,
+  "account": {
+    "publicKey": {
+      "0": 37,
+      "1": 16,
+      "2": 150,
+      "3": 78,
+      "4": 43,
+      "5": 224,
+      "6": 85,
+      "7": 21,
+      "8": 32,
+      "9": 28,
+      "10": 166,
+      "11": 243,
+      "12": 239,
+      "13": 224,
+      "14": 113,
+      "15": 19,
+      "16": 184,
+      "17": 109,
+      "18": 120,
+      "19": 250,
+      "20": 250,
+      "21": 151,
+      "22": 109,
+      "23": 119,
+      "24": 167,
+      "25": 89,
+      "26": 107,
+      "27": 9,
+      "28": 242,
+      "29": 190,
+      "30": 123,
+      "31": 36
+    }
+  },
+  "transactions": {
+    "bobLockALGO": {
+      "txId": "PFKWW6PQXCTEBPYRBJW5623G5XO7B4EYIWSGVK36NWZQYKOW5XJA",
+      "block": null,
+      "explorer": "https://testnet.algoexplorer.io/tx/PFKWW6PQXCTEBPYRBJW5623G5XO7B4EYIWSGVK36NWZQYKOW5XJA",
+      "action": "Bob locks 0.1 ALGO with hashlock",
+      "amount": "0.1 ALGO"
+    },
+    "aliceClaimALGO": {
+      "txId": "FNNIJBCGBJMJI3HXVFL5YJUVVAZ4UYONK77XWCKRAWX6DK7NTFDQ",
+      "explorer": "https://testnet.algoexplorer.io/tx/FNNIJBCGBJMJI3HXVFL5YJUVVAZ4UYONK77XWCKRAWX6DK7NTFDQ",
+      "action": "Alice reveals secret and claims ALGO",
+      "secret": "0x3109c95b11cc132f2380af9070f0af32f820db4715b26df92e82bf91746f09bb"
+    }
+  },
+  "cryptography": {
+    "secret": "0x3109c95b11cc132f2380af9070f0af32f820db4715b26df92e82bf91746f09bb",
+    "hashlock": "0xcd67e3e59a99b11678d6c365e455a70f0ebf341dcdaada9f3534797746b17708",
+    "verification": "VALID - Same secret works on both chains"
+  },
+  "timestamp": "2025-07-30T21:24:12.598Z",
+  "status": "ALGORAND_VERIFICATION_COMPLETE"
+}

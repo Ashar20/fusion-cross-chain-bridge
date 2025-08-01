@@ -1,0 +1,18 @@
+{
+  "contractName": "AlgorandHTLCBridge",
+  "applicationId": 743645803,
+  "network": "testnet",
+  "deployer": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+  "deployerBalance": "6.227 ALGO",
+  "transactionId": "QBLPV5SYM6KDHVWJJ4NS3EJ6PZGI7HIU46IKJ7HUXTLZW5DGVSMQ",
+  "deployedAt": "2025-07-31T17:23:24.485Z",
+  "status": "SUCCESS",
+  "algorandExplorer": "https://testnet.algoexplorer.io/application/743645803",
+  "transactionLink": "https://testnet.algoexplorer.io/tx/QBLPV5SYM6KDHVWJJ4NS3EJ6PZGI7HIU46IKJ7HUXTLZW5DGVSMQ",
+  "bridgeConfiguration": {
+    "ethereumContract": "0x343E44b629fcd1E97Fd787D0f60F39F8FEA123eE",
+    "ethereumNetwork": "sepolia",
+    "algorandContract": 743645803,
+    "algorandNetwork": "testnet"
+  }
+}

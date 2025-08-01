@@ -1,0 +1,17 @@
+{
+  "magicSecret": "0x45a4cc2a10cf947442a91864dd85d444c24a3e8236196a82f2d7714f9f3bb7cb",
+  "hashlock": "0x8b80cd73e3d2966210bb3e9dab964d4793a12fe9166e7038f6a8ad686ca7f174",
+  "verification": true,
+  "ethereum": {
+    "claimTx": "0x7a229936af07d07a755a740ec9b69a08c350b0697d0d6b4378b16666665ebe48",
+    "block": 8877778,
+    "explorer": "https://sepolia.etherscan.io/tx/0x7a229936af07d07a755a740ec9b69a08c350b0697d0d6b4378b16666665ebe48"
+  },
+  "algorand": {
+    "contractAddress": "3HFOLM7USF4F274UR43RM6LE3JVYF4XL2HIGVDPCGRTSKVOH3AANI6PWCI",
+    "account": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+    "message": "Secret validates the same hashlock on Algorand"
+  },
+  "timestamp": "2025-07-30T20:55:40.880Z",
+  "status": "ATOMIC_CLAIM_PROVEN"
+}

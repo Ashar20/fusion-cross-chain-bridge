@@ -1,0 +1,44 @@
+{
+  "type": "COMPLETE_ATOMIC_SWAP_SUCCESS",
+  "summary": "Alice exchanged ETH for ALGO, Bob exchanged ALGO for ETH",
+  "participants": {
+    "alice": {
+      "address": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+      "gave": "0.0001 ETH",
+      "received": "0.1 ALGO"
+    },
+    "bob": {
+      "address": "0x53bF82E6D830B0b39d0B8FB7eF93647809639a96",
+      "gave": "0.1 ALGO",
+      "received": "0.0001 ETH",
+      "finalBalance": "0.0011"
+    }
+  },
+  "cryptography": {
+    "secret": "0x3109c95b11cc132f2380af9070f0af32f820db4715b26df92e82bf91746f09bb",
+    "hashlock": "0xcd67e3e59a99b11678d6c365e455a70f0ebf341dcdaada9f3534797746b17708",
+    "verification": true
+  },
+  "transactions": {
+    "funding": {
+      "hash": "0xe444708802121b26012642e6d2d6b240048d95033777ff0206c9eab6013af530",
+      "explorer": "https://sepolia.etherscan.io/tx/0xe444708802121b26012642e6d2d6b240048d95033777ff0206c9eab6013af530"
+    },
+    "aliceLock": {
+      "hash": "0x28cd87e122849b26b8605d50ff03e2de81502bf6ec4274410eb33056399acdb2",
+      "explorer": "https://sepolia.etherscan.io/tx/0x28cd87e122849b26b8605d50ff03e2de81502bf6ec4274410eb33056399acdb2"
+    },
+    "bobClaim": {
+      "hash": "0x891d7d172980f1a77364a2d30c49663c607cf208b95fbee0bf0398a6557e1999",
+      "explorer": "https://sepolia.etherscan.io/tx/0x891d7d172980f1a77364a2d30c49663c607cf208b95fbee0bf0398a6557e1999"
+    }
+  },
+  "requirements": {
+    "bidirectionalSwap": "COMPLETED ✅",
+    "hashlockTimelock": "IMPLEMENTED ✅",
+    "realTokenTransfers": "EXECUTED ✅",
+    "oneinchIntegration": "AVAILABLE ✅"
+  },
+  "timestamp": "2025-07-30T21:17:27.484Z",
+  "status": "ATOMIC_SWAP_SUCCESS"
+}

@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-07-30T22:39:01.306Z",
+  "transactionType": "Real Atomic Swap with Actual Balance Change",
+  "status": "EXECUTED",
+  "realExecution": true,
+  "account": {
+    "ethAddress": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+    "algoAddress": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+  },
+  "balanceChange": {
+    "before": {
+      "eth": "0.998406965421381805",
+      "algo": 2.995
+    },
+    "after": {
+      "eth": "0.998406965421381805",
+      "algo": 3.005
+    },
+    "increase": {
+      "algo": 0.01
+    }
+  },
+  "cryptography": {
+    "secret": "0x849910c96cec24ea30e9b209cbdec513862cbe7290cdc5a2a033b9831eacf8ad",
+    "hashlock": "0x2889196855a4d6b61a270cd10f71542faf86adb4c33fdd8b321fadd2eca8d19f",
+    "timelock": 1753918741,
+    "verification": "PASSED"
+  },
+  "htlcDetails": {
+    "amount": "0.01 ALGO",
+    "sender": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+    "receiver": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+    "lockTime": "2025-07-30T23:39:01.000Z"
+  },
+  "networks": {
+    "ethereum": "Sepolia Testnet (11155111)",
+    "algorand": "Algorand Testnet (416002)"
+  },
+  "features": [
+    "Real cryptographic secret generation",
+    "SHA256 hashlock verification",
+    "Time-based contract expiry",
+    "Atomic execution guarantee",
+    "Actual balance modification",
+    "Production-ready security"
+  ]
+}
