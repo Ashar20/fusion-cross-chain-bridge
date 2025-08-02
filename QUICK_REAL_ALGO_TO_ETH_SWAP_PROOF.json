@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-08-02T05:05:06.673Z",
+  "swapType": "ALGO → ETH (REAL TRANSACTION)",
+  "secret": "0x01ecfcdebdf6e3777352fa47c52ed750df83fa960c2a49427b8720cc6b46f8e8",
+  "hashlock": "0xaf7aa16040c4366fda00cba427776e434b299c51616d52258a898766d1d0874a",
+  "amounts": {
+    "algo": 1,
+    "eth": "0.001"
+  },
+  "participants": {
+    "user": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+    "ethereumWallet": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53"
+  },
+  "transactions": {
+    "algorandTransaction": {
+      "txId": {
+        "txId": "CBRCOEOLD4L46WBXMRXZWVXNN346MWUJJXHXIISA6MJNCNIW3XAQ"
+      },
+      "amount": 1000,
+      "status": "SUBMITTED",
+      "explorerUrl": "https://testnet.algoexplorer.io/tx/[object Object]",
+      "note": "Transaction submitted successfully, confirmation pending"
+    }
+  },
+  "balances": {
+    "initial": {
+      "eth": "3.83768128544274015",
+      "algo": 7.315,
+      "hasSufficientAlgo": true,
+      "hasSufficientEth": true
+    }
+  },
+  "steps": [
+    {
+      "step": "Balance Check",
+      "status": "PASSED",
+      "details": "ETH: 3.83768128544274015, ALGO: 7.315"
+    },
+    {
+      "step": "Algorand Transaction",
+      "status": "SUBMITTED",
+      "details": "Real Transaction ID: [object Object]"
+    }
+  ],
+  "status": "REAL_TRANSACTION_SUBMITTED"
+}

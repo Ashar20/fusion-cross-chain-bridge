@@ -17,7 +17,7 @@
     "algorand": {
       "chainId": 416002,
       "name": "Testnet",
-      "appId": 743645803,
+      "appId": null,
       "wallet": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
     }
   },
@@ -67,9 +67,9 @@
     },
     "algorand": {
       "htlcBridge": {
-        "appId": 743645803,
+        "appId": null,
         "purpose": "HTLC management for atomic swaps",
-        "explorer": "https://testnet.algoexplorer.io/application/743645803"
+        "explorer": "Not deployed"
       }
     }
   },

@@ -229,20 +229,19 @@ contract CrossChainHTLCResolver is ITakerInteraction {
         require(!order.refunded, "Order refunded");
         require(block.timestamp < order.timelock, "Order expired");
         
-        // For ETH orders, we don't need to create escrow contracts on the source chain
-        // since the funds are already held by this resolver contract
-        if (order.token == address(0)) {
-            // For ETH orders, use this contract as the source escrow
-            escrowSrc = address(this);
-            
-            // For destination escrow, we would need to call createDstEscrow on the destination chain
-            // For now, we'll use a placeholder address
-            escrowDst = address(0);
-        } else {
-            // For ERC20 orders, we would need to create proper escrow contracts
-            // This would require integration with the Limit Order Protocol
-            revert("ERC20 escrow creation not implemented yet");
-        }
+        // Create source escrow (holds user tokens)
+        escrowSrc = ESCROW_FACTORY.createEscrow{value: order.token == address(0) ? order.amount : 0}(
+            order.token,
+            order.amount,
+            _orderHash,
+            order.timelock,
+            _resolverCalldata
+        );
+        
+        if (escrowSrc == address(0)) revert EscrowCreationFailed();
+        
+        // Get destination escrow address (for resolver tokens)
+        escrowDst = ESCROW_FACTORY.addressOfEscrowDst(_orderHash);
         
         // Update order with escrow addresses
         order.escrowSrc = escrowSrc;
@@ -279,15 +278,6 @@ contract CrossChainHTLCResolver is ITakerInteraction {
         
         // Mark as executed
         order.executed = true;
-        
-        // Transfer funds to recipient (this contract acts as the escrow)
-        if (order.token == address(0)) {
-            // For ETH orders, transfer from this contract to recipient
-            payable(order.recipient).transfer(order.amount);
-        } else {
-            // For ERC20 orders, transfer tokens to recipient
-            IERC20(order.token).safeTransfer(order.recipient, order.amount);
-        }
         
         emit SwapCommitted(
             _orderHash,
