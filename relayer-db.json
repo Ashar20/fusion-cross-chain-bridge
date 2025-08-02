@@ -35,6 +35,42 @@
         },
         "createdAt": "2025-08-02T02:32:30.499Z"
       }
+    ],
+    [
+      "0x8b757387758b467719c0aee5b882638e1654e5ad5e1257534d293c04849bbb3a",
+      {
+        "htlcId": "53QFYQLQWPC3KANGSKEJJ6VM7K6WXU7QPSS5W5L5EYPCAJUW3ORQ",
+        "direction": "ETH_TO_ALGO",
+        "status": "ALGO_HTLC_CREATED",
+        "ethData": {
+          "orderHash": "0x8b757387758b467719c0aee5b882638e1654e5ad5e1257534d293c04849bbb3a",
+          "maker": "0x58924acDe600D5a0Fb3fb0AF49c8FE02060F79Ea",
+          "token": "0x0000000000000000000000000000000000000000",
+          "amount": "1000000000000000",
+          "hashlock": "0xcce3e1940faee9a68ea570bcc2d470123ea50323c6ec81705e8d86f6615aad66",
+          "timelock": "1754245476",
+          "algorandAddress": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+        },
+        "createdAt": "2025-08-02T16:25:06.644Z"
+      }
+    ],
+    [
+      "0xfaf8f87ff9dfe12f30b08a2fbb747218d7849fd3dc2e71340d6ef8df3c7bdf55",
+      {
+        "htlcId": "EEVD3XSY5Y6XETURUTWZQ5FRYITESQ2MXHHRNLG42FKL3NPX7MIA",
+        "direction": "ETH_TO_ALGO",
+        "status": "ALGO_HTLC_CREATED",
+        "ethData": {
+          "orderHash": "0xfaf8f87ff9dfe12f30b08a2fbb747218d7849fd3dc2e71340d6ef8df3c7bdf55",
+          "maker": "0x58924acDe600D5a0Fb3fb0AF49c8FE02060F79Ea",
+          "token": "0x0000000000000000000000000000000000000000",
+          "amount": "1000000000000000",
+          "hashlock": "0xfba9e6a513dbf15106a2eb87b6f8051c893e4d36b836a4f30debc07289d8c5e7",
+          "timelock": "1754245884",
+          "algorandAddress": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+        },
+        "createdAt": "2025-08-02T16:31:37.056Z"
+      }
     ]
   ],
   "htlcMappings": [],

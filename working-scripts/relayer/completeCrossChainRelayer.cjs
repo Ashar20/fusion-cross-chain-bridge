@@ -825,6 +825,149 @@ class CompleteCrossChainRelayer {
         const ethValue = parseFloat(ethers.formatEther(ethInWei));
         return Math.floor(ethValue * 1000 * 1000000); // 1 ETH = 1000 ALGO, convert to microAlgos
     }
+    
+    /**
+     * 🚀 CREATE ALGORAND HTLC FOR USER (GASLESS)
+     * Creates ALGO HTLC on behalf of user and pays all fees
+     * Used for ALGO → ETH swaps where user wants to swap ALGO
+     */
+    async createAlgorandHTLCForUser(userAlgoAddress, algoAmount, hashlock, timelock, recipient) {
+        console.log('\n🚀 CREATING ALGORAND HTLC FOR USER (GASLESS)');
+        console.log('============================================');
+        console.log('✅ Relayer creating ALGO HTLC on behalf of user');
+        console.log('✅ Relayer paying ALL transaction fees');
+        console.log('✅ User pays ZERO fees');
+        console.log('============================================\n');
+        
+        try {
+            // Get suggested params
+            const suggestedParams = await this.algoClient.getTransactionParams().do();
+            
+            // Create HTLC application call
+            const algoHTLCTxn = algosdk.makeApplicationNoOpTxnFromObject({
+                from: this.algoAccount.addr, // Relayer creates HTLC
+                suggestedParams: suggestedParams,
+                appIndex: this.config.algorand.appId,
+                appArgs: [
+                    new Uint8Array(Buffer.from('create_htlc', 'utf8')), // action
+                    new Uint8Array(Buffer.from(hashlock.slice(2), 'hex')), // hashlock
+                    algosdk.encodeUint64(algoAmount), // amount
+                    algosdk.encodeUint64(timelock), // timelock
+                    new Uint8Array(Buffer.from(recipient, 'utf8')) // recipient
+                ]
+            });
+            
+            // Create payment transaction to fund the HTLC
+            const paymentTxn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
+                from: this.algoAccount.addr, // Relayer funds HTLC
+                to: algosdk.getApplicationAddress(this.config.algorand.appId),
+                amount: algoAmount,
+                suggestedParams: suggestedParams
+            });
+            
+            // Group the transactions
+            const txnGroup = [algoHTLCTxn, paymentTxn];
+            algosdk.assignGroupID(txnGroup);
+            
+            // Sign both transactions with relayer's key
+            const signedHTLCTxn = algoHTLCTxn.signTxn(this.algoAccount.sk);
+            const signedPaymentTxn = paymentTxn.signTxn(this.algoAccount.sk);
+            
+            // Submit as a group
+            const groupTxns = [signedHTLCTxn, signedPaymentTxn];
+            const algoResult = await this.algoClient.sendRawTransaction(groupTxns).do();
+            
+            console.log(`📝 Algorand HTLC Transaction: ${algoResult.txId}`);
+            console.log(`🔗 Algoexplorer: https://testnet.algoexplorer.io/tx/${algoResult.txId}`);
+            console.log('⏳ Waiting for confirmation...');
+            
+            await algosdk.waitForConfirmation(this.algoClient, algoResult.txId, 4);
+            console.log('✅ Algorand HTLC created and confirmed!');
+            console.log('💰 Relayer paid ALL ALGO transaction fees!');
+            console.log('🎉 User gets completely gasless experience!\n');
+            
+            return {
+                txId: algoResult.txId,
+                status: 'CREATED',
+                hashlock: hashlock,
+                amount: algoAmount,
+                timelock: timelock,
+                recipient: recipient
+            };
+            
+        } catch (error) {
+            console.error('❌ Error creating Algorand HTLC for user:', error.message);
+            throw error;
+        }
+    }
+    
+    /**
+     * 🎯 CLAIM ALGORAND HTLC FOR USER (GASLESS)
+     * Claims ALGO from HTLC and sends to user, relayer pays all fees
+     */
+    async claimAlgorandHTLCForUser(htlcId, secret, userAlgoAddress, algoAmount) {
+        console.log('\n🎯 CLAIMING ALGORAND HTLC FOR USER (GASLESS)');
+        console.log('============================================');
+        console.log('✅ Relayer claiming ALGO on behalf of user');
+        console.log('✅ Relayer paying ALL transaction fees');
+        console.log('✅ User receives ALGO without paying fees');
+        console.log('============================================\n');
+        
+        try {
+            const suggestedParams = await this.algoClient.getTransactionParams().do();
+            
+            // Create claim transaction
+            const claimTxn = algosdk.makeApplicationNoOpTxnFromObject({
+                from: this.algoAccount.addr, // Relayer claims
+                suggestedParams: suggestedParams,
+                appIndex: this.config.algorand.appId,
+                appArgs: [
+                    new Uint8Array(Buffer.from('claim', 'utf8')), // action
+                    secret // secret
+                ]
+            });
+            
+            // Create payment transaction to send ALGO to user
+            const paymentTxn = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
+                from: this.algoAccount.addr,
+                to: userAlgoAddress,
+                amount: algoAmount,
+                suggestedParams: suggestedParams
+            });
+            
+            // Group the transactions
+            const txnGroup = [claimTxn, paymentTxn];
+            algosdk.assignGroupID(txnGroup);
+            
+            // Sign both transactions
+            const signedClaimTxn = claimTxn.signTxn(this.algoAccount.sk);
+            const signedPaymentTxn = paymentTxn.signTxn(this.algoAccount.sk);
+            
+            // Submit as a group
+            const groupTxns = [signedClaimTxn, signedPaymentTxn];
+            const algoResult = await this.algoClient.sendRawTransaction(groupTxns).do();
+            
+            console.log(`📝 Relayer Claim Transaction: ${algoResult.txId}`);
+            console.log(`🔗 Algoexplorer: https://testnet.algoexplorer.io/tx/${algoResult.txId}`);
+            console.log('⏳ Waiting for confirmation...');
+            
+            await algosdk.waitForConfirmation(this.algoClient, algoResult.txId, 4);
+            console.log('✅ Relayer successfully claimed ALGO for user!');
+            console.log('💰 User received ALGO without paying fees!');
+            console.log('🔄 Relayer paid all Algorand transaction fees!\n');
+            
+            return {
+                txId: algoResult.txId,
+                status: 'CLAIMED',
+                userAddress: userAlgoAddress,
+                amount: algoAmount
+            };
+            
+        } catch (error) {
+            console.error('❌ Error claiming Algorand HTLC for user:', error.message);
+            throw error;
+        }
+    }
 }
 
 // Export the class

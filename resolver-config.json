@@ -1,0 +1,44 @@
+{
+  "timestamp": "2025-01-27T10:30:00.000Z",
+  "network": "sepolia",
+  "totalResolvers": 4,
+  "totalFunding": "2.6",
+  "resolvers": [
+    {
+      "name": "High-Frequency-Resolver-1",
+      "address": "0xEb6901a6d726636976B112d233A20F18eBE7C344",
+      "strategy": "High-frequency bidding",
+      "riskTolerance": "High",
+      "funding": "0.5",
+      "status": "active",
+      "description": "High-frequency trading resolver for fast execution"
+    },
+    {
+      "name": "Arbitrage-Resolver-1",
+      "address": "0x8e1A3b2548Faf6c1bce04953F8B3a7D52BF61d2a",
+      "strategy": "Arbitrage opportunities",
+      "riskTolerance": "Medium",
+      "funding": "0.8",
+      "status": "active",
+      "description": "Arbitrage resolver for price differences"
+    },
+    {
+      "name": "MEV-Resolver-1",
+      "address": "0x3F6a6A9bBa278F6A4307F4Aa19C31484af68D0e1",
+      "strategy": "MEV extraction",
+      "riskTolerance": "High",
+      "funding": "1.0",
+      "status": "active",
+      "description": "MEV resolver for maximum extractable value"
+    },
+    {
+      "name": "Backup-Resolver-1",
+      "address": "0xB9f906AD2371c4bC8A2b0EEa55D3F7Ee3aEa803f",
+      "strategy": "Conservative bidding",
+      "riskTolerance": "Low",
+      "funding": "0.3",
+      "status": "active",
+      "description": "Backup resolver for redundancy"
+    }
+  ]
+}

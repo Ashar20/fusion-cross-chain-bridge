@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-08-02T18:52:57.035Z",
+  "contractAddress": "0x384B0011f6E6aA8C192294F36dCE09a3758Df788",
+  "orderId": "0xe2e7bbd90f0de7170a3616b768ace67cb386e432d875894a0552f2f130a69d59",
+  "testUser": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "resolvers": [
+    {
+      "name": "TestResolver_1",
+      "address": "0xd71289EcA6dC0e1AeC46De5657ccc897924D8E03",
+      "bidCount": 0
+    },
+    {
+      "name": "TestResolver_2",
+      "address": "0xbfA9e04C0F59aCbEF5e784D7F03E2c4AFBfdE45B",
+      "bidCount": 0
+    },
+    {
+      "name": "TestResolver_3",
+      "address": "0x7F3a9DaDa77065Fa3Bf1C0Dea5969f7be2B4319C",
+      "bidCount": 0
+    }
+  ],
+  "bids": [],
+  "bestBid": null,
+  "orderDetails": {
+    "maker": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+    "makerAmount": "0.1",
+    "takerAmount": "150.0",
+    "remainingAmount": "0.1",
+    "partialFills": "0",
+    "filled": false,
+    "cancelled": false,
+    "allowPartialFills": true
+  },
+  "status": "SUCCESS"
+}

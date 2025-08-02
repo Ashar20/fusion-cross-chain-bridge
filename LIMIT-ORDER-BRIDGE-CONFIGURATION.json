@@ -1,0 +1,15 @@
+{
+  "contractAddress": "0x76ba6308A13556E4d73bdA77F8De1230A2B6Ab61",
+  "owner": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "authorizedResolvers": [
+    "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64"
+  ],
+  "algorandAppId": 743645803,
+  "resolverFeeRate": 50,
+  "configurationTx": {
+    "authorizeResolver": "0xf654f92a4791c710239755dc2cd93cb2935f0fd90c899cd85e12c56a70ed409e",
+    "setAlgorandAppId": "0x1f64ad6ad8bacfb432f2c943ae058203ac037ef2c1f80c58534789df422c10a4"
+  },
+  "timestamp": "2025-08-02T17:11:04.265Z",
+  "status": "CONFIGURED"
+}

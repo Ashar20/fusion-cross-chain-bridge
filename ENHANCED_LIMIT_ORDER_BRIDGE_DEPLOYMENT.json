@@ -1,0 +1,21 @@
+{
+  "contractAddress": "0x384B0011f6E6aA8C192294F36dCE09a3758Df788",
+  "deployer": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "algorandAppId": 743645803,
+  "authorizedResolvers": [
+    "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64"
+  ],
+  "deploymentTime": "2025-08-02T18:39:05.796Z",
+  "network": "sepolia",
+  "features": [
+    "Ethereum-only competitive bidding",
+    "Partial fill support",
+    "Bidirectional ETH ↔ ALGO swaps",
+    "Automatic best-bid selection",
+    "1inch Fusion+ integration"
+  ],
+  "gasUsed": {
+    "deployment": "5000000",
+    "gasPrice": "1032395"
+  }
+}

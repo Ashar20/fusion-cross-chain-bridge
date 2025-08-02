@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-08-02T21:17:46.186Z",
+  "contractAddress": "0x384B0011f6E6aA8C192294F36dCE09a3758Df788",
+  "resolvers": [
+    {
+      "name": "TestResolver_1",
+      "address": "0xA901417b6Bcc2D329893Be58d9164971b1f7754a",
+      "balance": "0.0",
+      "bidCount": 0,
+      "totalFees": "0.0"
+    },
+    {
+      "name": "TestResolver_2",
+      "address": "0x08129713e5E9c64DA76fC9ddF06BbE1292898691",
+      "balance": "0.0",
+      "bidCount": 0,
+      "totalFees": "0.0"
+    },
+    {
+      "name": "TestResolver_3",
+      "address": "0x5E01d5988bc7F4739AFf6B9a78F022e27608ce84",
+      "balance": "0.0",
+      "bidCount": 0,
+      "totalFees": "0.0"
+    },
+    {
+      "name": "TestResolver_4",
+      "address": "0xDD2caE5C180e2F2Bd3a497F35E72B7C4C9Ca1d49",
+      "balance": "0.0",
+      "bidCount": 0,
+      "totalFees": "0.0"
+    }
+  ],
+  "testOrders": [],
+  "status": "SUCCESS"
+}
