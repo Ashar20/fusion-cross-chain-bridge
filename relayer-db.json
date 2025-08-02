@@ -1,0 +1,43 @@
+{
+  "orderMappings": [
+    [
+      "0x9151a38ca60d7f497a2f01b6ddb5cbeb08497d20a73e25598d763c6bb8f7966b",
+      {
+        "htlcId": "XX5PZ2H4YOCESPS3SVFUKFWKNCA43CJCUG5OTHCB5T4AMIZTDH5Q",
+        "direction": "ETH_TO_ALGO",
+        "status": "ALGO_HTLC_CREATED",
+        "ethData": {
+          "orderHash": "0x9151a38ca60d7f497a2f01b6ddb5cbeb08497d20a73e25598d763c6bb8f7966b",
+          "maker": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+          "token": "0x0000000000000000000000000000000000000000",
+          "amount": "1000000000000000",
+          "hashlock": "0x268aed54ee06d71b770db5c6d247c594fc7ac03c9220478a57e1054b4b75f5e8",
+          "timelock": "1754704620",
+          "algorandAddress": "SIMPLE_TEST_ALGO_ADDRESS"
+        },
+        "createdAt": "2025-08-02T01:59:15.444Z"
+      }
+    ],
+    [
+      "0xc57fe9dfd0819c1b7b357a40f0ad208ff12fe561ab2c3bb5bcdecaa4160ab3cb",
+      {
+        "htlcId": "ICZJKTGYHJWJWTYHZMC64IDO2NRA57HNHONFQ7BDBNH66DCVE3IQ",
+        "direction": "ETH_TO_ALGO",
+        "status": "ALGO_HTLC_CREATED",
+        "ethData": {
+          "orderHash": "0xc57fe9dfd0819c1b7b357a40f0ad208ff12fe561ab2c3bb5bcdecaa4160ab3cb",
+          "maker": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+          "token": "0x0000000000000000000000000000000000000000",
+          "amount": "1000000000000000",
+          "hashlock": "0xec4dbde203dc024b72995df062f6365fa02f19d672bb9f9d2196257a320cebd4",
+          "timelock": "1754191920",
+          "algorandAddress": "WORKING_TEST_ALGO_ADDRESS"
+        },
+        "createdAt": "2025-08-02T02:32:30.499Z"
+      }
+    ]
+  ],
+  "htlcMappings": [],
+  "pendingSwaps": [],
+  "completedSwaps": []
+}

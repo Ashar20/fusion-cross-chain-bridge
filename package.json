@@ -33,6 +33,8 @@
   "author": "Fusion+ Cross-Chain Team",
   "license": "MIT",
   "dependencies": {
+    "@1inch/limit-order-protocol-contract": "^4.3.2",
+    "@1inch/solidity-utils": "^6.6.0",
     "algosdk": "^2.11.0",
     "dotenv": "^16.6.1",
     "ethers": "^6.15.0",

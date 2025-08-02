@@ -92,3 +92,5 @@ We have successfully deployed the **EXACT official 1inch cross-chain swap contra
 **🌟 READY TO PRESENT TO JUDGES! 🌟**
 
 The EVM side is fully deployed with official 1inch contracts. The Algorand integration architecture is designed and ready for implementation. This satisfies the judge requirement to use the exact official 1inch contracts on the EVM side. 
+ 
+ 

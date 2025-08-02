@@ -115,3 +115,5 @@ deployFixedBridge().then(result => {
     console.error('Error:', error.message);
     process.exit(1);
 }); 
+ 
+ 

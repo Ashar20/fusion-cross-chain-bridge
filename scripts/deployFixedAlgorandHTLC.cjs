@@ -250,3 +250,5 @@ class DeployFixedAlgorandHTLC {
 
 // Run deployment
 new DeployFixedAlgorandHTLC(); 
+ 
+ 

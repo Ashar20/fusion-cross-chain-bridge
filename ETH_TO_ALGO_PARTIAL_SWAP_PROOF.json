@@ -1,0 +1,51 @@
+{
+  "testType": "ETH_TO_ALGO_PARTIAL_SWAP_PROOF",
+  "timestamp": "2025-08-02T01:23:02.765Z",
+  "success": false,
+  "reason": "Secret not found for hashlock",
+  "swapDetails": {
+    "direction": "ETH → ALGO",
+    "ethAmount": "0.001",
+    "algoAmount": 0.001,
+    "hashlock": "0x04496c310a28bdca0e86a43cf816b16ed744811c54bb0ef735e6007c9190e924",
+    "timelock": 1754184072,
+    "timelockDate": "2025-08-03T01:21:12.000Z",
+    "orderHash": "0xf07fd54fbfce182d0d26c72995c413bedc4f249260aa215f24eecffcadcabe57"
+  },
+  "initialBalances": {
+    "userETH": "3.83968184350793643",
+    "userALGO": 7.322,
+    "relayerETH": "1.052936285515453695",
+    "relayerALGO": 7.322
+  },
+  "transactions": {
+    "ethereumOrder": "0xf07fd54fbfce182d0d26c72995c413bedc4f249260aa215f24eecffcadcabe57",
+    "algorandHTLC": "IG2IGHNT6IBBPDZVKZVV5NLBLMP4X6M5QG44JQ7KABECMIIX7KAA"
+  },
+  "addresses": {
+    "ethereumUser": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+    "ethereumRelayer": "0xbB5d8f4a76CaA272C712CD90CAdEbb2283c0Bc6d",
+    "algorandUser": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+    "algorandRelayer": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+    "resolver": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+    "algorandApp": 743645803
+  },
+  "cryptographicProof": {
+    "hashlockFromTx": "0x04496c310a28bdca0e86a43cf816b16ed744811c54bb0ef735e6007c9190e924",
+    "secretStatus": "Not found - need to brute force or find original secret",
+    "verification": "Pending - requires correct secret"
+  },
+  "networks": {
+    "ethereum": "Sepolia Testnet",
+    "algorand": "Testnet"
+  },
+  "features": [
+    "Proper secret/hashlock generation",
+    "Cross-chain atomic swap",
+    "Real testnet transactions",
+    "Complete balance tracking",
+    "Cryptographic verification",
+    "1inch Fusion+ integration"
+  ],
+  "status": "PARTIAL_SUCCESS - Ethereum order created, Algorand HTLC created, but secret not found for claiming"
+}

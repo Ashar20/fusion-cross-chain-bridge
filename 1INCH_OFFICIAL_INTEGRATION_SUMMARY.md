@@ -115,3 +115,5 @@ All compiled contract artifacts are available in `lib/1inch-official/out/` inclu
 ## 🎉 **READY FOR NEXT PHASE**
 
 All official 1inch contracts are now integrated into our project structure and ready for the next phase of development: **ETH ↔ ALGO Atomic Swaps using Official 1inch Architecture**. 
+ 
+ 

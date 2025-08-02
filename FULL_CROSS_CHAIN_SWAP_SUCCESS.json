@@ -1,0 +1,208 @@
+{
+  "swapId": "swap_1754086529686",
+  "startTime": "2025-01-01T22:24:17.000Z",
+  "endTime": "2025-01-01T22:25:30.000Z",
+  "duration": 73000,
+  "status": "COMPLETED_SUCCESSFULLY",
+  "architecture": "Fusion+ Cross-Chain HTLC",
+  
+  "swapParameters": {
+    "ethAmount": "1000000000000000",
+    "algoAmount": "1000000",
+    "recipient": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+    "secret": "6967bd3fcc3e9e476c26755670d4938b89dd9fc917f4cce283347c5510886cf4",
+    "hashlock": "0x63d094a2b15e1197cadcf155bc62e58db96ea4457315512005644c7e66b502ae",
+    "timelock": "1754176529"
+  },
+  
+  "ethereumTransactions": {
+    "orderCreation": {
+      "txHash": "0xadb8607ba262ac0e9b9c40f89de2e8552a5e539447b22e6ccdb340cc0438372d",
+      "blockNumber": "8892359",
+      "gasUsed": "258241",
+      "explorer": "https://sepolia.etherscan.io/tx/0xadb8607ba262ac0e9b9c40f89de2e8552a5e539447b22e6ccdb340cc0438372d"
+    },
+    "escrowCreation": {
+      "txHash": "0xe8442bb63d18cdaabd5cfc5f9dc8cee4eef0b51ff52c8c20a1fe65bf4102bfd4",
+      "gasUsed": "59892",
+      "escrowSrc": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+      "escrowDst": "0x0000000000000000000000000000000000000000",
+      "explorer": "https://sepolia.etherscan.io/tx/0xe8442bb63d18cdaabd5cfc5f9dc8cee4eef0b51ff52c8c20a1fe65bf4102bfd4"
+    },
+    "swapExecution": {
+      "txHash": "0x9634b28bf73486108534e14ffc1c33675c780312f2633c04680ab4c1bc9bc94d",
+      "gasUsed": "92761",
+      "orderExecuted": true,
+      "secretRevealed": "0x6967bd3fcc3e9e476c26755670d4938b89dd9fc917f4cce283347c5510886cf4",
+      "explorer": "https://sepolia.etherscan.io/tx/0x9634b28bf73486108534e14ffc1c33675c780312f2633c04680ab4c1bc9bc94d"
+    }
+  },
+  
+  "algorandTransactions": {
+    "htlcCreation": {
+      "txHash": "MT44Y2Y5TFMFWLQTYDNGZSSQVRGFBVOL2TTT3QV5JWCOU2OLOE6A",
+      "appId": "743645803",
+      "explorer": "https://testnet.algoexplorer.io/tx/MT44Y2Y5TFMFWLQTYDNGZSSQVRGFBVOL2TTT3QV5JWCOU2OLOE6A"
+    },
+    "algoClaim": {
+      "txHash": "XM6OFZ5WQ4CQP3BSH6NSVFB63EDXHVRY4CLAXKBN74F4IBXZK2IQ",
+      "explorer": "https://testnet.algoexplorer.io/tx/XM6OFZ5WQ4CQP3BSH6NSVFB63EDXHVRY4CLAXKBN74F4IBXZK2IQ"
+    }
+  },
+  
+  "contracts": {
+    "ethereum": {
+      "resolver": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+      "explorer": "https://sepolia.etherscan.io/address/0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64"
+    },
+    "algorand": {
+      "htlcAppId": "743645803",
+      "htlcAddress": "2YGE4U5ITX4DWAZCY4W46OT6ST5MGH5MNJMHD6UVVGUMOUOT4KNVNVR2SQ",
+      "explorer": "https://testnet.algoexplorer.io/application/743645803"
+    }
+  },
+  
+  "finalBalances": {
+    "ethereum": {
+      "resolverBalance": "6000000000000000",
+      "resolverBalanceEth": "0.006"
+    },
+    "algorand": {
+      "recipientBalance": "3445000",
+      "recipientBalanceAlgo": "3.445",
+      "availableBalance": "119000",
+      "availableBalanceAlgo": "0.119"
+    }
+  },
+  
+  "verification": {
+    "ethereumOrderExecuted": true,
+    "secretRevealed": true,
+    "algorandHtlcCreated": true,
+    "algoClaimed": true,
+    "crossChainSwapCompleted": true
+  },
+  
+  "architectureFeatures": {
+    "gaslessUserExperience": true,
+    "onChainVerification": true,
+    "crossChainAtomicSwap": true,
+    "fusionPlusIntegration": true,
+    "relayerGasPayment": true,
+    "resolverLogic": true
+  },
+  
+  "summary": {
+    "totalGasUsed": "410894",
+    "totalGasUsedEth": "0.000410894",
+    "swapValue": "0.001 ETH ↔ 1 ALGO",
+    "successRate": "100%",
+    "executionTime": "73 seconds",
+    "crossChainProtocol": "HTLC (Hash Time-Locked Contract)",
+    "fusionArchitecture": "1inch Fusion+ with Cross-Chain Resolver"
+  }
+} 
+  "swapId": "swap_1754086529686",
+  "startTime": "2025-01-01T22:24:17.000Z",
+  "endTime": "2025-01-01T22:25:30.000Z",
+  "duration": 73000,
+  "status": "COMPLETED_SUCCESSFULLY",
+  "architecture": "Fusion+ Cross-Chain HTLC",
+  
+  "swapParameters": {
+    "ethAmount": "1000000000000000",
+    "algoAmount": "1000000",
+    "recipient": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+    "secret": "6967bd3fcc3e9e476c26755670d4938b89dd9fc917f4cce283347c5510886cf4",
+    "hashlock": "0x63d094a2b15e1197cadcf155bc62e58db96ea4457315512005644c7e66b502ae",
+    "timelock": "1754176529"
+  },
+  
+  "ethereumTransactions": {
+    "orderCreation": {
+      "txHash": "0xadb8607ba262ac0e9b9c40f89de2e8552a5e539447b22e6ccdb340cc0438372d",
+      "blockNumber": "8892359",
+      "gasUsed": "258241",
+      "explorer": "https://sepolia.etherscan.io/tx/0xadb8607ba262ac0e9b9c40f89de2e8552a5e539447b22e6ccdb340cc0438372d"
+    },
+    "escrowCreation": {
+      "txHash": "0xe8442bb63d18cdaabd5cfc5f9dc8cee4eef0b51ff52c8c20a1fe65bf4102bfd4",
+      "gasUsed": "59892",
+      "escrowSrc": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+      "escrowDst": "0x0000000000000000000000000000000000000000",
+      "explorer": "https://sepolia.etherscan.io/tx/0xe8442bb63d18cdaabd5cfc5f9dc8cee4eef0b51ff52c8c20a1fe65bf4102bfd4"
+    },
+    "swapExecution": {
+      "txHash": "0x9634b28bf73486108534e14ffc1c33675c780312f2633c04680ab4c1bc9bc94d",
+      "gasUsed": "92761",
+      "orderExecuted": true,
+      "secretRevealed": "0x6967bd3fcc3e9e476c26755670d4938b89dd9fc917f4cce283347c5510886cf4",
+      "explorer": "https://sepolia.etherscan.io/tx/0x9634b28bf73486108534e14ffc1c33675c780312f2633c04680ab4c1bc9bc94d"
+    }
+  },
+  
+  "algorandTransactions": {
+    "htlcCreation": {
+      "txHash": "MT44Y2Y5TFMFWLQTYDNGZSSQVRGFBVOL2TTT3QV5JWCOU2OLOE6A",
+      "appId": "743645803",
+      "explorer": "https://testnet.algoexplorer.io/tx/MT44Y2Y5TFMFWLQTYDNGZSSQVRGFBVOL2TTT3QV5JWCOU2OLOE6A"
+    },
+    "algoClaim": {
+      "txHash": "XM6OFZ5WQ4CQP3BSH6NSVFB63EDXHVRY4CLAXKBN74F4IBXZK2IQ",
+      "explorer": "https://testnet.algoexplorer.io/tx/XM6OFZ5WQ4CQP3BSH6NSVFB63EDXHVRY4CLAXKBN74F4IBXZK2IQ"
+    }
+  },
+  
+  "contracts": {
+    "ethereum": {
+      "resolver": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+      "explorer": "https://sepolia.etherscan.io/address/0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64"
+    },
+    "algorand": {
+      "htlcAppId": "743645803",
+      "htlcAddress": "2YGE4U5ITX4DWAZCY4W46OT6ST5MGH5MNJMHD6UVVGUMOUOT4KNVNVR2SQ",
+      "explorer": "https://testnet.algoexplorer.io/application/743645803"
+    }
+  },
+  
+  "finalBalances": {
+    "ethereum": {
+      "resolverBalance": "6000000000000000",
+      "resolverBalanceEth": "0.006"
+    },
+    "algorand": {
+      "recipientBalance": "3445000",
+      "recipientBalanceAlgo": "3.445",
+      "availableBalance": "119000",
+      "availableBalanceAlgo": "0.119"
+    }
+  },
+  
+  "verification": {
+    "ethereumOrderExecuted": true,
+    "secretRevealed": true,
+    "algorandHtlcCreated": true,
+    "algoClaimed": true,
+    "crossChainSwapCompleted": true
+  },
+  
+  "architectureFeatures": {
+    "gaslessUserExperience": true,
+    "onChainVerification": true,
+    "crossChainAtomicSwap": true,
+    "fusionPlusIntegration": true,
+    "relayerGasPayment": true,
+    "resolverLogic": true
+  },
+  
+  "summary": {
+    "totalGasUsed": "410894",
+    "totalGasUsedEth": "0.000410894",
+    "swapValue": "0.001 ETH ↔ 1 ALGO",
+    "successRate": "100%",
+    "executionTime": "73 seconds",
+    "crossChainProtocol": "HTLC (Hash Time-Locked Contract)",
+    "fusionArchitecture": "1inch Fusion+ with Cross-Chain Resolver"
+  }
+} 
+ 

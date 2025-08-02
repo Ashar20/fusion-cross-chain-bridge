@@ -128,3 +128,11 @@
     "algorandIntegration": "Architecture designed, implementation pending"
   }
 }
+  "nextSteps": [
+    "Fix Algorand HTLC parameter handling",
+    "Create 1inch-compatible resolver service",
+    "Implement cross-chain coordination logic",
+    "Test end-to-end atomic swap"
+  ],
+  "compliance": "Uses official 1inch contracts as required by judges"
+}

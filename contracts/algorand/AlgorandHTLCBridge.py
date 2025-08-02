@@ -238,3 +238,4 @@ def htlc_bridge_contract():
 # Export the contract
 if __name__ == "__main__":
     print(compileTeal(htlc_bridge_contract(), mode=Mode.Application, version=10)) 
+    print(compileTeal(htlc_bridge_contract(), mode=Mode.Application, version=6)) 
