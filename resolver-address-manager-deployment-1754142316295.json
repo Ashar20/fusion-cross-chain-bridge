@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-08-02T13:44:51.933Z",
+  "network": "sepolia",
+  "deployer": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "contractAddress": "0xF5b1ED98d34005B974dA8071BAE029954CEC53F2",
+  "deploymentTxHash": "0xb898716da2315f6d5613c5ef00340a44a8fb8dbb6b5b22b7b715978368988cc3",
+  "features": [
+    "Deterministic address generation",
+    "Resolver wallet management",
+    "Fee tracking per resolver",
+    "Fill count tracking",
+    "Address activation/deactivation",
+    "Statistics and analytics"
+  ]
+}

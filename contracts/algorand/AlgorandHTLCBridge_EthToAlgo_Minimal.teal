@@ -1,0 +1,87 @@
+#pragma version 10
+txn ApplicationID
+int 0
+==
+bnz main_l12
+txn OnCompletion
+int OptIn
+==
+bnz main_l11
+txn OnCompletion
+int CloseOut
+==
+bnz main_l10
+txn OnCompletion
+int UpdateApplication
+==
+bnz main_l9
+txn OnCompletion
+int DeleteApplication
+==
+bnz main_l8
+txna ApplicationArgs 0
+byte "claim_htlc"
+==
+bnz main_l7
+err
+main_l7:
+txn NumAppArgs
+int 3
+==
+assert
+txna ApplicationArgs 1
+store 0
+txna ApplicationArgs 2
+store 1
+txn Sender
+byte "HtlcId"
+app_local_get
+load 0
+==
+assert
+txn Sender
+byte "Withdrawn"
+app_local_get
+int 0
+==
+assert
+load 1
+sha256
+txn Sender
+byte "Hashlock"
+app_local_get
+==
+assert
+txn Sender
+byte "Withdrawn"
+int 1
+app_local_put
+itxn_begin
+int pay
+itxn_field TypeEnum
+txn Sender
+byte "Amount"
+app_local_get
+itxn_field Amount
+txn Sender
+byte "Recipient"
+app_local_get
+itxn_field Receiver
+itxn_submit
+int 1
+return
+main_l8:
+int 0
+return
+main_l9:
+int 0
+return
+main_l10:
+int 1
+return
+main_l11:
+int 1
+return
+main_l12:
+int 1
+return

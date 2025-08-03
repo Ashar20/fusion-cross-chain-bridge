@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-08-02T05:57:37.130Z",
+  "swapParams": {
+    "ethAmount": "0.001",
+    "algoAmount": 0.1,
+    "secret": "8a63e7c6f5e43bd193dfac787b09f28271928730d21b724c2b4e0e6bd528956a",
+    "hashlock": "0x84270ed19cf7a52c21dee411238a1cb0e5c0a649403425c997ecabb9140ed9c6"
+  },
+  "transactions": {
+    "htlcCreation": {
+      "txId": "TC5NZ37O27NZBB7W2Q3S2KCZDYO2BCO2R7J2L36GEYGZQR6VAE7A",
+      "htlcId": "0x84270ed19cf7a52c21dee411238a1cb0e5c0a649403425c997ecabb9140ed9c6"
+    },
+    "claim": {
+      "txId": "BFLZMLUBTFJF3BMZPIN7NZSUDTJR4ZIWRA4C6QOPIDC2F3XJGUYA",
+      "secret": "8a63e7c6f5e43bd193dfac787b09f28271928730d21b724c2b4e0e6bd528956a"
+    },
+    "relayerProcessing": {
+      "status": "RELAYER_PROCESSING_COMPLETE"
+    },
+    "ethClaim": {
+      "status": "RELAYER_ETH_CLAIM_COMPLETE"
+    }
+  },
+  "balances": {
+    "initial": {
+      "user": {
+        "eth": "3.832681008008230309",
+        "algo": 6.471
+      },
+      "relayer": {
+        "eth": "0.05",
+        "algo": 4.997
+      }
+    },
+    "final": {
+      "user": {
+        "eth": "3.832681008008230309",
+        "algo": 6.368
+      },
+      "relayer": {
+        "eth": "0.05",
+        "algo": 4.997
+      }
+    },
+    "changes": {
+      "user": {
+        "eth": 0,
+        "algo": -0.10299999999999976
+      },
+      "relayer": {
+        "eth": 0,
+        "algo": 0
+      }
+    }
+  }
+}

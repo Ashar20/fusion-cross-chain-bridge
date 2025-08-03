@@ -1,0 +1,93 @@
+{
+  "timestamp": "2025-08-01T19:49:16.760Z",
+  "relayer": "0xbB5d8f4a76CaA272C712CD90CAdEbb2283c0Bc6d",
+  "orderHash": "0x3dd5c9340cef9babe2a75cd87a0e94d021a004f3f0ff9ece37d25ef643d5f73d",
+  "order": {
+    "makerAsset": "0x0000000000000000000000000000000000000000",
+    "takerAsset": "0x0000000000000000000000000000000000000000",
+    "makingAmount": "1000000000000000",
+    "takingAmount": "1000000000000000",
+    "maker": "0xbB5d8f4a76CaA272C712CD90CAdEbb2283c0Bc6d",
+    "receiver": "0xbB5d8f4a76CaA272C712CD90CAdEbb2283c0Bc6d",
+    "allowedSender": "0x0000000000000000000000000000000000000000",
+    "interactions": "0x",
+    "makingAmountThreshold": "1000000000000000",
+    "takingAmountThreshold": "1000000000000000",
+    "salt": {
+      "type": "Buffer",
+      "data": [
+        32,
+        44,
+        71,
+        129,
+        235,
+        99,
+        201,
+        0,
+        247,
+        14,
+        55,
+        25,
+        198,
+        209,
+        211,
+        34,
+        247,
+        50,
+        245,
+        217,
+        22,
+        156,
+        248,
+        16,
+        159,
+        46,
+        241,
+        184,
+        120,
+        213,
+        214,
+        196
+      ]
+    },
+    "makerTraits": "0",
+    "permit": "0x"
+  },
+  "extraData": {
+    "hashlockInfo": "0xaf9f45804b241b1190128d52280949f271313cb6479e34311a7f86e5c1973bab",
+    "dstChainId": "416001",
+    "dstToken": "0x0000000000000000000000000000000000000000",
+    "deposits": "100000000000000",
+    "timelocks": {
+      "srcWithdrawal": 300,
+      "srcPublicWithdrawal": 600,
+      "srcCancellation": 900,
+      "srcPublicCancellation": 1200,
+      "dstWithdrawal": 300,
+      "dstPublicWithdrawal": 600,
+      "dstCancellation": 900,
+      "dstPublicCancellation": 1200
+    }
+  },
+  "crossChainParams": {
+    "hashlock": "0xaf9f45804b241b1190128d52280949f271313cb6479e34311a7f86e5c1973bab",
+    "dstChainId": "416001",
+    "dstToken": "0x0000000000000000000000000000000000000000",
+    "deposits": "100000000000000",
+    "timelocks": {
+      "srcWithdrawal": 300,
+      "srcPublicWithdrawal": 600,
+      "srcCancellation": 900,
+      "srcPublicCancellation": 1200,
+      "dstWithdrawal": 300,
+      "dstPublicWithdrawal": 600,
+      "dstCancellation": 900,
+      "dstPublicCancellation": 1200
+    }
+  },
+  "status": "CREATED",
+  "contracts": {
+    "limitOrderProtocol": "0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+    "escrowFactory": "0x523258A91028793817F84aB037A3372B468ee940"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-08-01T21:57:41.587Z",
+  "status": "PASSED",
+  "ethereum": {
+    "resolver": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+    "network": "Sepolia",
+    "chainId": 11155111
+  },
+  "algorand": {
+    "htlcAppId": 743645803,
+    "network": "Testnet",
+    "chainId": 416002
+  },
+  "wallets": {
+    "ethereum": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+    "algorand": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+  }
+}

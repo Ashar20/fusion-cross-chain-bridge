@@ -1,0 +1,9 @@
+{
+  "timestamp": "2025-08-02T21:29:12.147Z",
+  "contractAddress": "0x384B0011f6E6aA8C192294F36dCE09a3758Df788",
+  "contractName": "EnhancedLimitOrderBridge",
+  "network": "sepolia",
+  "constructorArguments": [],
+  "etherscanUrl": "https://sepolia.etherscan.io/address/0x384B0011f6E6aA8C192294F36dCE09a3758Df788#code",
+  "status": "VERIFIED"
+}

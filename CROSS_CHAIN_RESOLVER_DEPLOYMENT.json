@@ -1,0 +1,29 @@
+{
+  "network": "sepolia",
+  "chainId": "11155111",
+  "timestamp": "2025-08-01T21:39:14.951Z",
+  "deployer": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "contracts": {
+    "resolver": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+    "limitOrderProtocol": "0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+    "escrowFactory": "0x523258A91028793817F84aB037A3372B468ee940"
+  },
+  "verification": {
+    "resolver": "https://sepolia.etherscan.io/address/0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+    "limitOrderProtocol": "https://sepolia.etherscan.io/address/0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+    "escrowFactory": "https://sepolia.etherscan.io/address/0x523258A91028793817F84aB037A3372B468ee940"
+  },
+  "features": {
+    "crossChainHTLC": true,
+    "official1inchIntegration": true,
+    "algorandBridge": true,
+    "escrowCreation": true,
+    "secretReveal": true,
+    "orderRefund": true
+  },
+  "integration": {
+    "algorandChainId": 416002,
+    "algorandAppId": 743645803,
+    "algorandExplorer": "https://testnet.algoexplorer.io/application/743645803"
+  }
+}

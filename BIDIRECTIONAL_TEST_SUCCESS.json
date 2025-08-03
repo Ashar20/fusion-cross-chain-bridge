@@ -1,0 +1,27 @@
+{
+  "testType": "ALGO → ETH Bidirectional Bridge Test",
+  "network": "Real testnets (no simulation)",
+  "algorand": {
+    "amount": 0.1,
+    "transactionId": "OJ57HEWZP5Y6M227GGVDA7DWB32FFXWE3O3MRVCDSOU3RQJBJKMQ",
+    "round": 54096175,
+    "explorer": "https://testnet.algoexplorer.io/tx/OJ57HEWZP5Y6M227GGVDA7DWB32FFXWE3O3MRVCDSOU3RQJBJKMQ",
+    "note": "Cross-chain test transaction"
+  },
+  "ethereum": {
+    "amount": 0.0001,
+    "transactionId": "0xd1977e66757e4c679e3255ef80d28994afdb5792eb0c30525d7f029013dfa9c3",
+    "blockNumber": 8884112,
+    "explorer": "https://sepolia.etherscan.io/tx/0xd1977e66757e4c679e3255ef80d28994afdb5792eb0c30525d7f029013dfa9c3",
+    "contractAddress": "0xBc79b64D896C4c94FA0cB52cdc4fbFb5A89E3225"
+  },
+  "coordination": {
+    "hashlock": "9f6f5c1f096201ec97e8b0e198096630cd96e50c548e3d3f514b954ea0a85a8e",
+    "secret": "e2797e7da0803c9a9eb2bcde5ebfea172f1168bcbffa82d54b4d2aea2abc025a",
+    "timelock": 1753989471,
+    "timelockDate": "2025-07-31T19:17:51.000Z"
+  },
+  "timestamp": "2025-07-31T18:18:17.960Z",
+  "status": "SUCCESS - Both transactions confirmed on real testnets",
+  "note": "Demonstrates bidirectional capability with real transactions"
+}

@@ -1,0 +1,50 @@
+{
+  "timestamp": "2025-08-03T14:53:15.422Z",
+  "system": {
+    "nodeVersion": "v20.19.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "networks": {
+    "ethereum": {
+      "rpcUrl": "https://sepolia.infura.io/v3/116078ce3b154dd0b21e372e9626f104",
+      "connected": true
+    },
+    "algorand": {
+      "rpcUrl": "https://testnet-api.algonode.cloud",
+      "connected": true
+    }
+  },
+  "contracts": {
+    "lop": "0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+    "resolver": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+    "escrowFactory": "0x523258A91028793817F84aB037A3372B468ee940",
+    "limitOrderBridge": "0x384B0011f6E6aA8C192294F36dCE09a3758Df788",
+    "algorandApp": 743645803
+  },
+  "relayer": {
+    "ethAddress": "0x58924acDe600D5a0Fb3fb0AF49c8FE02060F79Ea",
+    "ethPrivateKey": "0x8635e2afccf73f691768d499e5e2fafec6b276289d67129dc8bf75f53b31d9e6",
+    "algoMnemonic": "spice fever file height try alcohol visual duck pave alcohol journey laptop harvest mouse poverty remind pigeon engine amazing choice shoe world solution about notice",
+    "algoAddress": "BJDBVZITI7VRHJLMPY4C6BX5UVBHZVNT6PRD3ZZWO2E2HSDYGSF4KO6RR4"
+  },
+  "resolvers": [
+    {
+      "name": "RESOLVER_1_ADDRESS",
+      "address": "0x0D0E9cd4f6A5d0603D5B6B8652F5ee0EfA18d0f6"
+    },
+    {
+      "name": "RESOLVER_2_ADDRESS",
+      "address": "0xD95E9CdBbe6EA1af6e6aB1831D2A506180Ba28aA"
+    },
+    {
+      "name": "RESOLVER_3_ADDRESS",
+      "address": "0x6cb1D92C46421D1CA967ac1e205E39a502f61C7e"
+    },
+    {
+      "name": "RESOLVER_4_ADDRESS",
+      "address": "0x990Bc37c278E3ff15D50cC9bAAcb06d4373e5a89"
+    }
+  ],
+  "status": "READY_FOR_TESTING"
+}

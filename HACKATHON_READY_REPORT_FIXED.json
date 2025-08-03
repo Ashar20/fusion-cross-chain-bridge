@@ -1,0 +1,255 @@
+{
+  "timestamp": "2025-08-02T04:03:02.245Z",
+  "demo": {
+    "title": "Hackathon-Ready Cross-Chain HTLC Bridge (Fixed)",
+    "description": "No API Dependencies - Pure Blockchain Data",
+    "features": [
+      "Official 1inch Contract Integration (On-chain)",
+      "Sophisticated HTLC System Validation",
+      "Bidirectional ETH ↔ ALGO Swaps",
+      "Gasless User Experience",
+      "Real-time Cross-Chain Monitoring",
+      "Production-Grade Security"
+    ]
+  },
+  "results": {
+    "timestamp": "2025-08-02T04:02:57.127Z",
+    "tests": [
+      {
+        "name": "Official 1inch Contract Validation",
+        "status": "PASSED",
+        "details": "Successfully validated official 1inch contracts on-chain"
+      },
+      {
+        "name": "Sophisticated HTLC System",
+        "status": "PASSED",
+        "details": "Multiple timelock stages, progressive access control, on-chain compatible"
+      },
+      {
+        "name": "Bidirectional Swaps",
+        "status": "PASSED",
+        "details": "ETH ↔ ALGO swap setup validated with on-chain balance check"
+      },
+      {
+        "name": "Gasless Experience",
+        "status": "PASSED",
+        "details": "Users pay zero gas fees, relayer handles all transactions"
+      },
+      {
+        "name": "Real-Time Monitoring",
+        "status": "PASSED",
+        "details": "Comprehensive cross-chain monitoring with on-chain event analysis"
+      },
+      {
+        "name": "Production Security",
+        "status": "PASSED",
+        "details": "Cryptographic security, access control, atomic guarantees validated on-chain"
+      }
+    ],
+    "features": {
+      "htlcSystem": {
+        "secret": "0x470640338654f84016a1a2713d424a68ed171c56546f1a489ed9654229463901",
+        "hashlock": "0x6081e9f536f0678fae3f00a4cddc70aa82e2f9000a7976fc091a1da9ea73bbb2",
+        "timelockStages": {
+          "srcWithdrawal": 1754193768,
+          "srcPublicWithdrawal": 1754197368,
+          "srcCancellation": 1754200968,
+          "srcPublicCancellation": 1754204568
+        },
+        "currentBlock": 8894061,
+        "currentTimestamp": 1754107368,
+        "accessControl": "Progressive",
+        "hashingMethod": "keccak256 (same as official 1inch)",
+        "note": "Using 24-hour timelock to meet deployed contract requirements"
+      },
+      "bidirectionalSwaps": {
+        "ethToAlgo": {
+          "amount": "0.001 ETH",
+          "recipient": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+        },
+        "algoToEth": {
+          "amount": "1 ALGO",
+          "recipient": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53"
+        },
+        "atomic": "Cross-chain atomic execution",
+        "timelock": "24 hours (meets contract requirement)",
+        "ethBalance": "3.83768128544274015",
+        "hasSufficientBalance": true
+      },
+      "gaslessExperience": {
+        "userGasCost": "0 ETH",
+        "relayerAddress": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+        "resolver": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+        "userFlow": "Order → Relayer → Execution → Funds",
+        "estimatedGas": "195683",
+        "gasPrice": "0.001355972 gwei",
+        "estimatedCost": "0.000000265340668876 ETH"
+      },
+      "realTimeMonitoring": {
+        "services": [
+          "Algorand",
+          "Ethereum",
+          "Secret Reveal",
+          "Refund"
+        ],
+        "eventProcessing": "Real-time with automatic triggers",
+        "coordination": "Cross-chain synchronization",
+        "latestBlock": 8894062,
+        "recentBlocks": [
+          {
+            "number": 8894062,
+            "timestamp": 1754107380,
+            "transactions": 256
+          },
+          {
+            "number": 8894061,
+            "timestamp": 1754107368,
+            "transactions": 215
+          },
+          {
+            "number": 8894060,
+            "timestamp": 1754107356,
+            "transactions": 319
+          },
+          {
+            "number": 8894059,
+            "timestamp": 1754107344,
+            "transactions": 406
+          },
+          {
+            "number": 8894058,
+            "timestamp": 1754107332,
+            "transactions": 96
+          }
+        ]
+      },
+      "productionSecurity": {
+        "cryptographic": "keccak256 hashing with 32-byte secrets",
+        "accessControl": "Progressive time-based permissions",
+        "atomicGuarantees": "Cross-chain atomicity with automatic refunds",
+        "hashlockValid": true,
+        "resolverCodeLength": 12672,
+        "contractDeployed": true
+      }
+    },
+    "contracts": {
+      "official1inch": {
+        "escrowFactory": "0x523258A91028793817F84aB037A3372B468ee940",
+        "srcImplementation": "0x0D5E150b04b60A872E1554154803Ce12C41592f8",
+        "dstImplementation": "0xcaA622761ebD5CC2B1f0f5891ae4E89FE779d1f1",
+        "limitOrderProtocol": "0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+        "srcCodeLength": 7096,
+        "dstCodeLength": 7746
+      }
+    },
+    "blockchainData": {}
+  },
+  "summary": {
+    "totalTests": 6,
+    "passedTests": 6,
+    "failedTests": 0,
+    "successRate": "100.0%"
+  },
+  "contracts": {
+    "official1inch": {
+      "escrowFactory": "0x523258A91028793817F84aB037A3372B468ee940",
+      "srcImplementation": "0x0D5E150b04b60A872E1554154803Ce12C41592f8",
+      "dstImplementation": "0xcaA622761ebD5CC2B1f0f5891ae4E89FE779d1f1",
+      "limitOrderProtocol": "0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+      "srcCodeLength": 7096,
+      "dstCodeLength": 7746
+    }
+  },
+  "features": {
+    "htlcSystem": {
+      "secret": "0x470640338654f84016a1a2713d424a68ed171c56546f1a489ed9654229463901",
+      "hashlock": "0x6081e9f536f0678fae3f00a4cddc70aa82e2f9000a7976fc091a1da9ea73bbb2",
+      "timelockStages": {
+        "srcWithdrawal": 1754193768,
+        "srcPublicWithdrawal": 1754197368,
+        "srcCancellation": 1754200968,
+        "srcPublicCancellation": 1754204568
+      },
+      "currentBlock": 8894061,
+      "currentTimestamp": 1754107368,
+      "accessControl": "Progressive",
+      "hashingMethod": "keccak256 (same as official 1inch)",
+      "note": "Using 24-hour timelock to meet deployed contract requirements"
+    },
+    "bidirectionalSwaps": {
+      "ethToAlgo": {
+        "amount": "0.001 ETH",
+        "recipient": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+      },
+      "algoToEth": {
+        "amount": "1 ALGO",
+        "recipient": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53"
+      },
+      "atomic": "Cross-chain atomic execution",
+      "timelock": "24 hours (meets contract requirement)",
+      "ethBalance": "3.83768128544274015",
+      "hasSufficientBalance": true
+    },
+    "gaslessExperience": {
+      "userGasCost": "0 ETH",
+      "relayerAddress": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+      "resolver": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+      "userFlow": "Order → Relayer → Execution → Funds",
+      "estimatedGas": "195683",
+      "gasPrice": "0.001355972 gwei",
+      "estimatedCost": "0.000000265340668876 ETH"
+    },
+    "realTimeMonitoring": {
+      "services": [
+        "Algorand",
+        "Ethereum",
+        "Secret Reveal",
+        "Refund"
+      ],
+      "eventProcessing": "Real-time with automatic triggers",
+      "coordination": "Cross-chain synchronization",
+      "latestBlock": 8894062,
+      "recentBlocks": [
+        {
+          "number": 8894062,
+          "timestamp": 1754107380,
+          "transactions": 256
+        },
+        {
+          "number": 8894061,
+          "timestamp": 1754107368,
+          "transactions": 215
+        },
+        {
+          "number": 8894060,
+          "timestamp": 1754107356,
+          "transactions": 319
+        },
+        {
+          "number": 8894059,
+          "timestamp": 1754107344,
+          "transactions": 406
+        },
+        {
+          "number": 8894058,
+          "timestamp": 1754107332,
+          "transactions": 96
+        }
+      ]
+    },
+    "productionSecurity": {
+      "cryptographic": "keccak256 hashing with 32-byte secrets",
+      "accessControl": "Progressive time-based permissions",
+      "atomicGuarantees": "Cross-chain atomicity with automatic refunds",
+      "hashlockValid": true,
+      "resolverCodeLength": 12672,
+      "contractDeployed": true
+    }
+  },
+  "blockchainData": {
+    "network": "sepolia",
+    "latestBlock": 8894062,
+    "ethBalance": "3.83768128544274015",
+    "gasPrice": "0.001355972 gwei"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "direction": "ALGO → ETH Bidirectional Test",
+  "algoAmount": 0.0005,
+  "ethAmount": 0.000001,
+  "algorandTx": "FMXO575FPYA3JBAK5J46IGCECVQWJ3IAZL3JKJLQ2CYLRA7GRBQQ",
+  "ethereumTx": "0x4f7566fadf2937f59ede9db9f9aef8c4f34183945786557d380cb1354b5079c6",
+  "hashlock": "aaec67b0bb912283ef755647b053425addb158cb23a1d588b861401e11e9c4d2",
+  "secret": "a862c387e6efcbd20029147c513b73436f962d68b5b7fa1c6e8e6b8d6f12344d",
+  "timelock": 1754096415,
+  "timestamp": "2025-08-02T00:00:30.150Z",
+  "status": "SUCCESS - Both HTLCs created",
+  "note": "Real testnet transactions with tiny amounts"
+}

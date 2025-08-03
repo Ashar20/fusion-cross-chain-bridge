@@ -1,17 +1,24 @@
 {
   "name": "fusion-cross-chain-bridge",
   "version": "0.1.0",
-  "description": "Revolutionary cross-chain atomic swaps between Ethereum and EOS using 1inch Fusion+ technology",
+  "description": "Revolutionary cross-chain atomic swaps between Ethereum and Algorand using 1inch Fusion+ technology",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "node scripts/deploy.js",
-    "swap": "node scripts/execute-swap.js",
-    "deployEOSContract": "node scripts/deployEOSContract.js",
-    "realAtomicSwap": "node scripts/realAtomicSwap.js",
-    "realAtomicSwapSimplified": "node scripts/realAtomicSwapSimplified.js",
-    "realAtomicSwapOfficial1inch": "node scripts/realAtomicSwapOfficial1inch.js"
+    "validate-env": "node scripts/validateEnvironment.cjs",
+    "setup": "npm install && node scripts/validateEnvironment.cjs",
+    "deploy-algorand-htlc-bridge": "node scripts/deployAlgorandHTLCBridge.cjs",
+    "deploy-algorand-contract": "node scripts/deployAlgorandContract.cjs",
+    "start-algorand-relayer": "node scripts/algorandRelayerService.cjs",
+    "test-bidirectional-htlc": "node scripts/demoBidirectionalHTLC.cjs",
+    "deploy-all": "npm run deploy-algorand-htlc-bridge && npm run deploy-algorand-contract",
+    "check-algorand-balance": "node scripts/checkAlgorandBalance.cjs",
+    "comprehensive-demo": "node scripts/comprehensiveDemo.cjs",
+    "requirements-demo": "npm run comprehensive-demo",
+    "demo-readiness": "node scripts/demoReadiness.cjs",
+    "start": "npm run start-algorand-relayer",
+    "demo": "npm run test-bidirectional-htlc"
   },
   "keywords": [
     "1inch",
@@ -19,15 +26,17 @@
     "cross-chain",
     "atomic-swaps",
     "ethereum",
-    "eos",
+    "algorand",
     "defi",
     "blockchain"
   ],
   "author": "Fusion+ Cross-Chain Team",
   "license": "MIT",
   "dependencies": {
+    "@1inch/limit-order-protocol-contract": "^4.3.2",
+    "@1inch/solidity-utils": "^6.6.0",
+    "algosdk": "^2.11.0",
     "dotenv": "^16.6.1",
-    "eosjs": "^22.1.0",
     "ethers": "^6.15.0",
     "node-fetch": "^3.3.2"
   },
@@ -36,7 +45,9 @@
     "url": "https://github.com/your-username/fusion-cross-chain-bridge.git"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
     "@openzeppelin/contracts": "^5.4.0",
+    "hardhat": "^2.26.1",
     "solc": "^0.8.30"
   }
 }

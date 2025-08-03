@@ -1,0 +1,24 @@
+{
+  "network": "sepolia",
+  "chainId": 11155111,
+  "timestamp": "2024-08-01T21:43:00.000Z",
+  "deploymentMethod": "foundry",
+  "gasUsed": "4371666",
+  "totalCost": "0.001852758739833782 ETH",
+  "contracts": {
+    "limitOrderProtocol": "0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+    "escrowFactory": "0x523258A91028793817F84aB037A3372B468ee940",
+    "escrowSrcImplementation": "0x0D5E150b04b60A7A872E1554154803Ce12C41592f8",
+    "escrowDstImplementation": "0xcaA622761ebD5CC2B1f0f5891ae4E89FE779d1f1"
+  },
+  "transactions": {
+    "limitOrderProtocol": "0x8e8ac72eb5f0930e48475ed387f6a8b2053cfad76c0927553c521a43157739f9",
+    "escrowFactory": "0x318809015b605d4aef5daa9e59f39b1d1c52007ecea2758b2889f310a4764969"
+  },
+  "verification": {
+    "limitOrderProtocol": "https://sepolia.etherscan.io/address/0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+    "escrowFactory": "https://sepolia.etherscan.io/address/0x523258A91028793817F84aB037A3372B468ee940",
+    "escrowSrcImplementation": "https://sepolia.etherscan.io/address/0x0D5E150b04b60A7A872E1554154803Ce12C41592f8",
+    "escrowDstImplementation": "https://sepolia.etherscan.io/address/0xcaA622761ebD5CC2B1f0f5891ae4E89FE779d1f1"
+  }
+}

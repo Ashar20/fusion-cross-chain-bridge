@@ -1,0 +1,20 @@
+{
+  "contractName": "LimitOrderBridge",
+  "contractAddress": "0x76ba6308A13556E4d73bdA77F8De1230A2B6Ab61",
+  "deployerAddress": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "network": "sepolia",
+  "chainId": 11155111,
+  "transactionHash": "0x7731d3bbac9103f9fa7dfa0daff3361c9f6f3be0ba2058b9965c180a475ed451",
+  "gasLimit": "2000000",
+  "gasPrice": "1558457",
+  "blockNumber": null,
+  "timestamp": "2025-08-02T17:10:01.807Z",
+  "etherscanUrl": "https://sepolia.etherscan.io/address/0x76ba6308A13556E4d73bdA77F8De1230A2B6Ab61",
+  "features": [
+    "submitLimitOrder() - Intent-based order submission",
+    "fillLimitOrder() - Resolver execution",
+    "EIP-712 signature verification",
+    "Cross-chain HTLC coordination",
+    "Gasless user experience"
+  ]
+}

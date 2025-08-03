@@ -1,0 +1,81 @@
+{
+  "title": "1inch ↔ Algorand HTLC Bridge Integration",
+  "status": "READY",
+  "timestamp": "2025-08-01T16:35:10.455Z",
+  "networks": {
+    "ethereum": {
+      "chainId": 11155111,
+      "name": "Sepolia Testnet",
+      "contracts": {
+        "limitOrderProtocol": "0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+        "escrowFactory": "0x523258A91028793817F84aB037A3372B468ee940",
+        "escrowSrcImplementation": "0x0D5E150b04b60A872E1554154803Ce12C41592f8",
+        "escrowDstImplementation": "0xcaA622761ebD5CC2B1f0f5891ae4E89FE779d1f1"
+      },
+      "wallet": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53"
+    },
+    "algorand": {
+      "chainId": 416002,
+      "name": "Testnet",
+      "appId": null,
+      "wallet": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+    }
+  },
+  "integration": {
+    "type": "Cross-Chain Atomic Swap Bridge",
+    "protocol": "Official 1inch + Custom Algorand HTLC",
+    "features": [
+      "ETH → ALGO atomic swaps",
+      "ALGO → ETH atomic swaps",
+      "Gasless user experience",
+      "Relayer-based execution",
+      "On-chain verification",
+      "Timelock protection",
+      "Secret hash verification"
+    ],
+    "workflow": {
+      "step1": "User initiates swap on source chain",
+      "step2": "1inch escrow created on source chain",
+      "step3": "Algorand HTLC created on destination chain",
+      "step4": "Relayer monitors and executes cross-chain",
+      "step5": "User claims funds on destination chain",
+      "step6": "Relayer claims funds on source chain"
+    }
+  },
+  "contracts": {
+    "ethereum": {
+      "limitOrderProtocol": {
+        "address": "0x68b68381b76e705A7Ef8209800D0886e21b654FE",
+        "purpose": "Order management and execution",
+        "explorer": "https://sepolia.etherscan.io/address/0x68b68381b76e705A7Ef8209800D0886e21b654FE"
+      },
+      "escrowFactory": {
+        "address": "0x523258A91028793817F84aB037A3372B468ee940",
+        "purpose": "Create escrow contracts for swaps",
+        "explorer": "https://sepolia.etherscan.io/address/0x523258A91028793817F84aB037A3372B468ee940"
+      },
+      "escrowSrc": {
+        "address": "0x0D5E150b04b60A872E1554154803Ce12C41592f8",
+        "purpose": "Source chain escrow (holds user tokens)",
+        "explorer": "https://sepolia.etherscan.io/address/0x0D5E150b04b60A872E1554154803Ce12C41592f8"
+      },
+      "escrowDst": {
+        "address": "0xcaA622761ebD5CC2B1f0f5891ae4E89FE779d1f1",
+        "purpose": "Destination chain escrow (holds resolver tokens)",
+        "explorer": "https://sepolia.etherscan.io/address/0xcaA622761ebD5CC2B1f0f5891ae4E89FE779d1f1"
+      }
+    },
+    "algorand": {
+      "htlcBridge": {
+        "appId": null,
+        "purpose": "HTLC management for atomic swaps",
+        "explorer": "Not deployed"
+      }
+    }
+  },
+  "scripts": {
+    "deployAlgorand": "scripts/deployFixedAlgorandHTLC.cjs",
+    "testSwap": "scripts/test1inchAlgorandSwap.cjs",
+    "monitor": "scripts/monitorCrossChainSwaps.cjs"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "maker": "0x58924acDe600D5a0Fb3fb0AF49c8FE02060F79Ea",
+  "makerAsset": "0x0000000000000000000000000000000000000000",
+  "takerAsset": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+  "makerAmount": "1000000000000000",
+  "takerAmount": "1600000",
+  "salt": "91228114681776345816184964429368204848190367794385291173578794313888705560241",
+  "deadline": "1754236662",
+  "signature": "0xf1f3ef7046a254b278c8799f272b1821d3ed2daeb7bf6709df821ce20bf73c4835b3b105484f0610fc41cee693569fc30501e02411a91610c525f55461671da51c",
+  "orderHash": "0x2e560cc3994a9596c606b259155fefee36c332218f6b9dabefd2e209997d7b95",
+  "intent": {
+    "ethAmount": "1000000000000000",
+    "usdcAmount": "1600000",
+    "deadline": "1754236662",
+    "salt": "91228114681776345816184964429368204848190367794385291173578794313888705560241"
+  },
+  "metadata": {
+    "createdAt": "2025-08-03T14:57:44.388Z",
+    "network": "Sepolia",
+    "description": "ETH to USDC limit order (proxy for ALGO)",
+    "makerAddress": "0x58924acDe600D5a0Fb3fb0AF49c8FE02060F79Ea",
+    "relayerTarget": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+    "orderType": "LIMIT_ORDER",
+    "version": "1.0"
+  }
+}

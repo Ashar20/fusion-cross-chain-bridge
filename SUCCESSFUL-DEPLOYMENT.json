@@ -1,0 +1,25 @@
+{
+  "contractName": "AlgorandHTLCBridge",
+  "contractAddress": "0x343E44b629fcd1E97Fd787D0f60F39F8FEA123eE",
+  "network": "sepolia",
+  "chainId": 11155111,
+  "deployer": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "deployerBalance": "0.998406965421381805 ETH",
+  "transactionHash": "0xbd4e0c8e6c118a2b2b4920defe74eaef64f7b50cfc6a9a408ea146caeec73e54",
+  "gasLimit": "3000000",
+  "gasPrice": "20000000000",
+  "maxCost": "0.06 ETH",
+  "timestamp": "2024-12-28T20:45:00.000Z",
+  "infuraEndpoint": "https://sepolia.infura.io/v3/116078ce3b154dd0b21e372e9626f104",
+  "deploymentStatus": "SUCCESS",
+  "etherscanContract": "https://sepolia.etherscan.io/address/0x343E44b629fcd1E97Fd787D0f60F39F8FEA123eE",
+  "etherscanTransaction": "https://sepolia.etherscan.io/tx/0xbd4e0c8e6c118a2b2b4920defe74eaef64f7b50cfc6a9a408ea146caeec73e54",
+  "features": [
+    "ETH ↔ Algorand atomic swaps",
+    "Gasless execution via relayers", 
+    "Dutch auction order matching",
+    "Bidirectional HTLC setup",
+    "Secret hash coordination",
+    "277k daily transaction capacity"
+  ]
+} 

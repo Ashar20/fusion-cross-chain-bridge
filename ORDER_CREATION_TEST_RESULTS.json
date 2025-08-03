@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-08-02T18:47:03.012Z",
+  "contractAddress": "0x384B0011f6E6aA8C192294F36dCE09a3758Df788",
+  "orderId": "0x038ce2dff268057598ed090174a454a168c6c5bbb13bf972729571c2cb252b25",
+  "testUser": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "orderDetails": {
+    "maker": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+    "makerAmount": "0.1",
+    "takerAmount": "150.0",
+    "remainingAmount": "0.1",
+    "partialFills": "0",
+    "filled": false,
+    "cancelled": false,
+    "allowPartialFills": true,
+    "minPartialFill": "0.01"
+  },
+  "hashlock": {
+    "expected": "0xef63138e0bad40ec0b0d485982b3c3910fd4f8d8f7dc639b5d55146b864faded",
+    "actual": "0xef63138e0bad40ec0b0d485982b3c3910fd4f8d8f7dc639b5d55146b864faded",
+    "match": true
+  },
+  "bids": {
+    "total": 0,
+    "active": 0
+  },
+  "status": "SUCCESS"
+}

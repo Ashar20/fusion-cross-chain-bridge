@@ -1,0 +1,66 @@
+{
+  "timestamp": "2025-08-02T04:55:45.679Z",
+  "swapType": "ALGO → ETH",
+  "secret": "0xade18787679b63b9daff6a8f62cf50572b841d165d8f7d084ee2885e85e58548",
+  "hashlock": "0x8f59acb223dd6506d8feb69d1d6a92e2ebce1da772094647df6f00cc95fb19bc",
+  "amounts": {
+    "algo": 1,
+    "eth": "0.001"
+  },
+  "participants": {
+    "user": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA",
+    "ethereumWallet": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53"
+  },
+  "transactions": {
+    "algorandHTLC": {
+      "txId": "1eX2mqyZxXGTJfjBDFp9LlawqLcO4HLVa0DNEa9hOmA=",
+      "confirmedRound": 50019095,
+      "hashlock": "0x8f59acb223dd6506d8feb69d1d6a92e2ebce1da772094647df6f00cc95fb19bc",
+      "amount": 1,
+      "recipient": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+      "timelock": 1754196942,
+      "status": "SIMULATED"
+    },
+    "ethereumOrder": {
+      "orderHash": "0xac7ef30f4951f7c99bd2ef2991f3bc724a1e80631c182d6f2602d3c7c830d55c",
+      "status": "SIMULATED"
+    },
+    "claims": {
+      "ethereumClaim": "0x1aced32121a260a38b9c6eed0322f8ccca4b03976c6cb9c5427209d379280b4f",
+      "algorandClaim": "Mt+dL4kFf8jaMVuCP9DoW2WEikpomZ+MgnGSXTRqk8E=",
+      "secret": "0xade18787679b63b9daff6a8f62cf50572b841d165d8f7d084ee2885e85e58548",
+      "status": "SIMULATED"
+    }
+  },
+  "balances": {
+    "initial": {
+      "eth": "3.83768128544274015",
+      "algo": 7.317,
+      "hasSufficientAlgo": true,
+      "hasSufficientEth": true
+    }
+  },
+  "steps": [
+    {
+      "step": "Balance Check",
+      "status": "PASSED",
+      "details": "ETH: 3.83768128544274015, ALGO: 7.317"
+    },
+    {
+      "step": "Algorand HTLC Creation",
+      "status": "SIMULATED",
+      "details": "Transaction ID: 1eX2mqyZxXGTJfjBDFp9LlawqLcO4HLVa0DNEa9hOmA="
+    },
+    {
+      "step": "Relayer Processing",
+      "status": "SIMULATED",
+      "details": "Relayer detected HTLC and created Ethereum order"
+    },
+    {
+      "step": "Claims",
+      "status": "SIMULATED",
+      "details": "Claims executed on both chains"
+    }
+  ],
+  "status": "COMPLETED (SIMULATED)"
+}

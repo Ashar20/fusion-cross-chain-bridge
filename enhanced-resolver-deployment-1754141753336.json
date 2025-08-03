@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-08-02T13:35:52.505Z",
+  "network": "sepolia",
+  "deployer": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+  "contracts": {
+    "enhancedResolver": "0xdE9fA203098BaD66399d9743a6505E9967171815"
+  },
+  "features": {
+    "partialFills": true,
+    "dutchAuctions": true,
+    "multiStageTimelocks": true,
+    "accessTokens": true,
+    "rescueFunctionality": true
+  },
+  "configuration": {
+    "minOrderValue": "0.001",
+    "defaultTimelock": "86400",
+    "auctionDuration": "180",
+    "maxPartialFills": "10",
+    "resolverFeeRate": "50",
+    "partialFillBonus": "25"
+  }
+}

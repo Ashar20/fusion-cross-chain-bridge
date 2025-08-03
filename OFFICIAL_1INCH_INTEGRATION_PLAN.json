@@ -1,0 +1,39 @@
+{
+  "title": "Official 1inch ↔ Algorand HTLC Bridge",
+  "status": "EVM contracts deployed",
+  "architecture": {
+    "evmSide": {
+      "contracts": "Official 1inch Cross-Chain Swap",
+      "deployment": "Foundry-based production deployment",
+      "features": [
+        "EscrowFactory",
+        "EscrowSrc",
+        "EscrowDst",
+        "LimitOrderProtocol"
+      ]
+    },
+    "algorandSide": {
+      "contract": "AlgorandHTLCBridge.py",
+      "status": "Needs parameter fixing",
+      "integration": "Custom adapter layer"
+    },
+    "bridge": {
+      "type": "Hybrid HTLC + 1inch Escrow",
+      "workflow": [
+        "User creates 1inch order",
+        "Resolver fills order → EscrowSrc created",
+        "Resolver creates EscrowDst",
+        "Resolver creates Algorand HTLC",
+        "User claims from Algorand HTLC",
+        "Resolver claims from EscrowSrc using revealed secret"
+      ]
+    }
+  },
+  "nextSteps": [
+    "Fix Algorand HTLC parameter handling",
+    "Create 1inch-compatible resolver service",
+    "Implement cross-chain coordination logic",
+    "Test end-to-end atomic swap"
+  ],
+  "compliance": "Uses official 1inch contracts as required by judges"
+}

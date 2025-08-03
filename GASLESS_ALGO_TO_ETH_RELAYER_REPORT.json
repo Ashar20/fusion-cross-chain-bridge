@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-08-03T14:20:41.918Z",
+  "swapType": "ALGO_TO_ETH_RELAYER_GASLESS",
+  "swapParams": {
+    "ethAmount": "0.001",
+    "algoAmount": 1,
+    "hashlock": "0xeaeb23dc32047cbcf9093f58fd0d1d023991722bc09b2825e2408640eacdb26e",
+    "secret": "b0bb50bc0d7a5d361fd52498cd9d9fa06fdc25e57776524b1450e7a80a1bb92a"
+  },
+  "transactions": {
+    "algorandHTLC": "WGL2SLCWHLUT634XKGI54DUPJVDCJHM2XQOZL7MDRTDKZ2RPXSPQ",
+    "ethereumHTLC": "0xdf597a0911e06dcc82f400b4a6ecb9d345d211ad05127b63c2c44a1d076a0f50",
+    "relayerClaim": "442PNOYCX4E6ERR657ZZ3G6U4A3RXRKXHBTVCQAWAOFZSBYU4OFQ"
+  },
+  "balances": {
+    "initial": {
+      "user": {
+        "eth": "0.1064937158396349",
+        "algo": 6.001
+      },
+      "relayer": {
+        "eth": "0.033090873809713535",
+        "algo": 3.372
+      }
+    },
+    "final": {
+      "user": {
+        "eth": "0.1064937158396349",
+        "algo": 7.001
+      },
+      "relayer": {
+        "eth": "0.03209054358016117",
+        "algo": 1.368
+      }
+    },
+    "changes": {
+      "user": {
+        "eth": 0,
+        "algo": 1
+      },
+      "relayer": {
+        "eth": -0.001000330229552364,
+        "algo": -2.0039999999999996
+      }
+    }
+  },
+  "features": {
+    "relayerPaidAlgoFees": true,
+    "relayerPaidEthFees": true,
+    "relayerPaidAlgoClaimFees": true,
+    "crossChainAtomic": true,
+    "completelyGasless": true
+  },
+  "status": "COMPLETED"
+}

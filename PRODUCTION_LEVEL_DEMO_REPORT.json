@@ -1,0 +1,166 @@
+{
+  "timestamp": "2025-08-02T03:11:42.919Z",
+  "demo": {
+    "title": "Production-Level Cross-Chain HTLC Bridge",
+    "description": "Official 1inch Fusion+ Integration with Bidirectional ETH ↔ ALGO Swaps",
+    "features": [
+      "Official 1inch Fusion+ Integration",
+      "Sophisticated HTLC System with Multiple Timelock Stages",
+      "Bidirectional ETH ↔ ALGO Atomic Swaps",
+      "Gasless User Experience",
+      "Real-time Cross-Chain Monitoring",
+      "Production-Grade Security"
+    ]
+  },
+  "results": {
+    "timestamp": "2025-08-02T03:11:41.419Z",
+    "tests": [
+      {
+        "name": "Official 1inch Integration",
+        "status": "PASSED",
+        "details": "Successfully connected to official 1inch contracts"
+      },
+      {
+        "name": "Sophisticated HTLC System",
+        "status": "PASSED",
+        "details": "Multiple timelock stages, progressive access control"
+      },
+      {
+        "name": "Bidirectional Swaps",
+        "status": "PASSED",
+        "details": "ETH ↔ ALGO swap setup validated"
+      },
+      {
+        "name": "Gasless Experience",
+        "status": "PASSED",
+        "details": "Users pay zero gas fees, relayer handles all transactions"
+      },
+      {
+        "name": "Real-Time Monitoring",
+        "status": "PASSED",
+        "details": "Comprehensive cross-chain monitoring with automatic coordination"
+      },
+      {
+        "name": "Production Security",
+        "status": "PASSED",
+        "details": "Cryptographic security, access control, atomic guarantees"
+      }
+    ],
+    "features": {
+      "htlcSystem": {
+        "secret": "0x13a121175d3b7ef46a8f6840dd988c05409231ad2cfad59cf6f47fe42532e245",
+        "hashlock": "0xd66fca660df8e0ff84a99d26e84c6e1a615361700963e4ce0e84142a5428d02b",
+        "timelockStages": {
+          "srcWithdrawal": 1754107902,
+          "srcPublicWithdrawal": 1754111502,
+          "srcCancellation": 1754115102,
+          "srcPublicCancellation": 1754118702
+        },
+        "accessControl": "Progressive",
+        "hashingMethod": "keccak256 (same as official 1inch)"
+      },
+      "bidirectionalSwaps": {
+        "ethToAlgo": {
+          "amount": "0.001 ETH",
+          "recipient": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+        },
+        "algoToEth": {
+          "amount": "1 ALGO",
+          "recipient": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53"
+        },
+        "atomic": "Cross-chain atomic execution",
+        "timelock": "1 hour configurable"
+      },
+      "gaslessExperience": {
+        "userGasCost": "0 ETH",
+        "relayerAddress": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+        "resolver": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+        "userFlow": "Order → Relayer → Execution → Funds"
+      },
+      "realTimeMonitoring": {
+        "services": [
+          "Algorand",
+          "Ethereum",
+          "Secret Reveal",
+          "Refund"
+        ],
+        "eventProcessing": "Real-time with automatic triggers",
+        "coordination": "Cross-chain synchronization"
+      },
+      "productionSecurity": {
+        "cryptographic": "keccak256 hashing with 32-byte secrets",
+        "accessControl": "Progressive time-based permissions",
+        "atomicGuarantees": "Cross-chain atomicity with automatic refunds"
+      }
+    },
+    "contracts": {
+      "official1inch": {
+        "escrowFactory": "0x523258A91028793817F84aB037A3372B468ee940",
+        "srcImplementation": "0x0D5E150b04b60A872E1554154803Ce12C41592f8",
+        "dstImplementation": "0xcaA622761ebD5CC2B1f0f5891ae4E89FE779d1f1",
+        "limitOrderProtocol": "0x68b68381b76e705A7Ef8209800D0886e21b654FE"
+      }
+    }
+  },
+  "summary": {
+    "totalTests": 6,
+    "passedTests": 6,
+    "failedTests": 0,
+    "successRate": "100.0%"
+  },
+  "contracts": {
+    "official1inch": {
+      "escrowFactory": "0x523258A91028793817F84aB037A3372B468ee940",
+      "srcImplementation": "0x0D5E150b04b60A872E1554154803Ce12C41592f8",
+      "dstImplementation": "0xcaA622761ebD5CC2B1f0f5891ae4E89FE779d1f1",
+      "limitOrderProtocol": "0x68b68381b76e705A7Ef8209800D0886e21b654FE"
+    }
+  },
+  "features": {
+    "htlcSystem": {
+      "secret": "0x13a121175d3b7ef46a8f6840dd988c05409231ad2cfad59cf6f47fe42532e245",
+      "hashlock": "0xd66fca660df8e0ff84a99d26e84c6e1a615361700963e4ce0e84142a5428d02b",
+      "timelockStages": {
+        "srcWithdrawal": 1754107902,
+        "srcPublicWithdrawal": 1754111502,
+        "srcCancellation": 1754115102,
+        "srcPublicCancellation": 1754118702
+      },
+      "accessControl": "Progressive",
+      "hashingMethod": "keccak256 (same as official 1inch)"
+    },
+    "bidirectionalSwaps": {
+      "ethToAlgo": {
+        "amount": "0.001 ETH",
+        "recipient": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+      },
+      "algoToEth": {
+        "amount": "1 ALGO",
+        "recipient": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53"
+      },
+      "atomic": "Cross-chain atomic execution",
+      "timelock": "1 hour configurable"
+    },
+    "gaslessExperience": {
+      "userGasCost": "0 ETH",
+      "relayerAddress": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+      "resolver": "0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64",
+      "userFlow": "Order → Relayer → Execution → Funds"
+    },
+    "realTimeMonitoring": {
+      "services": [
+        "Algorand",
+        "Ethereum",
+        "Secret Reveal",
+        "Refund"
+      ],
+      "eventProcessing": "Real-time with automatic triggers",
+      "coordination": "Cross-chain synchronization"
+    },
+    "productionSecurity": {
+      "cryptographic": "keccak256 hashing with 32-byte secrets",
+      "accessControl": "Progressive time-based permissions",
+      "atomicGuarantees": "Cross-chain atomicity with automatic refunds"
+    }
+  }
+}

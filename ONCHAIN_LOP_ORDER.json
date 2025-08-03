@@ -1,0 +1,24 @@
+{
+  "maker": "0x58924acDe600D5a0Fb3fb0AF49c8FE02060F79Ea",
+  "makerAsset": "0x0000000000000000000000000000000000000000",
+  "takerAsset": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+  "makerAmount": "1000000000000000",
+  "takerAmount": "1600000",
+  "finalTakerAmount": "1520000",
+  "salt": "0xe74feb4d91b467e8e8653e940aa1299cc6e3a49d92df2abe7c3eed211f4ba4c6",
+  "deadline": "1754235995",
+  "dutchAuction": true,
+  "priceDecayRate": 0.001,
+  "maxBlocks": 100,
+  "currentBlock": 8904638,
+  "createdAt": "2025-08-03T15:26:35.972Z",
+  "signature": "0x2d82f58c876c738a454b163f0681478d9be76871010a76c93a597be01db65880754b285dbcfbb254b7c67f7c5571afde15051e18c07dc852a4313196be1bdc091b",
+  "orderHash": "0xa809f3485924c5a1ad4a63a881d64bace57fe2b5112d2122fc77a9a6ab7f13c7",
+  "metadata": {
+    "createdBy": "OnChainLOPOrderCreator",
+    "version": "1.0",
+    "dutchAuction": true,
+    "onChainProof": true,
+    "createdAt": "2025-08-03T15:26:36.236Z"
+  }
+}
