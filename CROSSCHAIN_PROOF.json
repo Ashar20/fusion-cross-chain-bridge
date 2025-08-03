@@ -1,0 +1,15 @@
+{
+  "intentHash": "0xa0b2a52188d3e17a3c3609bbde7b746ab64ca7ddf68de10421bc901880e130de",
+  "proofTxHash": "0xf59ef5c3a8c2078fb7731c49ef1d834b974b6730bc9e679c4042434a8632484e",
+  "blockNumber": 8904664,
+  "gasUsed": "26520",
+  "status": "SUCCESS",
+  "timestamp": "2025-08-03T15:31:41.869Z",
+  "dutchAuction": true,
+  "crossChain": true,
+  "sourceChain": "ethereum",
+  "destinationChain": "algorand",
+  "initialPrice": 3000000,
+  "finalPrice": 2850000,
+  "priceDecayRate": 0.001
+}

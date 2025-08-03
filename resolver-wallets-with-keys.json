@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-08-03T00:11:44.300Z",
+  "network": "sepolia",
+  "totalResolvers": 4,
+  "totalFunding": 2.5999999999999996,
+  "resolvers": [
+    {
+      "name": "High-Frequency-Resolver-1",
+      "address": "0x0D0E9cd4f6A5d0603D5B6B8652F5ee0EfA18d0f6",
+      "privateKey": "0x193b5abc4b7bda44c5f53e236e5a30c2eeb65e741e45ea066f1096338f79d42e",
+      "strategy": "High-frequency bidding",
+      "risk": "High",
+      "funding": "0.5",
+      "description": "High-frequency trading resolver for fast execution",
+      "balance": "0",
+      "bidCount": 0,
+      "successCount": 0
+    },
+    {
+      "name": "Arbitrage-Resolver-1",
+      "address": "0xD95E9CdBbe6EA1af6e6aB1831D2A506180Ba28aA",
+      "privateKey": "0x45294ec164ea5b984db4df9102c6325f2fadfaeed4af298fd18a74c955dabaee",
+      "strategy": "Arbitrage opportunities",
+      "risk": "Medium",
+      "funding": "0.8",
+      "description": "Arbitrage resolver for price differences",
+      "balance": "0",
+      "bidCount": 0,
+      "successCount": 0
+    },
+    {
+      "name": "MEV-Resolver-1",
+      "address": "0x6cb1D92C46421D1CA967ac1e205E39a502f61C7e",
+      "privateKey": "0xced3ec51ecb64e050adc1a6d183fe3e47a2ca2b698661a03fcf674a6e2fd1bf7",
+      "strategy": "MEV extraction",
+      "risk": "High",
+      "funding": "1.0",
+      "description": "MEV resolver for maximum extractable value",
+      "balance": "0",
+      "bidCount": 0,
+      "successCount": 0
+    },
+    {
+      "name": "Backup-Resolver-1",
+      "address": "0x990Bc37c278E3ff15D50cC9bAAcb06d4373e5a89",
+      "privateKey": "0x69602100bd64dfe72a8b217099bc14d3d7a3f6f8316936990867cb7facca3ba1",
+      "strategy": "Conservative bidding",
+      "risk": "Low",
+      "funding": "0.3",
+      "description": "Backup resolver for redundancy",
+      "balance": "0",
+      "bidCount": 0,
+      "successCount": 0
+    }
+  ]
+}

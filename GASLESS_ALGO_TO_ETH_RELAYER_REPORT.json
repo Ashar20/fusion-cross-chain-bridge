@@ -1,36 +1,36 @@
 {
-  "timestamp": "2025-08-02T16:31:44.275Z",
+  "timestamp": "2025-08-03T14:20:41.918Z",
   "swapType": "ALGO_TO_ETH_RELAYER_GASLESS",
   "swapParams": {
     "ethAmount": "0.001",
     "algoAmount": 1,
-    "hashlock": "0xfba9e6a513dbf15106a2eb87b6f8051c893e4d36b836a4f30debc07289d8c5e7",
-    "secret": "86236b08409f519553da5e36a05979bffe46c3cc160bc586279159fe3d68303f"
+    "hashlock": "0xeaeb23dc32047cbcf9093f58fd0d1d023991722bc09b2825e2408640eacdb26e",
+    "secret": "b0bb50bc0d7a5d361fd52498cd9d9fa06fdc25e57776524b1450e7a80a1bb92a"
   },
   "transactions": {
-    "algorandHTLC": "7G5E6CE257PP4KPDDAJRBEU7EHI3EXVSOFW5RQH6O5QX4QKGATRA",
-    "ethereumHTLC": "0xfaf8f87ff9dfe12f30b08a2fbb747218d7849fd3dc2e71340d6ef8df3c7bdf55",
-    "relayerClaim": "BXU5FUHBW2HC4S2LYZUJIGCGYHSAG2XJHFFKMT5UYFRL3DRVCELA"
+    "algorandHTLC": "WGL2SLCWHLUT634XKGI54DUPJVDCJHM2XQOZL7MDRTDKZ2RPXSPQ",
+    "ethereumHTLC": "0xdf597a0911e06dcc82f400b4a6ecb9d345d211ad05127b63c2c44a1d076a0f50",
+    "relayerClaim": "442PNOYCX4E6ERR657ZZ3G6U4A3RXRKXHBTVCQAWAOFZSBYU4OFQ"
   },
   "balances": {
     "initial": {
       "user": {
-        "eth": "3.823657925279226798",
-        "algo": 4.034
+        "eth": "0.1064937158396349",
+        "algo": 6.001
       },
       "relayer": {
-        "eth": "0.047999180632337225",
-        "algo": 3.486
+        "eth": "0.033090873809713535",
+        "algo": 3.372
       }
     },
     "final": {
       "user": {
-        "eth": "3.823657925279226798",
-        "algo": 5.034
+        "eth": "0.1064937158396349",
+        "algo": 7.001
       },
       "relayer": {
-        "eth": "0.046998767601165343",
-        "algo": 1.481
+        "eth": "0.03209054358016117",
+        "algo": 1.368
       }
     },
     "changes": {
@@ -39,8 +39,8 @@
         "algo": 1
       },
       "relayer": {
-        "eth": -0.0010004130311718831,
-        "algo": -2.005
+        "eth": -0.001000330229552364,
+        "algo": -2.0039999999999996
       }
     }
   },

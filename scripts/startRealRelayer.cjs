@@ -1,52 +1,29 @@
 #!/usr/bin/env node
 
 /**
- * 🚀 START REAL RELAYER SERVICE
- * ✅ Launches production relayer for gasless swaps
- * ✅ Uses funded dedicated addresses
- * ✅ Monitors both Ethereum and Algorand
+ * 🚀 START REAL PRODUCTION RELAYER
  */
 
-console.log('🚀 STARTING REAL RELAYER SERVICE');
-console.log('================================');
-console.log('✅ Using funded dedicated addresses');
-console.log('✅ Production-ready gasless execution');
-console.log('✅ Monitoring both chains simultaneously');
-console.log('================================\n');
-
-// Import the enhanced relayer service
-const EnhancedRelayerService = require('./enhancedRelayerService.cjs');
+const { RealProductionRelayer } = require('./realProductionRelayer.cjs');
 
 async function startRealRelayer() {
     try {
-        console.log('🔧 Initializing Enhanced Relayer Service...');
+        console.log('🚀 STARTING REAL PRODUCTION RELAYER');
+        console.log('=====================================\n');
         
-        // Create and start the relayer
-        const relayer = new EnhancedRelayerService();
+        const relayer = new RealProductionRelayer();
+        await relayer.start();
         
-        console.log('🌉 Starting complete cross-chain monitoring...');
-        await relayer.startCompleteService();
-        
-        console.log('✅ RELAYER IS NOW LIVE AND PROCESSING GASLESS SWAPS!');
-        console.log('📡 Monitoring both Ethereum (Sepolia) and Algorand (Testnet)');
-        console.log('💰 Using funded dedicated relayer addresses');
-        console.log('🤖 Fully automated - users pay ZERO gas fees!');
-        
-        // Keep the service running
+        // Handle graceful shutdown
         process.on('SIGINT', () => {
-            console.log('\n🛑 Shutting down relayer service...');
+            console.log('\n🛑 Shutting down real relayer...');
             process.exit(0);
         });
         
     } catch (error) {
-        console.error('❌ Error starting relayer:', error.message);
-        console.log('\n🔧 TROUBLESHOOTING:');
-        console.log('1. Ensure relayer addresses are funded');
-        console.log('2. Check .env configuration');
-        console.log('3. Verify contract deployments');
+        console.error('❌ Failed to start real relayer:', error.message);
         process.exit(1);
     }
 }
 
-// Start the relayer
 startRealRelayer(); 

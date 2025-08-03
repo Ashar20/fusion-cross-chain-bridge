@@ -3,199 +3,79 @@
 /**
  * 🔍 CHECK RELAYER STATUS
  * 
- * Checks if the relayer is running and monitoring transactions
+ * Checks if the relayer is working and monitoring orders
  */
 
 const { ethers } = require('ethers');
 const fs = require('fs');
 
-class RelayerStatusChecker {
-    constructor() {
-        console.log('🔍 CHECKING RELAYER STATUS');
-        console.log('==========================\n');
-        
-        this.initialize();
-    }
+async function checkRelayerStatus() {
+    console.log('🔍 CHECKING RELAYER STATUS');
+    console.log('==========================\n');
     
-    async initialize() {
+    try {
         require('dotenv').config();
         
-        // Load relayer addresses from .env.relayer
-        const relayerEnv = fs.readFileSync('.env.relayer', 'utf8');
-        const relayerLines = relayerEnv.split('\n');
-        
-        // Extract relayer addresses
-        let ethRelayerAddress, ethRelayerPrivateKey;
-        
-        for (const line of relayerLines) {
-            if (line.startsWith('RELAYER_ETH_ADDRESS=')) {
-                ethRelayerAddress = line.split('=')[1];
-            } else if (line.startsWith('RELAYER_ETH_PRIVATE_KEY=')) {
-                ethRelayerPrivateKey = line.split('=')[1];
-            }
-        }
-        
-        // Network configurations
-        this.ethProvider = new ethers.JsonRpcProvider('https://sepolia.infura.io/v3/116078ce3b154dd0b21e372e9626f104');
-        
-        // Account setup
-        this.relayer = {
-            ethWallet: new ethers.Wallet(ethRelayerPrivateKey, this.ethProvider)
-        };
-        
-        console.log(`🤖 Relayer ETH Address: ${ethRelayerAddress}`);
-        console.log(`🔗 Etherscan: https://sepolia.etherscan.io/address/${ethRelayerAddress}\n`);
-    }
-    
-    async checkRelayerBalance() {
-        console.log('💰 CHECKING RELAYER BALANCE');
-        console.log('===========================');
-        
-        const balance = await this.ethProvider.getBalance(this.relayer.ethWallet.address);
-        console.log(`🤖 Relayer ETH Balance: ${ethers.formatEther(balance)} ETH`);
-        
-        if (parseFloat(ethers.formatEther(balance)) < 0.01) {
-            console.log('⚠️  WARNING: Relayer has low ETH balance for gas fees!');
-        } else {
-            console.log('✅ Relayer has sufficient ETH for gas fees');
-        }
-        console.log('');
-        
-        return balance;
-    }
-    
-    async checkRecentTransactions() {
-        console.log('📊 CHECKING RECENT TRANSACTIONS');
-        console.log('===============================');
-        
-        try {
-            // Get recent transactions for the relayer
-            const currentBlock = await this.ethProvider.getBlockNumber();
-            console.log(`📦 Current Block: ${currentBlock}`);
-            
-            // Check last 10 blocks for relayer transactions
-            let relayerTxCount = 0;
-            for (let i = 0; i < 10; i++) {
-                const block = await this.ethProvider.getBlock(currentBlock - i, true);
-                if (block && block.transactions) {
-                    for (const tx of block.transactions) {
-                        if (tx.from && tx.from.toLowerCase() === this.relayer.ethWallet.address.toLowerCase()) {
-                            relayerTxCount++;
-                            console.log(`🔍 Found relayer transaction in block ${block.number}:`);
-                            console.log(`   📝 Hash: ${tx.hash}`);
-                            console.log(`   🔗 Etherscan: https://sepolia.etherscan.io/tx/${tx.hash}`);
-                            console.log(`   💰 Gas Used: ${tx.gasLimit.toString()}`);
-                            console.log('');
-                        }
-                    }
-                }
-            }
-            
-            if (relayerTxCount === 0) {
-                console.log('❌ No recent relayer transactions found');
-                console.log('⚠️  Relayer may not be actively processing transactions');
+        // Check if relayer is running
+        const { exec } = require('child_process');
+        exec('ps aux | grep "startCompleteRelayer" | grep -v grep', (error, stdout, stderr) => {
+            if (stdout) {
+                console.log('✅ Relayer process is running:');
+                console.log(stdout);
             } else {
-                console.log(`✅ Found ${relayerTxCount} recent relayer transactions`);
+                console.log('❌ Relayer process not found');
             }
-            
-        } catch (error) {
-            console.error('❌ Error checking recent transactions:', error.message);
+        });
+        
+        // Check relayer database
+        if (fs.existsSync('relayer-db.json')) {
+            console.log('\n📊 RELAYER DATABASE:');
+            const dbData = JSON.parse(fs.readFileSync('relayer-db.json', 'utf8'));
+            console.log('   Order Mappings:', dbData.orderMappings?.length || 0);
+            console.log('   HTLC Mappings:', dbData.htlcMappings?.length || 0);
+            console.log('   Pending Swaps:', dbData.pendingSwaps?.length || 0);
+            console.log('   Completed Swaps:', dbData.completedSwaps?.length || 0);
+        } else {
+            console.log('\n❌ Relayer database not found');
         }
         
-        console.log('');
-    }
-    
-    async checkContractEvents() {
-        console.log('📋 CHECKING CONTRACT EVENTS');
-        console.log('===========================');
-        
-        try {
-            // Resolver contract ABI for events
-            const resolverABI = [
-                'event CrossChainOrderCreated(bytes32 indexed orderHash, address indexed maker, address token, uint256 amount, bytes32 hashlock, uint256 timelock, string algorandAddress)',
-                'event CrossChainSwapExecuted(bytes32 indexed orderHash, address indexed taker, bytes32 secret)'
-            ];
-            
-            const resolverContract = new ethers.Contract(
-                '0x7404763a3ADf2711104BD47b331EC3D7eC82Cb64',
-                resolverABI,
-                this.ethProvider
-            );
-            
-            // Get recent events
-            const currentBlock = await this.ethProvider.getBlockNumber();
-            const fromBlock = currentBlock - 100; // Last 100 blocks
-            
-            console.log(`🔍 Checking events from block ${fromBlock} to ${currentBlock}`);
-            
-            const orderCreatedEvents = await resolverContract.queryFilter(
-                resolverContract.filters.CrossChainOrderCreated(),
-                fromBlock,
-                currentBlock
-            );
-            
-            const swapExecutedEvents = await resolverContract.queryFilter(
-                resolverContract.filters.CrossChainSwapExecuted(),
-                fromBlock,
-                currentBlock
-            );
-            
-            console.log(`📊 Found ${orderCreatedEvents.length} order creation events`);
-            console.log(`📊 Found ${swapExecutedEvents.length} swap execution events`);
-            
-            if (orderCreatedEvents.length > 0) {
-                console.log('\n📋 RECENT ORDERS:');
-                for (const event of orderCreatedEvents.slice(-3)) { // Last 3 events
-                    console.log(`   🔗 Order Hash: ${event.args.orderHash}`);
-                    console.log(`   👤 Maker: ${event.args.maker}`);
-                    console.log(`   💰 Amount: ${ethers.formatEther(event.args.amount)} ETH`);
-                    console.log(`   🔒 Hashlock: ${event.args.hashlock}`);
-                    console.log('');
-                }
+        // Check successful swaps log
+        if (fs.existsSync('successful-atomic-swaps.log')) {
+            console.log('\n📝 SUCCESSFUL SWAPS LOG:');
+            const swaps = fs.readFileSync('successful-atomic-swaps.log', 'utf8').split('\n').filter(line => line.trim());
+            console.log('   Total successful swaps:', swaps.length);
+            if (swaps.length > 0) {
+                console.log('   Latest swap:', JSON.parse(swaps[swaps.length - 1]));
             }
-            
-            if (swapExecutedEvents.length > 0) {
-                console.log('\n📋 RECENT SWAPS:');
-                for (const event of swapExecutedEvents.slice(-3)) { // Last 3 events
-                    console.log(`   🔗 Order Hash: ${event.args.orderHash}`);
-                    console.log(`   👤 Taker: ${event.args.taker}`);
-                    console.log(`   🔑 Secret: ${event.args.secret}`);
-                    console.log('');
-                }
-            }
-            
-        } catch (error) {
-            console.error('❌ Error checking contract events:', error.message);
+        } else {
+            console.log('\n❌ Successful swaps log not found');
         }
         
-        console.log('');
-    }
-    
-    async runStatusCheck() {
-        try {
-            await this.checkRelayerBalance();
-            await this.checkRecentTransactions();
-            await this.checkContractEvents();
+        // Check recent transactions
+        console.log('\n🔍 RECENT TRANSACTIONS:');
+        const provider = new ethers.JsonRpcProvider('https://sepolia.infura.io/v3/5e10b8fae3204550a60ddfe976dee9b5');
+        const currentBlock = await provider.getBlockNumber();
+        console.log('   Current block:', currentBlock);
+        
+        // Check for any recent transactions from relayer address
+        const relayerEnv = fs.readFileSync('.env.relayer', 'utf8');
+        const relayerAddress = relayerEnv.split('\n').find(line => line.startsWith('RELAYER_ETH_ADDRESS='))?.split('=')[1];
+        
+        if (relayerAddress) {
+            console.log('   Relayer address:', relayerAddress);
             
-            console.log('🎯 RELAYER STATUS SUMMARY');
-            console.log('=========================');
-            console.log('✅ Relayer status check completed');
-            console.log('📊 Check the output above for details');
+            // Get recent transactions for relayer
+            const history = await provider.getHistory(relayerAddress, currentBlock - 100, currentBlock);
+            console.log('   Recent relayer transactions:', history.length);
             
-        } catch (error) {
-            console.error('❌ Error during status check:', error.message);
+            for (const tx of history.slice(-5)) {
+                console.log(`     ${tx.hash} - Block ${tx.blockNumber}`);
+            }
         }
+        
+    } catch (error) {
+        console.error('❌ Error checking relayer status:', error.message);
     }
 }
 
-// Execute the status check
-async function main() {
-    const checker = new RelayerStatusChecker();
-    await checker.runStatusCheck();
-}
-
-if (require.main === module) {
-    main().catch(console.error);
-}
-
-module.exports = RelayerStatusChecker;
+checkRelayerStatus();

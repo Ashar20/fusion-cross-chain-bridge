@@ -51,7 +51,7 @@ class GaslessALGOtoETHSwapRelayer {
         }
         
         // Network configurations
-        this.ethProvider = new ethers.JsonRpcProvider('https://sepolia.infura.io/v3/116078ce3b154dd0b21e372e9626f104');
+        this.ethProvider = new ethers.JsonRpcProvider('https://sepolia.infura.io/v3/5e10b8fae3204550a60ddfe976dee9b5');
         this.algoClient = new algosdk.Algodv2('', 'https://testnet-api.algonode.cloud', '');
         
         // Account setup
@@ -65,9 +65,9 @@ class GaslessALGOtoETHSwapRelayer {
             algoAccount: algosdk.mnemonicToSecretKey(algoRelayerMnemonic)
         };
         
-        // Swap parameters - PROPER AMOUNT TO MEET CONTRACT MINIMUM
+        // Swap parameters
         this.swapParams = {
-            ethAmount: ethers.parseEther('0.001'), // 0.001 ETH (meets minimum)
+            ethAmount: ethers.parseEther('0.001'), // 0.001 ETH
             algoAmount: 1000000, // 1 ALGO (1,000,000 microALGO)
             secret: crypto.randomBytes(32),
             timelock: Math.floor(Date.now() / 1000) + 3600 // 1 hour
@@ -275,7 +275,7 @@ class GaslessALGOtoETHSwapRelayer {
                 appIndex: 743645803, // Deployed Algorand HTLC
                 appArgs: [
                     new Uint8Array(Buffer.from('claim', 'utf8')), // action
-                    new Uint8Array(this.swapParams.secret) // secret as Uint8Array
+                    this.swapParams.secret // secret
                 ]
             });
             

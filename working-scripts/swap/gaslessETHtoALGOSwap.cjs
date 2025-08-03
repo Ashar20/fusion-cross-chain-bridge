@@ -51,7 +51,7 @@ class GaslessETHtoALGOSwap {
         }
         
         // Network configurations
-        this.ethProvider = new ethers.JsonRpcProvider('https://sepolia.infura.io/v3/116078ce3b154dd0b21e372e9626f104');
+        this.ethProvider = new ethers.JsonRpcProvider('https://sepolia.infura.io/v3/5e10b8fae3204550a60ddfe976dee9b5');
         this.algoClient = new algosdk.Algodv2('', 'https://testnet-api.algonode.cloud', '');
         
         // Account setup

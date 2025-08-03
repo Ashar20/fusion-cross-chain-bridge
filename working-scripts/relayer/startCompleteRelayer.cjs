@@ -15,18 +15,23 @@ const { CompleteCrossChainRelayer } = require('./completeCrossChainRelayer.cjs')
 async function main() {
     console.log('🚀 STARTING COMPLETE CROSS-CHAIN RELAYER SERVICE');
     console.log('===============================================');
-    console.log('✅ Bidirectional ETH ↔ ALGO Atomic Swaps');
-    console.log('✅ 1inch Fusion+ Integration');
-    console.log('✅ Real-time Cross-Chain Monitoring');
-    console.log('✅ Cryptographic Secret Validation');
-    console.log('✅ Gasless User Experience');
-    console.log('✅ Complete Automation');
+            console.log('✅ Bidirectional ETH ↔ ALGO Atomic Swaps');
+        console.log('✅ 1inch Fusion+ Integration');
+        console.log('✅ Limit Order Protocol (LOP)');
+        console.log('✅ Competitive Bidding System');
+        console.log('✅ Real-time Cross-Chain Monitoring');
+        console.log('✅ Cryptographic Secret Validation');
+        console.log('✅ Gasless User Experience');
+        console.log('✅ Complete Automation');
     console.log('===============================================\n');
     
     try {
         // Create and start the complete relayer
         const relayer = new CompleteCrossChainRelayer();
         await relayer.startCompleteService();
+        
+        // Start LOP monitoring
+        await relayer.startLOPMonitoring();
         
         console.log('🎉 COMPLETE RELAYER SERVICE IS LIVE!');
         console.log('====================================');

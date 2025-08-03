@@ -71,6 +71,78 @@
         },
         "createdAt": "2025-08-02T16:31:37.056Z"
       }
+    ],
+    [
+      "0x3f10b867a1fed18b53241252b98c1d965cd519f9748435d243e071085ec5d1ec",
+      {
+        "htlcId": "RTA2IPGZDKDN4BERSADGEYH7TUPCHHSLYPSRDGGQ5GBKBARRMQDA",
+        "direction": "ETH_TO_ALGO",
+        "status": "ALGO_HTLC_CREATED",
+        "ethData": {
+          "orderHash": "0x3f10b867a1fed18b53241252b98c1d965cd519f9748435d243e071085ec5d1ec",
+          "maker": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+          "token": "0x0000000000000000000000000000000000000000",
+          "amount": "1000000000000000",
+          "hashlock": "0x3c593d79ee2c81e48ecc78292e5fca6d0e51f5e07cd3c7366353f0fbd59efd69",
+          "timelock": "1754266848",
+          "algorandAddress": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+        },
+        "createdAt": "2025-08-02T22:21:04.052Z"
+      }
+    ],
+    [
+      "0xdf597a0911e06dcc82f400b4a6ecb9d345d211ad05127b63c2c44a1d076a0f50",
+      {
+        "htlcId": "YFVDIUMLMPM454ZNUUOOAEOUIOSC57RPARTFXQSELYST32IHEAQA",
+        "direction": "ETH_TO_ALGO",
+        "status": "ALGO_HTLC_CREATED",
+        "ethData": {
+          "orderHash": "0xdf597a0911e06dcc82f400b4a6ecb9d345d211ad05127b63c2c44a1d076a0f50",
+          "maker": "0x58924acDe600D5a0Fb3fb0AF49c8FE02060F79Ea",
+          "token": "0x0000000000000000000000000000000000000000",
+          "amount": "1000000000000000",
+          "hashlock": "0xeaeb23dc32047cbcf9093f58fd0d1d023991722bc09b2825e2408640eacdb26e",
+          "timelock": "1754324424",
+          "algorandAddress": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+        },
+        "createdAt": "2025-08-03T14:20:39.405Z"
+      }
+    ],
+    [
+      "0xe2c3a0071905da70138f9c53b420c3f31c09da869676d0f28e8616b7f2b64a43",
+      {
+        "htlcId": "QJBDZI4XAA64BB4JIMDQ233TLW2SFHQOAY6BXYBGHUY3KOPLCHKA",
+        "direction": "ETH_TO_ALGO",
+        "status": "ALGO_HTLC_CREATED",
+        "ethData": {
+          "orderHash": "0xe2c3a0071905da70138f9c53b420c3f31c09da869676d0f28e8616b7f2b64a43",
+          "maker": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+          "token": "0x0000000000000000000000000000000000000000",
+          "amount": "1000000000000000",
+          "hashlock": "0xc7c4feb6cd3d2180516c63319111b53e334580a4c6229ef2378cfa98d6d09224",
+          "timelock": "1754329908",
+          "algorandAddress": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+        },
+        "createdAt": "2025-08-03T15:52:18.044Z"
+      }
+    ],
+    [
+      "0xf6f44abcc8496cc819ad05050b66214b87761beb7401dc104af4cd6a5bdf590e",
+      {
+        "htlcId": "SZFMVBKTRY3HFNACP7ZMD4DSPGHCBIWQUXUPBUVDFHQGZWH45NYQ",
+        "direction": "ETH_TO_ALGO",
+        "status": "ALGO_HTLC_CREATED",
+        "ethData": {
+          "orderHash": "0xf6f44abcc8496cc819ad05050b66214b87761beb7401dc104af4cd6a5bdf590e",
+          "maker": "0x5e17586e2D659D81779A8F5b715dFb1813Fd7E53",
+          "token": "0x0000000000000000000000000000000000000000",
+          "amount": "1000000000000000",
+          "hashlock": "0x898e1667acd8feb6f979b4e75ad66ad5cf431bdc215c88c867f4932328e3b2f2",
+          "timelock": "1754330484",
+          "algorandAddress": "EUIJMTRL4BKRKIA4U3Z67YDRCO4G26H27KLW255HLFVQT4V6PMSG3A55PA"
+        },
+        "createdAt": "2025-08-03T16:01:49.438Z"
+      }
     ]
   ],
   "htlcMappings": [],
